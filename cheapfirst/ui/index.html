@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cheapfirst</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f0f; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column;
+  }
+  header {
+    padding: 16px 24px; border-bottom: 1px solid #2a2a2a;
+    display: flex; align-items: center; gap: 12px;
+    background: #1a1a1a;
+  }
+  header h1 { font-size: 18px; font-weight: 600; }
+  header span { color: #888; font-size: 12px; }
+  .badge {
+    background: #2d2d2d; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; color: #aaa; margin-left: auto;
+  }
+  .container { display: flex; flex: 1; overflow: hidden; }
+  .sidebar {
+    width: 300px; border-right: 1px solid #2a2a2a; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px; overflow-y: auto;
+    background: #141414;
+  }
+  .sidebar h3 { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .sidebar label { font-size: 13px; color: #ccc; }
+  .sidebar select, .sidebar input {
+    background: #1e1e1e; color: #e0e0e0; border: 1px solid #333;
+    border-radius: 6px; padding: 8px; font-size: 13px; width: 100%;
+  }
+  .metric-box {
+    background: #1a1a1a; border-radius: 8px; padding: 12px; margin-top: 4px;
+  }
+  .metric-box .label { font-size: 11px; color: #888; }
+  .metric-box .value { font-size: 16px; font-weight: 600; color: #4ade80; margin-top: 2px; }
+  .main { flex: 1; display: flex; flex-direction: column; }
+  .chat { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .msg { max-width: 80%; padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+  .user-msg { background: #1e3a5f; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .assistant-msg { background: #1e1e1e; align-self: flex-start; border-bottom-left-radius: 4px; }
+  .assistant-msg .model-tag {
+    font-size: 11px; color: #888; margin-top: 6px; padding-top: 6px;
+    border-top: 1px solid #2a2a2a;
+  }
+  .assistant-msg .cost-tag { font-size: 11px; color: #4ade80; }
+  .assistant-msg .error-tag { font-size: 11px; color: #f87171; }
+  .input-area {
+    border-top: 1px solid #2a2a2a; padding: 16px;
+    display: flex; gap: 8px; background: #1a1a1a;
+  }
+  .input-area input {
+    flex: 1; background: #1e1e1e; color: #e0e0e0; border: 1px solid #333;
+    border-radius: 8px; padding: 12px 16px; font-size: 14px;
+  }
+  .input-area input:focus { outline: none; border-color: #4ade80; }
+  .input-area button {
+    background: #4ade80; color: #000; border: none; border-radius: 8px;
+    padding: 12px 24px; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .input-area button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .loading { display: flex; align-items: center; gap: 8px; padding: 10px 14px; align-self: flex-start; }
+  .spinner { width: 16px; height: 16px; border: 2px solid #333; border-top-color: #4ade80; border-radius: 50%; animation: spin 0.6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .status-bar {
+    display: flex; gap: 16px; padding: 8px 16px;
+    background: #141414; border-top: 1px solid #2a2a2a;
+    font-size: 11px; color: #666;
+  }
+  .tab-bar { display: flex; border-bottom: 1px solid #2a2a2a; }
+  .tab-bar button {
+    background: transparent; color: #888; border: none; padding: 10px 20px;
+    font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent;
+  }
+  .tab-bar button.active { color: #4ade80; border-bottom-color: #4ade80; }
+  .empty-state { 
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    height: 100%; color: #555; font-size: 14px; gap: 8px;
+  }
+  .empty-state .icon { font-size: 48px; }
+  .route-detail { font-size: 12px; color: #888; padding: 2px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ cheapfirst</h1>
+  <span>LLM router</span>
+  <span class="badge">v0.1.0</span>
+</header>
+
+<div class="container">
+  <div class="sidebar">
+    <h3>Providers</h3>
+    <div id="provider-status">Loading...</div>
+
+    <h3 style="margin-top:12px">Routing</h3>
+    <div class="metric-box">
+      <div class="label">Mode</div>
+      <select id="mode">
+        <option value="auto">costflow-auto (routing)</option>
+        <option value="decide">decide (dry-run)</option>
+      </select>
+    </div>
+
+    <h3 style="margin-top:12px">Stats</h3>
+    <div class="metric-box">
+      <div class="label">Request cost</div>
+      <div class="value" id="last-cost">$0.0000</div>
+    </div>
+    <div class="metric-box">
+      <div class="label">Model</div>
+      <div class="value" id="last-model" style="font-size:13px;color:#e0e0e0">—</div>
+    </div>
+    <div class="metric-box">
+      <div class="label">Latency</div>
+      <div class="value" id="last-latency" style="color:#60a5fa">—</div>
+    </div>
+    <div class="metric-box">
+      <div class="label">Tokens</div>
+      <div class="value" id="last-tokens" style="font-size:13px;color:#e0e0e0">—</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="tab-bar">
+      <button class="active" onclick="switchTab('chat')">Chat</button>
+      <button onclick="switchTab('explore')">Explore</button>
+    </div>
+
+    <div id="tab-chat" class="chat" style="display:flex">
+      <div class="empty-state" id="empty-state">
+        <div class="icon">⚡</div>
+        <div>Type a message to test cheapfirst routing</div>
+        <div style="font-size:12px;color:#444">cheap model → verify → escalate if needed</div>
+      </div>
+      <div id="messages"></div>
+    </div>
+
+    <div id="tab-explore" class="chat" style="display:none">
+      <div id="explore-content" style="padding:16px">
+        <div style="margin-bottom:12px">
+          <input id="explore-input" placeholder="Test a prompt (dry-run)..." 
+                 style="width:100%;background:#1e1e1e;color:#e0e0e0;border:1px solid #333;border-radius:8px;padding:12px;font-size:14px">
+          <button onclick="exploreRoute()" style="margin-top:8px;background:#333;color:#fff;border:none;border-radius:6px;padding:8px 16px;cursor:pointer">
+            Route
+          </button>
+        </div>
+        <pre id="explore-result" style="background:#1a1a1a;padding:16px;border-radius:8px;font-size:12px;overflow-x:auto;min-height:100px;color:#aaa">Click "Route" to see the routing decision</pre>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input id="input" placeholder="Type your message..." autofocus
+             onkeydown="if(event.key==='Enter') send()">
+      <button id="send-btn" onclick="send()">Send</button>
+    </div>
+  </div>
+</div>
+
+<div class="status-bar">
+  <span id="server-status">● Connecting...</span>
+  <span id="models-count">—</span>
+</div>
+
+<script>
+const BASE = '';
+let chatHistory = [];
+
+async function api(path, body) {
+  const res = await fetch(BASE + path, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`HTTP ${res.status}: ${err.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
+async function checkHealth() {
+  try {
+    const res = await fetch(BASE + '/healthz');
+    const data = await res.json();
+    document.getElementById('server-status').textContent = '● Connected';
+    document.getElementById('server-status').style.color = '#4ade80';
+    document.getElementById('models-count').textContent = `${data.models_count} models | ${(data.providers||[]).join(', ')}`;
+    
+    const pstat = document.getElementById('provider-status');
+    if (data.providers && data.providers.length > 0) {
+      pstat.innerHTML = data.providers.map(p => 
+        `<div style="font-size:13px;padding:4px 0;display:flex;align-items:center;gap:6px">
+           <span style="color:#4ade80;font-size:8px">●</span> ${p}
+         </div>`
+      ).join('');
+    } else {
+      pstat.innerHTML = '<div style="color:#888;font-size:12px">No providers configured. Add API keys to cheapfirst.yaml</div>';
+    }
+  } catch(e) {
+    document.getElementById('server-status').textContent = '● Disconnected (start with: cheapfirst serve)';
+    document.getElementById('server-status').style.color = '#f87171';
+  }
+}
+
+function addMessage(role, content, meta) {
+  const container = document.getElementById('messages');
+  const el = document.createElement('div');
+  el.className = `msg ${role}-msg`;
+  
+  if (role === 'assistant') {
+    let html = content;
+    if (meta) {
+      html += `<div class="model-tag">`;
+      if (meta.model) html += `⚡ ${meta.model}`;
+      if (meta.cost_usd) html += ` &nbsp;|&nbsp; <span class="cost-tag">$${meta.cost_usd.toFixed(8)}</span>`;
+      if (meta.turns) html += ` &nbsp;|&nbsp; ${meta.turns} turn(s)`;
+      if (meta.latency_ms) html += ` &nbsp;|&nbsp; ${meta.latency_ms}ms`;
+      if (meta.task_type) html += `<br><span class="route-detail">task: ${meta.task_type}, confidence: ${meta.confidence?.toFixed(2)}</span>`;
+      html += `</div>`;
+    }
+    el.innerHTML = html;
+  } else {
+    el.textContent = content;
+  }
+  
+  container.appendChild(el);
+  container.scrollTop = container.scrollHeight;
+}
+
+async function send() {
+  const input = document.getElementById('input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  
+  document.getElementById('empty-state').style.display = 'none';
+  addMessage('user', text);
+  
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  btn.textContent = '...';
+  
+  const loading = document.createElement('div');
+  loading.className = 'loading';
+  loading.id = 'loading';
+  loading.innerHTML = '<div class="spinner"></div> thinking...';
+  document.getElementById('messages').appendChild(loading);
+  
+  try {
+    const mode = document.getElementById('mode').value;
+    let result;
+    
+    if (mode === 'decide') {
+      result = await api('/v1/route', { prompt: text });
+      const msg = `[DRY-RUN]\nRecommended: ${result.model}\nScore: ${result.score}\nCost est: $${result.cost_est}`;
+      addMessage('assistant', msg, {
+        model: result.model,
+        cost_usd: result.cost_est,
+        task_type: result.task_type,
+        confidence: result.confidence,
+      });
+      document.getElementById('last-cost').textContent = `$${result.cost_est?.toFixed(6) || '0.000000'}`;
+      document.getElementById('last-model').textContent = result.model || '—';
+    } else {
+      chatHistory.push({ role: 'user', content: text });
+      result = await api('/v1/chat/completions', {
+        model: 'costflow-auto',
+        messages: chatHistory,
+      });
+      const reply = result.choices?.[0]?.message?.content || '';
+      const cost = result.cost_usd || 0;
+      addMessage('assistant', reply, {
+        model: result.model,
+        cost_usd: cost,
+        latency_ms: result.latency_ms || 0,
+        task_type: result.task_type,
+        confidence: result.confidence,
+        turns: result.turns,
+      });
+      chatHistory.push({ role: 'assistant', content: reply });
+      
+      document.getElementById('last-cost').textContent = `$${cost.toFixed(6)}`;
+      document.getElementById('last-model').textContent = result.model || '—';
+      document.getElementById('last-latency').textContent = result.latency_ms ? `${result.latency_ms}ms` : '—';
+      document.getElementById('last-tokens').textContent = result.usage ? 
+        `${result.usage.prompt_tokens}↑ ${result.usage.completion_tokens}↓` : '—';
+    }
+  } catch(e) {
+    addMessage('assistant', `❌ Error: ${e.message}`, null);
+  } finally {
+    const loadingEl = document.getElementById('loading');
+    if (loadingEl) loadingEl.remove();
+    btn.disabled = false;
+    btn.textContent = 'Send';
+  }
+}
+
+async function exploreRoute() {
+  const text = document.getElementById('explore-input').value.trim();
+  if (!text) return;
+  try {
+    const result = await api('/v1/route', { prompt: text });
+    document.getElementById('explore-result').textContent = JSON.stringify(result, null, 2);
+  } catch(e) {
+    document.getElementById('explore-result').textContent = `Error: ${e.message}`;
+  }
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.main > [id^="tab-"]').forEach(t => t.style.display = 'none');
+  
+  if (tab === 'chat') {
+    document.querySelector('.tab-bar button:first-child').classList.add('active');
+    document.getElementById('tab-chat').style.display = 'flex';
+  } else {
+    document.querySelector('.tab-bar button:nth-child(2)').classList.add('active');
+    document.getElementById('tab-explore').style.display = 'flex';
+  }
+}
+
+checkHealth();
+setInterval(checkHealth, 30000);
+</script>
+</body>
+</html>

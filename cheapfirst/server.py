@@ -4,9 +4,12 @@ Espone endpoint OpenAI-compatibile, Anthropic-compatibile e health check.
 """
 
 from .. import CheapFirst
+from pathlib import Path
 
 try:
-    from fastapi import FastAPI, HTTPException
+    from fastapi import FastAPI, HTTPException, Request
+    from fastapi.responses import HTMLResponse, FileResponse
+    from fastapi.staticfiles import StaticFiles
     from pydantic import BaseModel
     import uvicorn
 except ImportError:
@@ -110,6 +113,24 @@ def create_app(config_path: str | None = None) -> FastAPI | None:
         """Dry-run: mostra quale modello verrebbe usato."""
         decision = router_engine.decide(prompt)
         return decision
+
+    @app.post("/v1/route")
+    async def route_dry_run_post(data: dict):
+        """Dry-run via POST (per UI)."""
+        prompt = data.get("prompt", "")
+        if not prompt:
+            raise HTTPException(400, "prompt required")
+        decision = router_engine.decide(prompt)
+        return decision
+
+    @app.get("/", response_class=HTMLResponse)
+    @app.get("/ui", response_class=HTMLResponse)
+    async def ui():
+        """Interfaccia web."""
+        ui_path = Path(__file__).parent / "ui" / "index.html"
+        if ui_path.exists():
+            return HTMLResponse(ui_path.read_text())
+        return HTMLResponse("<h1>cheapfirst</h1><p>UI not found</p>")
 
     @app.get("/healthz")
     async def healthz():
