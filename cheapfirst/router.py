@@ -3,7 +3,7 @@
 from .classifier import TaskSignature
 from .config import CheapConfig
 from .registry import ModelRegistry, ModelSpec
-from .executor import execute
+from .executor import execute, calculate_cost
 from .verify import verify_response, Verdict
 
 from typing import Optional
@@ -32,6 +32,7 @@ class Router:
     def __init__(self, config: CheapConfig, registry: ModelRegistry):
         self.config = config
         self.registry = registry
+        self._provider_keys = config.resolve_provider_keys()
 
     def route(self, messages: list[dict], sig: TaskSignature, dry_run: bool = False) -> dict:
         """Esegue il routing completo o dry-run."""
@@ -139,9 +140,19 @@ class Router:
 
         for turn, (model, score, cost, bench) in enumerate(ranked[:max_turns]):
             try:
-                result = execute(messages=messages, model_id=model.id)
+                result = execute(
+                    messages=messages,
+                    model_id=model.id,
+                    provider_keys=self._provider_keys,
+                )
 
                 if skip_verify or turn == 0 and skip_verify:
+                    # Calcola costo effettivo
+                    result["cost_usd"] = calculate_cost(
+                        model.pricing,
+                        result.get("input_tokens", 0),
+                        result.get("output_tokens", 0),
+                    )
                     result["turns"] = turn + 1
                     result["verify_used"] = False
                     return result
@@ -149,12 +160,22 @@ class Router:
                 # Verify
                 if cost > budget:
                     # Non possiamo permetterci verify: accetta
+                    result["cost_usd"] = calculate_cost(
+                        model.pricing,
+                        result.get("input_tokens", 0),
+                        result.get("output_tokens", 0),
+                    )
                     result["turns"] = turn + 1
                     result["verify_used"] = False
                     return result
 
                 verdict = verify_response(result, sig)
                 if verdict == Verdict.ACCEPT:
+                    result["cost_usd"] = calculate_cost(
+                        model.pricing,
+                        result.get("input_tokens", 0),
+                        result.get("output_tokens", 0),
+                    )
                     result["turns"] = turn + 1
                     result["verify_used"] = True
                     result["verify_passed"] = True
@@ -173,9 +194,18 @@ class Router:
                 continue  # prova prossimo modello
 
         # Budget esaurito: ultimo modello comunque
-        last = ranked[-1]
+        last_model, last_score, last_cost, last_bench = ranked[-1]
         try:
-            result = execute(messages=messages, model_id=last[0].id)
+            result = execute(
+                messages=messages,
+                model_id=last_model.id,
+                provider_keys=self._provider_keys,
+            )
+            result["cost_usd"] = calculate_cost(
+                last_model.pricing,
+                result.get("input_tokens", 0),
+                result.get("output_tokens", 0),
+            )
             result["turns"] = max_turns
             result["budget_exhausted"] = True
             return result

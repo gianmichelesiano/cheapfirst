@@ -71,11 +71,11 @@ class CheapFirst:
         result = self.router.route(messages, sig, dry_run=False)
 
         if self.metrics:
-            self.metrics.log({
+            log_entry = {
                 "task_type": sig.task,
                 "difficulty": sig.difficulty,
                 "confidence": sig.confidence,
-                "model_used": result["model"],
+                "model_used": result.get("model", result.get("model_used", "?")),
                 "turns": result.get("turns", 1),
                 "cost_usd": result.get("cost_usd", 0),
                 "input_tokens": result.get("input_tokens", 0),
@@ -83,7 +83,8 @@ class CheapFirst:
                 "latency_ms": result.get("latency_ms", 0),
                 "success": result.get("success", True),
                 "error_msg": result.get("error", None),
-            })
+            }
+            self.metrics.log(log_entry)
 
         return result
 

@@ -50,6 +50,26 @@ class ServerConfig:
     port: int = 8080
 
 
+# Provider → base URL mapping per endpoint OpenAI-compatibile
+PROVIDER_BASE_URLS = {
+    "deepseek": "https://api.deepseek.com/v1",
+    "openai": "https://api.openai.com/v1",
+    "anthropic": "https://api.anthropic.com/v1",
+    "google": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "groq": "https://api.groq.com/openai/v1",
+    "mistral": "https://api.mistral.ai/v1",
+    "together": "https://api.together.xyz/v1",
+    "fireworks": "https://api.fireworks.ai/inference/v1",
+    "cohere": "https://api.cohere.com/v1",
+    "perplexity": "https://api.perplexity.ai",
+    "xai": "https://api.x.ai/v1",
+    "github": "https://models.inference.ai.azure.com",
+}
+
+# Se un provider non è nella mappa, si assume sia locale o via proxy
+# e si usa il valore della config provider_keys per quel provider come base_url
+
+
 @dataclass
 class CheapConfig:
     provider_keys: dict = field(default_factory=dict)
