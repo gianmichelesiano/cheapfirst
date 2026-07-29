@@ -45,6 +45,10 @@ def decide(ctx, prompt):
     cf = CheapFirst(config=ctx.obj.get("config_path"))
     result = cf.decide(prompt)
 
+    if "error" in result:
+        click.echo(f"  Errore: {result['error']}")
+        return
+
     click.echo()
     click.echo(f"  Raccomandato: {result['model']}")
     click.echo(f"  Score:        {result['score']:.6f} (costo/benchmark)")

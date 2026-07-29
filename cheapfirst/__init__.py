@@ -53,6 +53,15 @@ class CheapFirst:
         messages = [{"role": "user", "content": prompt}]
         sig = classify(messages)
         decision = self.router.route(messages, sig, dry_run=True)
+
+        if "error" in decision:
+            return {
+                "error": decision["error"],
+                "task_type": sig.task,
+                "difficulty": sig.difficulty,
+                "confidence": sig.confidence,
+            }
+
         return {
             "model": decision["model"],
             "score": decision["score"],
