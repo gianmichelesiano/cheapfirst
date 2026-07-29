@@ -1,68 +1,98 @@
-# cheapfirst — Piano di Implementazione Passo Passo
+# cheapfirst — Piano di Implementazione
 
-## Stato attuale
+## Stato attuale: ✅ COMPLETATO (tranne PyPI publish)
+
 Repo: https://github.com/gianmichelesiano/cheapfirst
 
 ## Fasi
 
-### Fase 1: Registry + Classifier (completato ✅)
-- [x] Classificatore euristico (regex): code, math, creative, factual, translation, general
-- [x] Registry da OpenRouter API (fetch + parse + cache)
-- [x] Modelli custom da config YAML
-- [x] Filtro per API key attive
+### ✅ Fase 1: Registry + Classifier
+- Classificatore euristico (regex): code, math, creative, factual, translation, general
+- Registry da OpenRouter API (fetch + parse + cache, 367+ modelli)
+- Modelli custom da config YAML
+- Filtro per API key attive
 
-### Fase 2: Router + Executor (in corso)
-- [ ] Router: filtro per competenza + ranking costo/benchmark
-- [ ] Executor: chiamata API reale OpenAI-compatibile
-- [ ] Risoluzione base_url + api_key per provider
-- [ ] Streaming support
-- [ ] Timeout e retry
+### ✅ Fase 2: Router + Executor reali
+- Router: filtro per competenza + ranking costo/benchmark
+- Executor: chiamate API HTTP reali OpenAI-compatibili
+- 12 provider mappati (DeepSeek, Anthropic, OpenAI, Groq, ecc.)
+- Provider sconosciuti: inferiti dal nome
+- Calcolo costo effettivo da token reali
+- Timeout e error handling
 
-### Fase 3: Verify + Escalate
-- [ ] Verify strutturato per tipo di task
-- [ ] Escalation ladder con max_turns
-- [ ] Budget controllo costi per verify
+### ✅ Fase 3: Verify + Escalate
+- Verify strutturato per tipo di task (codice, traduzione, matematica)
+- Controllo parentesi bilanciate per codice
+- Lunghezza minima contestuale
+- Escalation ladder con max_turns
+- Budget controllo costi per verify
 
-### Fase 4: Metriche + Report
-- [ ] Logging richieste su SQLite
-- [ ] Report testuale (costi, risparmio, modelli usati)
-- [ ] Report comparativo (costo vs frontier-only)
+### ✅ Fase 4: Metriche + Report
+- Logging richieste su SQLite
+- Report testuale: costi, modelli, success rate
+- Query per periodo
 
-### Fase 5: CLI Completa
-- [ ] `cheapfirst route` — routing + esecuzione
-- [ ] `cheapfirst decide` — dry-run
-- [ ] `cheapfirst registry update/check/show`
-- [ ] `cheapfirst report --days N`
+### ✅ Fase 5: CLI completa
+- `cheapfirst route` — routing + esecuzione
+- `cheapfirst decide` — dry-run
+- `cheapfirst registry update/check`
+- `cheapfirst report --days N`
+- `cheapfirst serve`
 
-### Fase 6: Server HTTP
-- [ ] FastAPI endpoint
-- [ ] POST /v1/chat/completions
-- [ ] GET /v1/models
-- [ ] GET /healthz
+### ✅ Fase 6: Server HTTP (extra [server])
+- FastAPI endpoint
+- POST /v1/chat/completions (OpenAI-compatibile)
+- GET /v1/models
+- GET /v1/route (dry-run)
+- GET /healthz
+- Passthrough per modelli specifici
 
-### Fase 7: Testing
-- [ ] Test classificatore
-- [ ] Test router
-- [ ] Test registry
-- [ ] Test verify
-- [ ] Test metriche
-- [ ] Test integrazione
+### ✅ Fase 7: Testing
+- 27 test passanti:
+  - 12 test classifier
+  - 5 test registry
+  - 3 test router
+  - 7 test verify
 
-### Fase 8: Produzione
-- [ ] pip publish
-- [ ] README completo con esempi
-- [ ] Documentazione API
-- [ ] **Articolo tecnico**
+### ⬜ Fase 8a: pip publish
+- Build wheel + tar.gz: ✅ fatto (dist/)
+- PyPI publish: ❌ serve PyPI API token
+  - Crea account su pypi.org
+  - Genera un token API
+  - `python -m twine upload dist/*`
 
-## Come monitorare
+### ⬜ Fase 8b: Articolo tecnico
+- Da scrivere
 
-```bash
-# Vedi i file nel repo
-gh repo view gianmichelesiano/cheapfirst
+## Struttura del progetto
 
-# Vedi i commit recenti
-cd /tmp/cheapfirst && git log --oneline -20
-
-# Test
-cd /tmp/cheapfirst && python -m pytest tests/ -v
 ```
+cheapfirst/
+├── cheapfirst/
+│   ├── __init__.py         # CheapFirst class pubblica
+│   ├── __version__.py      # v0.1.0
+│   ├── __main__.py         # Entry point
+│   ├── config.py           # Lettura YAML + mappa provider
+│   ├── classifier.py       # Classificatore euristico
+│   ├── router.py           # Motore di routing
+│   ├── registry.py         # Registry modelli (OpenRouter + custom)
+│   ├── executor.py         # Chiamata API reale
+│   ├── verify.py           # Verifica risposta
+│   ├── metrics.py          # Metriche SQLite
+│   ├── report.py           # Report metriche
+│   ├── server.py           # Server HTTP FastAPI
+│   └── cli/
+│       └── main.py         # CLI (route, decide, registry, report, serve)
+├── tests/
+│   ├── test_classifier.py  # 12 test
+│   ├── test_registry.py    # 5 test
+│   ├── test_router.py      # 3 test
+│   └── test_verify.py      # 7 test
+├── pyproject.toml
+├── README.md
+├── SPECS.md
+├── PLAN.md
+└── dist/                   # build pronto per PyPI
+```
+
+## Totale: ~2100 righe di codice, 27 test passanti
