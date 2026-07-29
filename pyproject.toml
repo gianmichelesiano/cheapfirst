@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "cheapfirst"
+version = "0.1.0"
+description = "LLM router: prova il modello cheap, verifica, scala. Risparmia 80% sui costi API."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Gianmichele Siano", email = "bandigare@gmail.com" },
+]
+
+dependencies = [
+    "click>=8.0",
+    "pyyaml>=6.0",
+    "openai>=1.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.20.0",
+]
+
+[project.scripts]
+cheapfirst = "cheapfirst.cli.main:main"
