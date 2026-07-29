@@ -133,7 +133,7 @@ class ModelRegistry:
                     "coding_index": aa.get("coding_index", 0),
                     "agentic_index": aa.get("agentic_index", 0),
                 },
-                strength=min(1.0, aa.get("intelligence_index", 0) / 100),
+                strength=round(min(1.0, (aa.get("intelligence_index") or 0) / 100), 2),
             )
             self.models.append(spec)
 

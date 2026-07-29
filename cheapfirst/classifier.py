@@ -121,7 +121,7 @@ def classify(messages: list[dict]) -> TaskSignature:
         task = "math"
     elif is_factual and chars < 400:
         task = "factual"
-    elif is_creative:
+    elif is_creative and not is_code and not is_math:
         task = "creative"
     else:
         task = "general"
@@ -151,10 +151,12 @@ def classify(messages: list[dict]) -> TaskSignature:
 
     difficulty = max(0.0, min(1.0, d))
 
-    # ── Calcolo confidenza ──
+    # Calcolo confidenza
     # Match forte: pattern specifico trovato
-    if task == "code" and ("```" in text or "def " in text or "class " in text):
+    if task == "code" and ("```" in text or "def " in text or "class " in text or "function" in text):
         confidence = 0.90
+    elif task == "code" and hard_count > 0:
+        confidence = 0.75
     elif task == "translation":
         confidence = 0.85
     elif task == "math" and is_math:

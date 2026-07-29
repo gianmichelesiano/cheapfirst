@@ -20,10 +20,6 @@ def verify_response(response: dict, sig: TaskSignature) -> Verdict:
     if not text:
         return Verdict.REVISE
 
-    # Controllo base: risposta non vuota
-    if len(text.strip()) < 5:
-        return Verdict.REVISE
-
     # Controlli per tipo di task
     if sig.task == "code":
         return _verify_code(text)
