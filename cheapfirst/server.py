@@ -3,7 +3,7 @@
 Espone endpoint OpenAI-compatibile, Anthropic-compatibile e health check.
 """
 
-from .. import CheapFirst
+from cheapfirst import CheapFirst
 from pathlib import Path
 
 try:
@@ -69,7 +69,7 @@ def create_app(config_path: str | None = None) -> FastAPI | None:
             result = router_engine.chat(messages_dict)
         else:
             # Passthrough: usa il modello specificato
-            from ..executor import execute
+            from cheapfirst.executor import execute
             provider_keys = router_engine.config.resolve_provider_keys()
             result = execute(
                 messages=messages_dict,

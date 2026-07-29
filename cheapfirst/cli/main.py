@@ -103,7 +103,7 @@ def report(ctx, days):
 def serve(ctx, port):
     """Avvia server HTTP (richiede pip install cheapfirst[server])."""
     try:
-        from ..server import run_server
+        from cheapfirst.server import run_server
         run_server(port=port, config=ctx.obj.get("config_path"))
     except ImportError:
         click.echo(
