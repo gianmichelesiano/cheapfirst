@@ -53,7 +53,7 @@ def decide(ctx, prompt):
 
     click.echo()
     click.echo(f"  Raccomandato: {result['model']}")
-    click.echo(f"  Score:        {result['score']:.6f} (costo/benchmark)")
+    click.echo(f"  Score:        {result['score']:.6f} ({'weighted' if result.get('mode') == 'balanced' else 'costo/benchmark'})")
     click.echo(f"  Costo stimato: ${result['cost_est']:.8f}")
     click.echo(f"  Task:         {result['task_type']} (difficoltà {result['difficulty']:.2f})")
     click.echo(f"  Confidenza:   {result['confidence']:.2f}")

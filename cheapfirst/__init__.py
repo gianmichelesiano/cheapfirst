@@ -76,6 +76,7 @@ class CheapFirst:
             "difficulty": sig.difficulty,
             "confidence": sig.confidence,
             "reason": decision["reason"],
+            "mode": self.config.routing.mode,
             "alternatives": decision.get("alternatives", []),
         }
 

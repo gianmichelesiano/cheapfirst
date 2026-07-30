@@ -45,8 +45,11 @@ class Router:
         if not competent:
             competent = pool  # fallback: usa tutto il pool
 
-        # 2. Ranka per task type
-        ranked = self._rank(competent, sig.task)
+        # 2. Ranka per task type (modalità cheapfirst o balanced)
+        if self.config.routing.mode == "balanced":
+            ranked = self._rank_balanced(competent, sig.task)
+        else:
+            ranked = self._rank(competent, sig.task)
         if not ranked:
             return {"error": "Nessun modello disponibile dopo il ranking", "success": False}
 
@@ -96,22 +99,77 @@ class Router:
         return competent
 
     def _rank(self, pool: list[ModelSpec], task_type: str) -> list[tuple]:
-        """Ranka i modelli per costo/benchmark. Più basso = meglio."""
+        """Ranking cheapfirst: costo/benchmark. Più basso = meglio."""
         bench_key = BENCHMARK_MAP.get(task_type, "intelligence_index")
-        est_out = 200  # stima output token
+        est_out = 200
 
         ranked = []
         for m in pool:
             bench = m.benchmarks.get(bench_key, 0)
             if bench <= 0:
-                bench = 0.1  # evita division by zero
+                bench = 0.1
 
             completion_price = m.pricing.get("completion_per_m", 0)
-            # Stima costo per questa richiesta
             cost = (completion_price * est_out) / 1_000_000
-            cost = max(cost, 0.00001)  # minimo per evitare zero
+            cost = max(cost, 0.00001)
 
             score = cost / bench
+            ranked.append((m, score, cost, bench))
+
+        ranked.sort(key=lambda x: x[1])
+        return ranked
+
+    def _rank_balanced(self, pool: list[ModelSpec], task_type: str) -> list[tuple]:
+        """Ranking balanced: Pareto filter + weighted score (costo vs qualità)."""
+        bench_key = BENCHMARK_MAP.get(task_type, "intelligence_index")
+        routing = self.config.routing
+        w_cost = routing.cost_weight
+        w_qual = routing.quality_weight
+
+        # Prepara dati
+        models_data = []
+        for m in pool:
+            bench = m.benchmarks.get(bench_key, 0)
+            if bench <= 0:
+                bench = 0.1
+            completion_price = m.pricing.get("completion_per_m", 0)
+            cost = (completion_price * 200) / 1_000_000
+            cost = max(cost, 0.00001)
+            models_data.append((m, cost, bench))
+
+        # Pareto filter: elimina modelli dominati
+        # Un modello A è dominato se esiste B con costo <= A E qualità >= A
+        # (almeno una delle due stretta)
+        pareto = []
+        for i, (m, c, b) in enumerate(models_data):
+            dominated = False
+            for j, (m2, c2, b2) in enumerate(models_data):
+                if i == j:
+                    continue
+                if c2 <= c and b2 >= b and (c2 < c or b2 > b):
+                    dominated = True
+                    break
+            if not dominated:
+                pareto.append((m, c, b))
+
+        if not pareto:
+            pareto = models_data  # fallback
+
+        # Normalizza costo e benchmark su 0-1
+        min_cost = min(c for _, c, _ in pareto)
+        max_cost = max(c for _, c, _ in pareto)
+        min_bench = min(b for _, _, b in pareto)
+        max_bench = max(b for _, _, b in pareto)
+        cost_range = max_cost - min_cost if max_cost > min_cost else 1
+        bench_range = max_bench - min_bench if max_bench > min_bench else 1
+
+        # Weighted score
+        ranked = []
+        for m, cost, bench in pareto:
+            cost_norm = (cost - min_cost) / cost_range
+            qual_norm = (bench - min_bench) / bench_range
+            # score = basso costo + alta qualità
+            score = w_cost * cost_norm + w_qual * (1 - qual_norm)
             ranked.append((m, score, cost, bench))
 
         ranked.sort(key=lambda x: x[1])

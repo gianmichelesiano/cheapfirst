@@ -27,13 +27,14 @@ class RegistryConfig:
 @dataclass
 class RoutingConfig:
     min_benchmark_score: float = 25.0
+    mode: str = "cheapfirst"  # cheapfirst | balanced
     difficulty_thresholds: dict = field(default_factory=lambda: {"low": 0.33, "high": 0.70})
     verify: bool = True
     max_turns: int = 3
     skip_verify_confidence: float = 0.8
     max_cost_per_request: float = 0.05
-    cost_weight: float = 0.5
-    quality_weight: float = 0.5
+    cost_weight: float = 0.3    # usato in modalità balanced
+    quality_weight: float = 0.7 # usato in modalità balanced
     verify_cost_budget: float = 0.001
 
 
