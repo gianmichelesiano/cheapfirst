@@ -76,12 +76,11 @@ def execute(
             "success": False,
         }
 
-    # Rimuovi /v1 se presente perché aggiungiamo /chat/completions
+    # Costruisci URL: assicurati che finisca con /chat/completions
     url = base_url.rstrip("/")
-    if url.endswith("/v1"):
-        url = url + "/chat/completions"
-    else:
-        url = url + "/chat/completions"
+    if not url.endswith("/v1"):
+        url += "/v1"
+    url += "/chat/completions"
 
     headers = {
         "Authorization": f"Bearer {api_key}",

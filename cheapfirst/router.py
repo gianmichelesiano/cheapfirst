@@ -76,13 +76,6 @@ class Router:
         min_score = routing.min_benchmark_score
         bench_key = BENCHMARK_MAP.get(sig.task, "intelligence_index")
 
-        # Determina tier minimo in base alla difficoltà
-        min_tier = "cheap"
-        for threshold, tiers in TIER_BY_DIFFICULTY:
-            if sig.difficulty < threshold:
-                min_tier = tiers[0]
-                break
-
         competent = []
         for m in pool:
             bench = m.benchmarks.get(bench_key, 0)
@@ -135,79 +128,72 @@ class Router:
         max_turns = config.max_turns
         budget = config.verify_cost_budget
 
-        # Se confidenza alta e tier adeguato, skip verify
+        # Se confidenza alta, skip verify al primo turno
         skip_verify = sig.confidence >= config.skip_verify_confidence
 
         for turn, (model, score, cost, bench) in enumerate(ranked[:max_turns]):
-            try:
-                result = execute(
-                    messages=messages,
-                    model_id=model.id,
-                    provider_keys=self._provider_keys,
-                )
-
-                if skip_verify or turn == 0 and skip_verify:
-                    # Calcola costo effettivo
-                    result["cost_usd"] = calculate_cost(
-                        model.pricing,
-                        result.get("input_tokens", 0),
-                        result.get("output_tokens", 0),
-                    )
-                    result["turns"] = turn + 1
-                    result["verify_used"] = False
-                    return result
-
-                # Verify
-                if cost > budget:
-                    # Non possiamo permetterci verify: accetta
-                    result["cost_usd"] = calculate_cost(
-                        model.pricing,
-                        result.get("input_tokens", 0),
-                        result.get("output_tokens", 0),
-                    )
-                    result["turns"] = turn + 1
-                    result["verify_used"] = False
-                    return result
-
-                verdict = verify_response(result, sig)
-                if verdict == Verdict.ACCEPT:
-                    result["cost_usd"] = calculate_cost(
-                        model.pricing,
-                        result.get("input_tokens", 0),
-                        result.get("output_tokens", 0),
-                    )
-                    result["turns"] = turn + 1
-                    result["verify_used"] = True
-                    result["verify_passed"] = True
-                    return result
-
-                # REVISE: scala al prossimo modello
-                skip_verify = False  # ora facciamo verify obbligatorio
-
-            except Exception as e:
-                if turn == len(ranked[:max_turns]) - 1:
-                    return {
-                        "error": str(e),
-                        "success": False,
-                        "turns": turn + 1,
-                    }
-                continue  # prova prossimo modello
-
-        # Budget esaurito: ultimo modello comunque
-        last_model, last_score, last_cost, last_bench = ranked[-1]
-        try:
             result = execute(
                 messages=messages,
-                model_id=last_model.id,
+                model_id=model.id,
                 provider_keys=self._provider_keys,
             )
-            result["cost_usd"] = calculate_cost(
-                last_model.pricing,
-                result.get("input_tokens", 0),
-                result.get("output_tokens", 0),
-            )
-            result["turns"] = max_turns
-            result["budget_exhausted"] = True
-            return result
-        except Exception as e:
-            return {"error": str(e), "success": False}
+
+            # Se la chiamata è fallita (errore di rete, provider, etc.)
+            if not result.get("success", True):
+                # Logga l'errore e prova il prossimo modello
+                if turn == len(ranked[:max_turns]) - 1:
+                    result["turns"] = turn + 1
+                    return result
+                continue
+
+            if skip_verify:
+                result["cost_usd"] = calculate_cost(
+                    model.pricing,
+                    result.get("input_tokens", 0),
+                    result.get("output_tokens", 0),
+                )
+                result["turns"] = turn + 1
+                result["verify_used"] = False
+                return result
+
+            # Verify (se il budget lo consente)
+            if cost > budget:
+                result["cost_usd"] = calculate_cost(
+                    model.pricing,
+                    result.get("input_tokens", 0),
+                    result.get("output_tokens", 0),
+                )
+                result["turns"] = turn + 1
+                result["verify_used"] = False
+                return result
+
+            verdict = verify_response(result, sig)
+            if verdict == Verdict.ACCEPT:
+                result["cost_usd"] = calculate_cost(
+                    model.pricing,
+                    result.get("input_tokens", 0),
+                    result.get("output_tokens", 0),
+                )
+                result["turns"] = turn + 1
+                result["verify_used"] = True
+                result["verify_passed"] = True
+                return result
+
+            # REVISE: scala al prossimo modello
+            skip_verify = False  # ora facciamo verify obbligatorio
+
+        # Budget esaurito: usa il miglior modello (non l'ultimo del ranking)
+        best_model = ranked[0][0]
+        result = execute(
+            messages=messages,
+            model_id=best_model.id,
+            provider_keys=self._provider_keys,
+        )
+        result["cost_usd"] = calculate_cost(
+            best_model.pricing,
+            result.get("input_tokens", 0),
+            result.get("output_tokens", 0),
+        )
+        result["turns"] = max_turns
+        result["budget_exhausted"] = True
+        return result

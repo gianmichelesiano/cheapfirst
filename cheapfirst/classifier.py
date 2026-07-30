@@ -5,6 +5,7 @@ Classifica il task in base a pattern regex, calcola difficoltà e confidenza.
 """
 
 from dataclasses import dataclass
+from typing import Optional
 import re
 
 
@@ -13,9 +14,9 @@ class TaskSignature:
     task: str          # code|math|creative|factual|translation|analysis|general
     difficulty: float  # 0.0 - 1.0
     confidence: float  # 0.0 - 1.0
-    caps: list[str] = None       # ["multimodal", "128k", ...]
-    sensitive: bool = False      # PII detection
-    freshness: bool = False      # news/time-sensitive
+    caps: Optional[list[str]] = None  # ["multimodal", "128k", ...]
+    sensitive: bool = False           # PII detection
+    freshness: bool = False           # news/time-sensitive
 
 
 # ── Pattern per tipo di task ─────────────────────────────────────────────
@@ -92,13 +93,21 @@ def classify(messages: list[dict]) -> TaskSignature:
     if not user_msgs:
         return TaskSignature(task="general", difficulty=0.3, confidence=0.3)
 
-    text = user_msgs[-1]["content"]
-    if isinstance(text, list):
-        # Messaggio multimodale: prende solo la parte testuale
-        parts = [p for p in text if isinstance(p, dict) and p.get("type") == "text"]
+    content = user_msgs[-1]["content"]
+
+    # Rileva capacità multimodale PRIMA di estrarre il testo
+    caps = []
+    if isinstance(content, list):
+        if any(
+            isinstance(p, dict) and p.get("type") == "image_url"
+            for p in content
+        ):
+            caps.append("multimodal")
+        # Estrai solo la parte testuale
+        parts = [p for p in content if isinstance(p, dict) and p.get("type") == "text"]
         text = " ".join(p["text"] for p in parts) if parts else ""
     else:
-        text = str(text)
+        text = str(content)
 
     lower = text.lower()
     chars = len(text)
@@ -173,12 +182,6 @@ def classify(messages: list[dict]) -> TaskSignature:
         confidence = 0.55
     else:
         confidence = 0.40  # ambiguo
-
-    # Capacità
-    caps = []
-    if any(m.get("type") == "image_url" for m in user_msgs[-1].get("content", [])
-           if isinstance(m, dict)):
-        caps.append("multimodal")
 
     return TaskSignature(
         task=task,
