@@ -11,6 +11,7 @@ import yaml
 class ModelExtra:
     id: str
     provider: str
+    name: str = ""
     tier: str = "cheap"
     context_length: int = 8192
     pricing: dict = field(default_factory=lambda: {"prompt_per_m": 0, "completion_per_m": 0})
