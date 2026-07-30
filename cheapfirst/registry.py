@@ -183,8 +183,19 @@ class ModelRegistry:
         return [m for m in pool if m.tier == tier or m.tier == "free"]
 
     def status(self) -> dict:
+        """Stato del registry con dati reali."""
+        registry_path = Path(self.config.resolve_path(self.config.registry.path))
+        age_days = 0
+        last_update = "mai scaricato"
+        if registry_path.exists():
+            age = time.time() - registry_path.stat().st_mtime
+            age_days = round(age / 86400, 1)
+            last_update = time.strftime(
+                "%Y-%m-%d",
+                time.localtime(registry_path.stat().st_mtime),
+            )
         return {
             "models_count": len(self.models),
-            "last_update": "sconosciuto",
-            "age_days": 0,
+            "last_update": last_update,
+            "age_days": age_days,
         }

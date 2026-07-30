@@ -86,7 +86,7 @@ class Router:
         competent = []
         for m in pool:
             bench = m.benchmarks.get(bench_key, 0)
-            if bench < min_score:
+            if bench is None or bench < min_score:
                 continue
 
             # Tier check

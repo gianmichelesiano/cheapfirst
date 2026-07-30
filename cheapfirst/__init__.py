@@ -43,10 +43,15 @@ class CheapFirst:
         for path in DEFAULT_CONFIG_PATHS:
             if path.exists():
                 return path
-        raise FileNotFoundError(
-            "Nessun file cheapfirst.yaml trovato. "
-            "Crealo o passa config= al costruttore."
+        # Nessun config trovato: mostra come crearlo
+        example = Path("cheapfirst.yaml.example")
+        msg = (
+            "Nessun file di configurazione trovato.\n"
+            f"  Crea cheapfirst.yaml nella cartella corrente copiando l'esempio:\n"
+            f"    cp {example.name if example.exists() else 'cheapfirst.yaml.example'} cheapfirst.yaml\n"
+            "  Oppure imposta la variabile d'ambiente DEEPSEEK_API_KEY.\n"
         )
+        raise FileNotFoundError(msg)
 
     def decide(self, prompt: str, **kwargs) -> dict:
         """Solo decisione (dry-run): quale modello userebbe, senza eseguire."""

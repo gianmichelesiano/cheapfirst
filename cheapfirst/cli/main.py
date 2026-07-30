@@ -15,6 +15,8 @@ def cli(ctx, config):
     Risparmia fino all'80% sui costi API LLM senza sacrificare qualità.
     """
     ctx.ensure_object(dict)
+    # Se --config non è passato, CheapFirst cerca automaticamente
+    # cheapfirst.yaml, cheapfirst.yml, ~/.cheapfirst/config.yaml
     ctx.obj["config_path"] = config
 
 
