@@ -66,6 +66,7 @@ PROVIDER_BASE_URLS = {
     "perplexity": "https://api.perplexity.ai",
     "xai": "https://api.x.ai/v1",
     "github": "https://models.inference.ai.azure.com",
+    "openrouter": "https://openrouter.ai/api/v1",
 }
 
 # Se un provider non è nella mappa, si assume sia locale o via proxy

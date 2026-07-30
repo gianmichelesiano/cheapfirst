@@ -95,17 +95,30 @@ def execute(
         url += "/v1"
     url += "/chat/completions"
 
+    resolved_provider = provider if provider else model_id.split("/")[0]
+
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
     }
 
-    body = {
-        "model": model_id.split("/", 1)[1] if "/" in model_id else model_id,
-        "messages": messages,
-        "temperature": kwargs.get("temperature", 0.7),
-        "max_tokens": kwargs.get("max_tokens", 4096),
-    }
+    # OpenRouter vuole il model_id completo + headers specifici
+    if resolved_provider == "openrouter":
+        body = {
+            "model": model_id,  # full "anthropic/claude-sonnet-4"
+            "messages": messages,
+            "temperature": kwargs.get("temperature", 0.7),
+            "max_tokens": kwargs.get("max_tokens", 4096),
+        }
+        headers["HTTP-Referer"] = "https://github.com/gianmichelesiano/cheapfirst"
+        headers["X-Title"] = "cheapfirst"
+    else:
+        body = {
+            "model": model_id.split("/", 1)[1] if "/" in model_id else model_id,
+            "messages": messages,
+            "temperature": kwargs.get("temperature", 0.7),
+            "max_tokens": kwargs.get("max_tokens", 4096),
+        }
 
     if kwargs.get("stream"):
         body["stream"] = True
@@ -138,7 +151,7 @@ def execute(
             "cost_usd": 0,  # calcolato dopo dal router
             "latency_ms": latency_ms,
             "success": True,
-            "provider": model_id.split("/")[0],
+            "provider": resolved_provider,
         }
 
     except httpx.HTTPStatusError as e:

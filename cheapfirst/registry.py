@@ -90,7 +90,7 @@ class ModelRegistry:
             if not mid or "/" not in mid:
                 continue
 
-            provider = mid.split("/")[0]
+            provider = "openrouter"
             pricing = m.get("pricing", {})
             benchmarks = m.get("benchmarks", {})
             aa = benchmarks.get("artificial_analysis", {})

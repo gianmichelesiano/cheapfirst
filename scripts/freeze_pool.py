@@ -86,7 +86,7 @@ def main():
     output_models = []
     for mid in keep_ids:
         m = by_id[mid]
-        provider = mid.split("/")[0]
+        provider = "openrouter"
 
         pricing = m.get("pricing", {})
         prompt_raw = float(pricing.get("prompt", 0))
