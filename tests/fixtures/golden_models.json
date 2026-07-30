@@ -1,0 +1,223 @@
+{
+  "_README": [
+    "Pool CONGELATO per i test di routing. Serve a rendere le decisioni",
+    "deterministiche e indipendenti dal registry live.",
+    "",
+    "ATTENZIONE: prezzi e indici qui dentro sono PLAUSIBILI MA SINTETICI.",
+    "Non sono uno snapshot reale e non vanno citati come tali da nessuna parte.",
+    "Il primo lavoro dopo aver risolto la questione della fonte benchmark e':",
+    "",
+    "    cheapfirst registry update",
+    "    python scripts/freeze_pool.py > tests/fixtures/golden_models.json",
+    "",
+    "e poi committare lo snapshot reale, con la data. Da quel momento il file",
+    "si aggiorna solo esplicitamente, mai automaticamente: se il pool cambia",
+    "sotto i test, i test non misurano piu' nulla.",
+    "",
+    "Il pool e' costruito per contenere apposta:",
+    "  - 3 ordini di grandezza di prezzo (0.00 -> 75.00), come nella realta'",
+    "  - modelli DOMINATI (peggiori e piu' cari di un altro): mini-legacy,",
+    "    nano-old, vision-legacy. Nessun ranking sano deve scegliere questi.",
+    "  - un outlier costosissimo (opus-class) che rompe la normalizzazione min-max",
+    "  - modelli con benchmark NULL (unmeasured-new): 'non misurato' e 'zero'",
+    "    sono cose diverse e il codice deve trattarle diversamente",
+    "  - un modello locale a costo zero, per i casi caps=local_only",
+    "  - modelli senza vision, per i casi caps=vision",
+    "  - coding_index scorrelato da intelligence_index su alcuni modelli,",
+    "    altrimenti la scelta della colonna benchmark non e' testabile"
+  ],
+  "frozen_at": "2026-07-30",
+  "source": "synthetic",
+  "models": [
+    {
+      "id": "local/qwen3-8b",
+      "provider": "local",
+      "tier": "free",
+      "pricing": {"prompt_per_m": 0.0, "completion_per_m": 0.0},
+      "benchmarks": {"intelligence_index": 26, "coding_index": 24, "agentic_index": 15},
+      "context": 32768,
+      "caps": ["local_only"]
+    },
+    {
+      "id": "local/qwen3-32b",
+      "provider": "local",
+      "tier": "free",
+      "pricing": {"prompt_per_m": 0.0, "completion_per_m": 0.0},
+      "benchmarks": {"intelligence_index": 38, "coding_index": 36, "agentic_index": 24},
+      "context": 32768,
+      "caps": ["local_only"]
+    },
+    {
+      "id": "vendor-a/nano",
+      "provider": "vendor-a",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.05, "completion_per_m": 0.40},
+      "benchmarks": {"intelligence_index": 25, "coding_index": 22, "agentic_index": 12},
+      "context": 128000,
+      "caps": []
+    },
+    {
+      "id": "vendor-a/nano-old",
+      "provider": "vendor-a",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.10, "completion_per_m": 0.60},
+      "benchmarks": {"intelligence_index": 21, "coding_index": 18, "agentic_index": 10},
+      "context": 16000,
+      "caps": [],
+      "_note": "DOMINATO da vendor-a/nano: piu' caro e peggiore su tutto."
+    },
+    {
+      "id": "vendor-b/flash",
+      "provider": "vendor-b",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.075, "completion_per_m": 0.30},
+      "benchmarks": {"intelligence_index": 40, "coding_index": 35, "agentic_index": 22},
+      "context": 1000000,
+      "caps": ["vision"]
+    },
+    {
+      "id": "vendor-b/flash-lite",
+      "provider": "vendor-b",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.019, "completion_per_m": 0.076},
+      "benchmarks": {"intelligence_index": 31, "coding_index": 27, "agentic_index": 16},
+      "context": 1000000,
+      "caps": ["vision"]
+    },
+    {
+      "id": "vendor-c/chat",
+      "provider": "vendor-c",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.14, "completion_per_m": 0.42},
+      "benchmarks": {"intelligence_index": 45, "coding_index": 48, "agentic_index": 30},
+      "context": 64000,
+      "caps": [],
+      "_note": "coding_index > intelligence_index: serve a testare la scelta della colonna."
+    },
+    {
+      "id": "vendor-c/coder",
+      "provider": "vendor-c",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.20, "completion_per_m": 0.55},
+      "benchmarks": {"intelligence_index": 39, "coding_index": 56, "agentic_index": 33},
+      "context": 64000,
+      "caps": [],
+      "_note": "Forte solo su codice. Un router che ignora BENCHMARK_MAP non lo scegliera' mai."
+    },
+    {
+      "id": "vendor-d/mini",
+      "provider": "vendor-d",
+      "tier": "medium",
+      "pricing": {"prompt_per_m": 0.15, "completion_per_m": 0.60},
+      "benchmarks": {"intelligence_index": 44, "coding_index": 41, "agentic_index": 28},
+      "context": 128000,
+      "caps": ["vision"]
+    },
+    {
+      "id": "vendor-d/mini-legacy",
+      "provider": "vendor-d",
+      "tier": "medium",
+      "pricing": {"prompt_per_m": 1.10, "completion_per_m": 4.50},
+      "benchmarks": {"intelligence_index": 40, "coding_index": 36, "agentic_index": 21},
+      "context": 16000,
+      "caps": [],
+      "_note": "DOMINATO da vendor-b/flash: 15x il prezzo, indici peggiori."
+    },
+    {
+      "id": "vendor-e/luna",
+      "provider": "vendor-e",
+      "tier": "medium",
+      "pricing": {"prompt_per_m": 0.80, "completion_per_m": 3.00},
+      "benchmarks": {"intelligence_index": 51, "coding_index": 50, "agentic_index": 38},
+      "context": 200000,
+      "caps": ["vision"]
+    },
+    {
+      "id": "vendor-e/luna-search",
+      "provider": "vendor-e",
+      "tier": "medium",
+      "pricing": {"prompt_per_m": 1.00, "completion_per_m": 3.50},
+      "benchmarks": {"intelligence_index": 50, "coding_index": 47, "agentic_index": 40},
+      "context": 200000,
+      "caps": ["vision", "search"],
+      "_note": "Unico modello con search sotto i 5$. I casi tags=freshness devono finire qui o su sol-search."
+    },
+    {
+      "id": "vendor-f/pro",
+      "provider": "vendor-f",
+      "tier": "medium",
+      "pricing": {"prompt_per_m": 0.30, "completion_per_m": 0.87},
+      "benchmarks": {"intelligence_index": 44, "coding_index": 43, "agentic_index": 31},
+      "context": 1000000,
+      "caps": ["vision"]
+    },
+    {
+      "id": "vendor-g/sonnet-class",
+      "provider": "vendor-g",
+      "tier": "premium",
+      "pricing": {"prompt_per_m": 3.00, "completion_per_m": 15.00},
+      "benchmarks": {"intelligence_index": 63, "coding_index": 68, "agentic_index": 58},
+      "context": 200000,
+      "caps": ["vision"]
+    },
+    {
+      "id": "vendor-h/sol",
+      "provider": "vendor-h",
+      "tier": "premium",
+      "pricing": {"prompt_per_m": 10.00, "completion_per_m": 30.00},
+      "benchmarks": {"intelligence_index": 59, "coding_index": 57, "agentic_index": 49},
+      "context": 128000,
+      "caps": [],
+      "_note": "Caro e non il migliore: DOMINATO da sonnet-class."
+    },
+    {
+      "id": "vendor-h/sol-search",
+      "provider": "vendor-h",
+      "tier": "premium",
+      "pricing": {"prompt_per_m": 5.00, "completion_per_m": 20.00},
+      "benchmarks": {"intelligence_index": 58, "coding_index": 55, "agentic_index": 52},
+      "context": 128000,
+      "caps": ["search", "vision"]
+    },
+    {
+      "id": "vendor-i/opus-class",
+      "provider": "vendor-i",
+      "tier": "ultra",
+      "pricing": {"prompt_per_m": 15.00, "completion_per_m": 75.00},
+      "benchmarks": {"intelligence_index": 72, "coding_index": 74, "agentic_index": 69},
+      "context": 200000,
+      "caps": ["vision"],
+      "_note": "Outlier di prezzo. Con min-max lineare schiaccia tutti gli altri su cost_norm~0."
+    },
+    {
+      "id": "vendor-j/vision-legacy",
+      "provider": "vendor-j",
+      "tier": "medium",
+      "pricing": {"prompt_per_m": 2.00, "completion_per_m": 8.00},
+      "benchmarks": {"intelligence_index": 33, "coding_index": 28, "agentic_index": 17},
+      "context": 32000,
+      "caps": ["vision"],
+      "_note": "DOMINATO da vendor-d/mini fra i modelli vision."
+    },
+    {
+      "id": "vendor-k/unmeasured-new",
+      "provider": "vendor-k",
+      "tier": "cheap",
+      "pricing": {"prompt_per_m": 0.12, "completion_per_m": 0.45},
+      "benchmarks": {"intelligence_index": null, "coding_index": null, "agentic_index": null},
+      "context": 256000,
+      "caps": ["vision"],
+      "_note": "Benchmark NON MISURATI. Con .get(key, 0) diventa spazzatura ed esce dal pool: sbagliato."
+    },
+    {
+      "id": "vendor-l/free-tier",
+      "provider": "vendor-l",
+      "tier": "free",
+      "pricing": {"prompt_per_m": 0.0, "completion_per_m": 0.0},
+      "benchmarks": {"intelligence_index": 28, "coding_index": 25, "agentic_index": 14},
+      "context": 8192,
+      "caps": [],
+      "_note": "Gratis ma contesto 8k: i casi long_context non ci stanno. Il filtro contesto oggi non esiste."
+    }
+  ]
+}
