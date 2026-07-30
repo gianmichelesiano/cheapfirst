@@ -11,6 +11,7 @@ import yaml
 class ModelExtra:
     id: str
     provider: str
+    name: str = ""
     tier: str = "cheap"
     context_length: int = 8192
     pricing: dict = field(default_factory=lambda: {"prompt_per_m": 0, "completion_per_m": 0})
@@ -36,6 +37,7 @@ class RoutingConfig:
     cost_weight: float = 0.3    # usato in modalità balanced
     quality_weight: float = 0.7 # usato in modalità balanced
     verify_cost_budget: float = 0.001
+    unmeasured_policy: str = "exclude"
 
 
 @dataclass
@@ -65,6 +67,7 @@ PROVIDER_BASE_URLS = {
     "perplexity": "https://api.perplexity.ai",
     "xai": "https://api.x.ai/v1",
     "github": "https://models.inference.ai.azure.com",
+    "openrouter": "https://openrouter.ai/api/v1",
 }
 
 # Se un provider non è nella mappa, si assume sia locale o via proxy

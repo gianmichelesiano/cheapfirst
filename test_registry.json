@@ -1,0 +1,7015 @@
+{
+  "updated_at": "2026-07-30T16:10:33Z",
+  "source": "openrouter",
+  "models": [
+    {
+      "id": "qwen/qwen3.7-flash",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.7 Flash",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.03,
+        "completion_per_m": 0.13,
+        "cache_read_per_m": 0.006
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-5-fast",
+      "provider": "anthropic",
+      "name": "Claude Opus 5 (Fast)",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 50.0,
+        "cache_read_per_m": 1.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-5",
+      "provider": "anthropic",
+      "name": "Claude Opus 5",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 60.7,
+        "coding_index": 78,
+        "agentic_index": 55.3
+      },
+      "strength": 0.61
+    },
+    {
+      "id": "inclusionai/ling-3.0-flash:free",
+      "provider": "inclusionai",
+      "name": "Ling-3.0-flash (free)",
+      "tier": "free",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "poolside/laguna-s-2.1",
+      "provider": "poolside",
+      "name": "Poolside: Laguna S 2.1",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "poolside/laguna-s-2.1:free",
+      "provider": "poolside",
+      "name": "Poolside: Laguna S 2.1 (free)",
+      "tier": "free",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.6-flash",
+      "provider": "google",
+      "name": "Google: Gemini 3.6 Flash",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 50.1,
+        "coding_index": 69.2,
+        "agentic_index": 38.7
+      },
+      "strength": 0.5
+    },
+    {
+      "id": "google/gemini-3.6-flash:batch",
+      "provider": "google",
+      "name": "Google: Gemini 3.6 Flash (batch)",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.75,
+        "completion_per_m": 3.75,
+        "cache_read_per_m": 0.075
+      },
+      "benchmarks": {
+        "intelligence_index": 50.1,
+        "coding_index": 69.2,
+        "agentic_index": 38.7
+      },
+      "strength": 0.5
+    },
+    {
+      "id": "google/gemini-3.5-flash-lite",
+      "provider": "google",
+      "name": "Google: Gemini 3.5 Flash Lite",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 36.5,
+        "coding_index": 49.3,
+        "agentic_index": 26.8
+      },
+      "strength": 0.36
+    },
+    {
+      "id": "google/gemini-3.5-flash-lite:batch",
+      "provider": "google",
+      "name": "Google: Gemini 3.5 Flash Lite (batch)",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.015
+      },
+      "benchmarks": {
+        "intelligence_index": 36.5,
+        "coding_index": 49.3,
+        "agentic_index": 26.8
+      },
+      "strength": 0.36
+    },
+    {
+      "id": "meituan/longcat-2.0",
+      "provider": "meituan",
+      "name": "Meituan: LongCat 2.0",
+      "tier": "mid",
+      "context_length": 1048756,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.006
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "thinkingmachines/inkling",
+      "provider": "thinkingmachines",
+      "name": "Thinking Machines: Inkling",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+audio->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 4.05,
+        "cache_read_per_m": 0.17
+      },
+      "benchmarks": {
+        "intelligence_index": 40.7,
+        "coding_index": 52.1,
+        "agentic_index": 32.3
+      },
+      "strength": 0.41
+    },
+    {
+      "id": "openrouter/auto-beta",
+      "provider": "openrouter",
+      "name": "Auto Router (Beta)",
+      "tier": "cheap",
+      "context_length": 2000000,
+      "modality": "text+image+file+audio+video->text+image",
+      "pricing": {
+        "prompt_per_m": -1000000.0,
+        "completion_per_m": -1000000.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k3",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K3",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.3
+      },
+      "benchmarks": {
+        "intelligence_index": 57.1,
+        "coding_index": 76.2,
+        "agentic_index": 50.1
+      },
+      "strength": 0.57
+    },
+    {
+      "id": "meta/muse-spark-1.1",
+      "provider": "meta",
+      "name": "Meta: Muse Spark 1.1",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 4.25,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 50.6,
+        "coding_index": 71.3,
+        "agentic_index": 37.5
+      },
+      "strength": 0.51
+    },
+    {
+      "id": "kwaipilot/kat-coder-air-v2.5",
+      "provider": "kwaipilot",
+      "name": "Kwaipilot: KAT-Coder-Air V2.5",
+      "tier": "cheap",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "kwaipilot/kat-coder-pro-v2.5",
+      "provider": "kwaipilot",
+      "name": "Kwaipilot: KAT-Coder-Pro V2.5",
+      "tier": "mid",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.74,
+        "completion_per_m": 2.96,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.6-luna-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.6 Luna Pro",
+      "tier": "mid",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.6-luna",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.6 Luna",
+      "tier": "mid",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 51.2,
+        "coding_index": 71.4,
+        "agentic_index": 45.6
+      },
+      "strength": 0.51
+    },
+    {
+      "id": "openai/gpt-5.6-terra-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.6 Terra Pro",
+      "tier": "frontier",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.6-terra",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.6 Terra",
+      "tier": "frontier",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 55,
+        "coding_index": 76.7,
+        "agentic_index": 47.4
+      },
+      "strength": 0.55
+    },
+    {
+      "id": "openai/gpt-5.6-sol-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.6 Sol Pro",
+      "tier": "ultra",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.6-sol",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.6 Sol",
+      "tier": "ultra",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 58.9,
+        "coding_index": 77.4,
+        "agentic_index": 54
+      },
+      "strength": 0.59
+    },
+    {
+      "id": "x-ai/grok-4.5",
+      "provider": "x-ai",
+      "name": "xAI: Grok 4.5",
+      "tier": "frontier",
+      "context_length": 500000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.3
+      },
+      "benchmarks": {
+        "intelligence_index": 53.8,
+        "coding_index": 72.4,
+        "agentic_index": 45.7
+      },
+      "strength": 0.54
+    },
+    {
+      "id": "~x-ai/grok-latest",
+      "provider": "~x-ai",
+      "name": "xAI: Grok Latest",
+      "tier": "frontier",
+      "context_length": 500000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.3
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "aion-labs/aion-3.0-mini",
+      "provider": "aion-labs",
+      "name": "AionLabs: Aion-3.0-Mini",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.7,
+        "completion_per_m": 1.4,
+        "cache_read_per_m": 0.18
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "aion-labs/aion-3.0",
+      "provider": "aion-labs",
+      "name": "AionLabs: Aion-3.0",
+      "tier": "frontier",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.75
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "tencent/hy3",
+      "provider": "tencent",
+      "name": "Tencent: Hy3",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.132,
+        "completion_per_m": 0.528,
+        "cache_read_per_m": 0.033
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "poolside/laguna-xs-2.1",
+      "provider": "poolside",
+      "name": "Poolside: Laguna XS 2.1",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.06,
+        "completion_per_m": 0.12,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "poolside/laguna-xs-2.1:free",
+      "provider": "poolside",
+      "name": "Poolside: Laguna XS 2.1 (free)",
+      "tier": "free",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-sonnet-5",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Sonnet 5",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 53.4,
+        "coding_index": 71.5,
+        "agentic_index": 46.7
+      },
+      "strength": 0.53
+    },
+    {
+      "id": "anthropic/claude-sonnet-5:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Sonnet 5 (batch)",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 53.4,
+        "coding_index": 71.5,
+        "agentic_index": 46.7
+      },
+      "strength": 0.53
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite-image",
+      "provider": "google",
+      "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+      "tier": "mid",
+      "context_length": 65536,
+      "modality": "text+image->text+image",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nex-agi/nex-n2-mini",
+      "provider": "nex-agi",
+      "name": "Nex AGI: Nex-N2-Mini",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.025,
+        "completion_per_m": 0.1,
+        "cache_read_per_m": 0.0025
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "sakana/fugu-ultra",
+      "provider": "sakana",
+      "name": "Sakana: Fugu Ultra",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.1-flash-image",
+      "provider": "google",
+      "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text+image->text+image",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3-pro-image",
+      "provider": "google",
+      "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
+      "tier": "frontier",
+      "context_length": 131072,
+      "modality": "text+image->text+image",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 12.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "cohere/north-mini-code:free",
+      "provider": "cohere",
+      "name": "Cohere: North Mini Code (free)",
+      "tier": "free",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 19.8,
+        "coding_index": 36.5,
+        "agentic_index": 3.1
+      },
+      "strength": 0.2
+    },
+    {
+      "id": "z-ai/glm-5.2",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 5.2",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.966,
+        "completion_per_m": 3.036,
+        "cache_read_per_m": 0.1794
+      },
+      "benchmarks": {
+        "intelligence_index": 51.1,
+        "coding_index": 68.8,
+        "agentic_index": 43.1
+      },
+      "strength": 0.51
+    },
+    {
+      "id": "openrouter/fusion",
+      "provider": "openrouter",
+      "name": "OpenRouter: Fusion",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": -1000000.0,
+        "completion_per_m": -1000000.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k2.7-code",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K2.7 Code",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.73,
+        "completion_per_m": 3.5,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 41.9,
+        "coding_index": 60.8,
+        "agentic_index": 29.6
+      },
+      "strength": 0.42
+    },
+    {
+      "id": "~anthropic/claude-fable-latest",
+      "provider": "~anthropic",
+      "name": "Anthropic: Claude Fable Latest",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 50.0,
+        "cache_read_per_m": 1.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-fable-5",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Fable 5",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 50.0,
+        "cache_read_per_m": 1.0
+      },
+      "benchmarks": {
+        "intelligence_index": 59.9,
+        "coding_index": 76.5,
+        "agentic_index": 52.8
+      },
+      "strength": 0.6
+    },
+    {
+      "id": "anthropic/claude-fable-5:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Fable 5 (batch)",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 59.9,
+        "coding_index": 76.5,
+        "agentic_index": 52.8
+      },
+      "strength": 0.6
+    },
+    {
+      "id": "nex-agi/nex-n2-pro",
+      "provider": "nex-agi",
+      "name": "Nex AGI: Nex-N2-Pro",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 41,
+        "coding_index": 59.1,
+        "agentic_index": 31
+      },
+      "strength": 0.41
+    },
+    {
+      "id": "nvidia/nemotron-3.5-content-safety:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
+      "tier": "free",
+      "context_length": 128000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Ultra",
+      "tier": "mid",
+      "context_length": 512288,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 3.6,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 37.8,
+        "coding_index": 49.3,
+        "agentic_index": 27.4
+      },
+      "strength": 0.38
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Ultra (free)",
+      "tier": "free",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 37.8,
+        "coding_index": 49.3,
+        "agentic_index": 27.4
+      },
+      "strength": 0.38
+    },
+    {
+      "id": "qwen/qwen3.7-plus",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.7 Plus",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.32,
+        "completion_per_m": 1.28,
+        "cache_read_per_m": 0.064
+      },
+      "benchmarks": {
+        "intelligence_index": 39,
+        "coding_index": 55.9,
+        "agentic_index": 20.8
+      },
+      "strength": 0.39
+    },
+    {
+      "id": "minimax/minimax-m3",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M3",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.06
+      },
+      "benchmarks": {
+        "intelligence_index": 44.4,
+        "coding_index": 58.6,
+        "agentic_index": 35.4
+      },
+      "strength": 0.44
+    },
+    {
+      "id": "minimax/minimax-m3:batch",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M3 (batch)",
+      "tier": "cheap",
+      "context_length": 524288,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 44.4,
+        "coding_index": 58.6,
+        "agentic_index": 35.4
+      },
+      "strength": 0.44
+    },
+    {
+      "id": "stepfun/step-3.7-flash",
+      "provider": "stepfun",
+      "name": "StepFun: Step 3.7 Flash",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 1.15,
+        "cache_read_per_m": 0.04
+      },
+      "benchmarks": {
+        "intelligence_index": 30.3,
+        "coding_index": 39.6,
+        "agentic_index": 21.5
+      },
+      "strength": 0.3
+    },
+    {
+      "id": "anthropic/claude-opus-4.8-fast",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.8 (Fast)",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 50.0,
+        "cache_read_per_m": 1.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-4.8",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.8",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 55.7,
+        "coding_index": 74.3,
+        "agentic_index": 47.2
+      },
+      "strength": 0.56
+    },
+    {
+      "id": "anthropic/claude-opus-4.8:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.8 (batch)",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 12.5,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 55.7,
+        "coding_index": 74.3,
+        "agentic_index": 47.2
+      },
+      "strength": 0.56
+    },
+    {
+      "id": "qwen/qwen3.7-max",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.7 Max",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.475,
+        "completion_per_m": 4.425,
+        "cache_read_per_m": 0.295
+      },
+      "benchmarks": {
+        "intelligence_index": 46,
+        "coding_index": 66,
+        "agentic_index": 30.6
+      },
+      "strength": 0.46
+    },
+    {
+      "id": "x-ai/grok-build-0.1",
+      "provider": "x-ai",
+      "name": "xAI: Grok Build 0.1",
+      "tier": "mid",
+      "context_length": 256000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 39.8,
+        "coding_index": 51.5,
+        "agentic_index": 28
+      },
+      "strength": 0.4
+    },
+    {
+      "id": "google/gemini-3.5-flash",
+      "provider": "google",
+      "name": "Google: Gemini 3.5 Flash",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 9.0,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 50.2,
+        "coding_index": 70.1,
+        "agentic_index": 37.4
+      },
+      "strength": 0.5
+    },
+    {
+      "id": "google/gemini-3.5-flash:batch",
+      "provider": "google",
+      "name": "Google: Gemini 3.5 Flash (batch)",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.75,
+        "completion_per_m": 4.5,
+        "cache_read_per_m": 0.075
+      },
+      "benchmarks": {
+        "intelligence_index": 50.2,
+        "coding_index": 70.1,
+        "agentic_index": 37.4
+      },
+      "strength": 0.5
+    },
+    {
+      "id": "anthropic/claude-opus-4.7-fast",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.7 (Fast)",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 30.0,
+        "completion_per_m": 150.0,
+        "cache_read_per_m": 3.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "perceptron/perceptron-mk1",
+      "provider": "perceptron",
+      "name": "Perceptron: Perceptron Mk1",
+      "tier": "mid",
+      "context_length": 32768,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "inclusionai/ring-2.6-1t",
+      "provider": "inclusionai",
+      "name": "inclusionAI: Ring-2.6-1T",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.075,
+        "completion_per_m": 0.625,
+        "cache_read_per_m": 0.015
+      },
+      "benchmarks": {
+        "intelligence_index": 30.6,
+        "coding_index": 42.8,
+        "agentic_index": 18.9
+      },
+      "strength": 0.31
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite",
+      "provider": "google",
+      "name": "Google: Gemini 3.1 Flash Lite",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite:batch",
+      "provider": "google",
+      "name": "Google: Gemini 3.1 Flash Lite (batch)",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.125,
+        "completion_per_m": 0.75,
+        "cache_read_per_m": 0.0125
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-chat-latest",
+      "provider": "openai",
+      "name": "OpenAI: GPT Chat Latest",
+      "tier": "ultra",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "x-ai/grok-4.3",
+      "provider": "x-ai",
+      "name": "xAI: Grok 4.3",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 37.6,
+        "coding_index": 42.2,
+        "agentic_index": 24.1
+      },
+      "strength": 0.38
+    },
+    {
+      "id": "ibm-granite/granite-4.1-8b",
+      "provider": "ibm-granite",
+      "name": "IBM: Granite 4.1 8B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.1,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 9.5,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-medium-3-5",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Medium 3.5",
+      "tier": "frontier",
+      "context_length": 262144,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 29.9,
+        "coding_index": 46.9,
+        "agentic_index": 19
+      },
+      "strength": 0.3
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
+      "tier": "free",
+      "context_length": 256000,
+      "modality": "text+image+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 13.8,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~anthropic/claude-haiku-latest",
+      "provider": "~anthropic",
+      "name": "Anthropic Claude Haiku Latest",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~openai/gpt-mini-latest",
+      "provider": "~openai",
+      "name": "OpenAI GPT Mini Latest",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.75,
+        "completion_per_m": 4.5,
+        "cache_read_per_m": 0.075
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~google/gemini-pro-latest",
+      "provider": "~google",
+      "name": "Google Gemini Pro Latest",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 12.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~moonshotai/kimi-latest",
+      "provider": "~moonshotai",
+      "name": "MoonshotAI Kimi Latest",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 2.9,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.29
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~google/gemini-flash-latest",
+      "provider": "~google",
+      "name": "Google Gemini Flash Latest",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~anthropic/claude-sonnet-latest",
+      "provider": "~anthropic",
+      "name": "Anthropic Claude Sonnet Latest",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "~openai/gpt-latest",
+      "provider": "~openai",
+      "name": "OpenAI GPT Latest",
+      "tier": "ultra",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.5-plus-20260420",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5 Plus 2026-04-20",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.8,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.6-flash",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.6 Flash",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.1875,
+        "completion_per_m": 1.125,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.6-35b-a3b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.6 35B A3B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.14,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 31.6,
+        "coding_index": 41.9,
+        "agentic_index": 21.4
+      },
+      "strength": 0.32
+    },
+    {
+      "id": "qwen/qwen3.6-max-preview",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.6 Max Preview",
+      "tier": "frontier",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.027,
+        "completion_per_m": 6.162,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.6-27b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.6 27B",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 37.1,
+        "coding_index": 53.7,
+        "agentic_index": 27
+      },
+      "strength": 0.37
+    },
+    {
+      "id": "openai/gpt-5.5-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.5 Pro",
+      "tier": "ultra",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 30.0,
+        "completion_per_m": 180.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.5",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.5",
+      "tier": "ultra",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 54.8,
+        "coding_index": 74.9,
+        "agentic_index": 44.9
+      },
+      "strength": 0.55
+    },
+    {
+      "id": "openai/gpt-5.5:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.5 (batch)",
+      "tier": "frontier",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 54.8,
+        "coding_index": 74.9,
+        "agentic_index": 44.9
+      },
+      "strength": 0.55
+    },
+    {
+      "id": "deepseek/deepseek-v4-pro",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V4 Pro",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.435,
+        "completion_per_m": 0.87,
+        "cache_read_per_m": 0.0036
+      },
+      "benchmarks": {
+        "intelligence_index": 44.3,
+        "coding_index": 59.4,
+        "agentic_index": 36.4
+      },
+      "strength": 0.44
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V4 Flash",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.14,
+        "completion_per_m": 0.28,
+        "cache_read_per_m": 0.028
+      },
+      "benchmarks": {
+        "intelligence_index": 40.3,
+        "coding_index": 56.2,
+        "agentic_index": 31.1
+      },
+      "strength": 0.4
+    },
+    {
+      "id": "inclusionai/ling-2.6-1t",
+      "provider": "inclusionai",
+      "name": "inclusionAI: Ling-2.6-1T",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.075,
+        "completion_per_m": 0.625,
+        "cache_read_per_m": 0.015
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "tencent/hy3-preview",
+      "provider": "tencent",
+      "name": "Tencent: Hy3 preview",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.063,
+        "completion_per_m": 0.21,
+        "cache_read_per_m": 0.021
+      },
+      "benchmarks": {
+        "intelligence_index": 41.2,
+        "coding_index": 58.8,
+        "agentic_index": 30.7
+      },
+      "strength": 0.41
+    },
+    {
+      "id": "xiaomi/mimo-v2.5-pro",
+      "provider": "xiaomi",
+      "name": "Xiaomi: MiMo-V2.5-Pro",
+      "tier": "cheap",
+      "context_length": 1050000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.435,
+        "completion_per_m": 0.87,
+        "cache_read_per_m": 0.0036
+      },
+      "benchmarks": {
+        "intelligence_index": 42.2,
+        "coding_index": 60.2,
+        "agentic_index": 29.1
+      },
+      "strength": 0.42
+    },
+    {
+      "id": "xiaomi/mimo-v2.5",
+      "provider": "xiaomi",
+      "name": "Xiaomi: MiMo-V2.5",
+      "tier": "cheap",
+      "context_length": 1050000,
+      "modality": "text+image+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.14,
+        "completion_per_m": 0.28,
+        "cache_read_per_m": 0.0028
+      },
+      "benchmarks": {
+        "intelligence_index": 37.2,
+        "coding_index": 56.8,
+        "agentic_index": 23.7
+      },
+      "strength": 0.37
+    },
+    {
+      "id": "openai/gpt-5.4-image-2",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 Image 2",
+      "tier": "frontier",
+      "context_length": 272000,
+      "modality": "text+image+file->text+image",
+      "pricing": {
+        "prompt_per_m": 8.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 2.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "inclusionai/ling-2.6-flash",
+      "provider": "inclusionai",
+      "name": "inclusionAI: Ling-2.6-flash",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.01,
+        "completion_per_m": 0.03,
+        "cache_read_per_m": 0.002
+      },
+      "benchmarks": {
+        "intelligence_index": 14.1,
+        "coding_index": 25.3,
+        "agentic_index": 2.3
+      },
+      "strength": 0.14
+    },
+    {
+      "id": "~anthropic/claude-opus-latest",
+      "provider": "~anthropic",
+      "name": "Anthropic: Claude Opus Latest",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openrouter/pareto-code",
+      "provider": "openrouter",
+      "name": "Pareto Code Router",
+      "tier": "cheap",
+      "context_length": 2000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": -1000000.0,
+        "completion_per_m": -1000000.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k2.6",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K2.6",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.646,
+        "completion_per_m": 2.72,
+        "cache_read_per_m": 0.1088
+      },
+      "benchmarks": {
+        "intelligence_index": 44.2,
+        "coding_index": 61.8,
+        "agentic_index": 30.3
+      },
+      "strength": 0.44
+    },
+    {
+      "id": "anthropic/claude-opus-4.7",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.7",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 53.5,
+        "coding_index": 73.6,
+        "agentic_index": 44.4
+      },
+      "strength": 0.54
+    },
+    {
+      "id": "anthropic/claude-opus-4.7:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.7 (batch)",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 12.5,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 53.5,
+        "coding_index": 73.6,
+        "agentic_index": 44.4
+      },
+      "strength": 0.54
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 5.1",
+      "tier": "mid",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.966,
+        "completion_per_m": 3.036,
+        "cache_read_per_m": 0.1794
+      },
+      "benchmarks": {
+        "intelligence_index": 40.2,
+        "coding_index": 55.8,
+        "agentic_index": 29.9
+      },
+      "strength": 0.4
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it",
+      "provider": "google",
+      "name": "Google: Gemma 4 26B A4B ",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.07,
+        "completion_per_m": 0.34,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 25.7,
+        "coding_index": 39.3,
+        "agentic_index": 11
+      },
+      "strength": 0.26
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "provider": "google",
+      "name": "Google: Gemma 4 26B A4B  (free)",
+      "tier": "free",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 25.7,
+        "coding_index": 39.3,
+        "agentic_index": 11
+      },
+      "strength": 0.26
+    },
+    {
+      "id": "google/gemma-4-31b-it",
+      "provider": "google",
+      "name": "Google: Gemma 4 31B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.34,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 29.4,
+        "coding_index": 43.4,
+        "agentic_index": 14.4
+      },
+      "strength": 0.29
+    },
+    {
+      "id": "google/gemma-4-31b-it:free",
+      "provider": "google",
+      "name": "Google: Gemma 4 31B (free)",
+      "tier": "free",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 29.4,
+        "coding_index": 43.4,
+        "agentic_index": 14.4
+      },
+      "strength": 0.29
+    },
+    {
+      "id": "qwen/qwen3.6-plus",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.6 Plus",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.325,
+        "completion_per_m": 1.95,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 39.6,
+        "coding_index": 54.5,
+        "agentic_index": 27.6
+      },
+      "strength": 0.4
+    },
+    {
+      "id": "z-ai/glm-5v-turbo",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 5V Turbo",
+      "tier": "mid",
+      "context_length": 202752,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 1.2,
+        "completion_per_m": 4.0,
+        "cache_read_per_m": 0.24
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "arcee-ai/trinity-large-thinking",
+      "provider": "arcee-ai",
+      "name": "Arcee AI: Trinity Large Thinking",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.22,
+        "completion_per_m": 0.85,
+        "cache_read_per_m": 0.06
+      },
+      "benchmarks": {
+        "intelligence_index": 18.2,
+        "coding_index": 25.8,
+        "agentic_index": 3.7
+      },
+      "strength": 0.18
+    },
+    {
+      "id": "x-ai/grok-4.20-multi-agent",
+      "provider": "x-ai",
+      "name": "xAI: Grok 4.20 Multi-Agent",
+      "tier": "mid",
+      "context_length": 2000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "x-ai/grok-4.20",
+      "provider": "x-ai",
+      "name": "xAI: Grok 4.20",
+      "tier": "mid",
+      "context_length": 2000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/lyria-3-pro-preview",
+      "provider": "google",
+      "name": "Google: Lyria 3 Pro Preview",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image->text+audio",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/lyria-3-clip-preview",
+      "provider": "google",
+      "name": "Google: Lyria 3 Clip Preview",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image->text+audio",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "kwaipilot/kat-coder-pro-v2",
+      "provider": "kwaipilot",
+      "name": "Kwaipilot: KAT-Coder-Pro V2",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.06
+      },
+      "benchmarks": {
+        "intelligence_index": 33.7,
+        "coding_index": 59.5,
+        "agentic_index": 15.5
+      },
+      "strength": 0.34
+    },
+    {
+      "id": "rekaai/reka-edge",
+      "provider": "rekaai",
+      "name": "Reka Edge",
+      "tier": "cheap",
+      "context_length": 16384,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.1,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "minimax/minimax-m2.7",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M2.7",
+      "tier": "cheap",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 38.1,
+        "coding_index": 52.6,
+        "agentic_index": 25.6
+      },
+      "strength": 0.38
+    },
+    {
+      "id": "openai/gpt-5.4-nano",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 Nano",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.02
+      },
+      "benchmarks": {
+        "intelligence_index": 38.2,
+        "coding_index": 56.1,
+        "agentic_index": 27.5
+      },
+      "strength": 0.38
+    },
+    {
+      "id": "openai/gpt-5.4-nano:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 Nano (batch)",
+      "tier": "cheap",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.625,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 38.2,
+        "coding_index": 56.1,
+        "agentic_index": 27.5
+      },
+      "strength": 0.38
+    },
+    {
+      "id": "openai/gpt-5.4-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 Mini",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.75,
+        "completion_per_m": 4.5,
+        "cache_read_per_m": 0.075
+      },
+      "benchmarks": {
+        "intelligence_index": 40,
+        "coding_index": 56.1,
+        "agentic_index": 30.2
+      },
+      "strength": 0.4
+    },
+    {
+      "id": "openai/gpt-5.4-mini:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 Mini (batch)",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.375,
+        "completion_per_m": 2.25,
+        "cache_read_per_m": 0.0375
+      },
+      "benchmarks": {
+        "intelligence_index": 40,
+        "coding_index": 56.1,
+        "agentic_index": 30.2
+      },
+      "strength": 0.4
+    },
+    {
+      "id": "mistralai/mistral-small-2603",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Small 4",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.015
+      },
+      "benchmarks": {
+        "intelligence_index": 19.6,
+        "coding_index": 26.6,
+        "agentic_index": 4.7
+      },
+      "strength": 0.2
+    },
+    {
+      "id": "z-ai/glm-5-turbo",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 5 Turbo",
+      "tier": "mid",
+      "context_length": 202752,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.2,
+        "completion_per_m": 4.0,
+        "cache_read_per_m": 0.24
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Super",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.085,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 25.4,
+        "coding_index": 37.7,
+        "agentic_index": 8.7
+      },
+      "strength": 0.25
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Super (free)",
+      "tier": "free",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 25.4,
+        "coding_index": 37.7,
+        "agentic_index": 8.7
+      },
+      "strength": 0.25
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-lite",
+      "provider": "bytedance-seed",
+      "name": "ByteDance Seed: Seed-2.0-Lite",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.5-9b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5-9B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.15,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 21.4,
+        "coding_index": 28.7,
+        "agentic_index": 7.4
+      },
+      "strength": 0.21
+    },
+    {
+      "id": "openai/gpt-5.4-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 Pro",
+      "tier": "ultra",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 30.0,
+        "completion_per_m": 180.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.4",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4",
+      "tier": "frontier",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 51.4,
+        "coding_index": 71.1,
+        "agentic_index": 41.1
+      },
+      "strength": 0.51
+    },
+    {
+      "id": "openai/gpt-5.4:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.4 (batch)",
+      "tier": "frontier",
+      "context_length": 1050000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 51.4,
+        "coding_index": 71.1,
+        "agentic_index": 41.1
+      },
+      "strength": 0.51
+    },
+    {
+      "id": "inception/mercury-2",
+      "provider": "inception",
+      "name": "Inception: Mercury 2",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 0.75,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 21.4,
+        "coding_index": 31.1,
+        "agentic_index": 9.6
+      },
+      "strength": 0.21
+    },
+    {
+      "id": "openai/gpt-5.3-chat",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.3 Chat",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.75,
+        "completion_per_m": 14.0,
+        "cache_read_per_m": 0.175
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite-preview",
+      "provider": "google",
+      "name": "Google: Gemini 3.1 Flash Lite Preview",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 25,
+        "coding_index": 34.7,
+        "agentic_index": 6.2
+      },
+      "strength": 0.25
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-mini",
+      "provider": "bytedance-seed",
+      "name": "ByteDance Seed: Seed-2.0-Mini",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.1-flash-image-preview",
+      "provider": "google",
+      "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
+      "tier": "mid",
+      "context_length": 65536,
+      "modality": "text+image->text+image",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.5-35b-a3b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5-35B-A3B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.14,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 24,
+        "coding_index": 37,
+        "agentic_index": 11.8
+      },
+      "strength": 0.24
+    },
+    {
+      "id": "qwen/qwen3.5-27b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5-27B",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.195,
+        "completion_per_m": 1.56,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.5-122b-a10b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5-122B-A10B",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.26,
+        "completion_per_m": 2.08,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 32.3,
+        "coding_index": 45.7,
+        "agentic_index": 20.7
+      },
+      "strength": 0.32
+    },
+    {
+      "id": "qwen/qwen3.5-flash-02-23",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5-Flash",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.065,
+        "completion_per_m": 0.26,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview-customtools",
+      "provider": "google",
+      "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 12.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.3-codex",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.3-Codex",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.75,
+        "completion_per_m": 14.0,
+        "cache_read_per_m": 0.175
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "aion-labs/aion-2.0",
+      "provider": "aion-labs",
+      "name": "AionLabs: Aion-2.0",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.8,
+        "completion_per_m": 1.6,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "provider": "google",
+      "name": "Google: Gemini 3.1 Pro Preview",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 12.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 46.5,
+        "coding_index": 68.8,
+        "agentic_index": 21.4
+      },
+      "strength": 0.47
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview:batch",
+      "provider": "google",
+      "name": "Google: Gemini 3.1 Pro Preview (batch)",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 46.5,
+        "coding_index": 68.8,
+        "agentic_index": 21.4
+      },
+      "strength": 0.47
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.6",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Sonnet 4.6",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.3
+      },
+      "benchmarks": {
+        "intelligence_index": 47.2,
+        "coding_index": 63,
+        "agentic_index": 40.8
+      },
+      "strength": 0.47
+    },
+    {
+      "id": "qwen/qwen3.5-plus-02-15",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5 Plus 2026-02-15",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.26,
+        "completion_per_m": 1.56,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3.5-397b-a17b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3.5 397B A17B",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.39,
+        "completion_per_m": 2.34,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 33.7,
+        "coding_index": 48.2,
+        "agentic_index": 19.8
+      },
+      "strength": 0.34
+    },
+    {
+      "id": "minimax/minimax-m2.5",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M2.5",
+      "tier": "cheap",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.9,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-5",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 5",
+      "tier": "mid",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.95,
+        "completion_per_m": 2.55,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-max-thinking",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Max Thinking",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.78,
+        "completion_per_m": 3.9,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-4.6",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.6",
+      "tier": "ultra",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-4.6:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.6 (batch)",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 12.5,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-coder-next",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Coder Next",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.12,
+        "completion_per_m": 0.8,
+        "cache_read_per_m": 0.07
+      },
+      "benchmarks": {
+        "intelligence_index": 21.1,
+        "coding_index": 36.2,
+        "agentic_index": 8.8
+      },
+      "strength": 0.21
+    },
+    {
+      "id": "openrouter/free",
+      "provider": "openrouter",
+      "name": "Free Models Router",
+      "tier": "free",
+      "context_length": 200000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "stepfun/step-3.5-flash",
+      "provider": "stepfun",
+      "name": "StepFun: Step 3.5 Flash",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.3,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k2.5",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K2.5",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.57,
+        "completion_per_m": 2.85,
+        "cache_read_per_m": 0.095
+      },
+      "benchmarks": {
+        "intelligence_index": 35.4,
+        "coding_index": 46.8,
+        "agentic_index": 21.7
+      },
+      "strength": 0.35
+    },
+    {
+      "id": "upstage/solar-pro-3",
+      "provider": "upstage",
+      "name": "Upstage: Solar Pro 3",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.015
+      },
+      "benchmarks": {
+        "intelligence_index": 14.1,
+        "coding_index": 16.2,
+        "agentic_index": 2.7
+      },
+      "strength": 0.14
+    },
+    {
+      "id": "minimax/minimax-m2-her",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M2-her",
+      "tier": "mid",
+      "context_length": 65536,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "writer/palmyra-x5",
+      "provider": "writer",
+      "name": "Writer: Palmyra X5",
+      "tier": "frontier",
+      "context_length": 1040000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-audio",
+      "provider": "openai",
+      "name": "OpenAI: GPT Audio",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+audio->text+audio",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-audio-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT Audio Mini",
+      "tier": "mid",
+      "context_length": 128000,
+      "modality": "text+audio->text+audio",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 2.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-4.7-flash",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.7 Flash",
+      "tier": "cheap",
+      "context_length": 202752,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.06,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.2-codex",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.2-Codex",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 1.75,
+        "completion_per_m": 14.0,
+        "cache_read_per_m": 0.175
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "bytedance-seed/seed-1.6-flash",
+      "provider": "bytedance-seed",
+      "name": "ByteDance Seed: Seed 1.6 Flash",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.075,
+        "completion_per_m": 0.3,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "bytedance-seed/seed-1.6",
+      "provider": "bytedance-seed",
+      "name": "ByteDance Seed: Seed 1.6",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "minimax/minimax-m2.1",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M2.1",
+      "tier": "mid",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-4.7",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.7",
+      "tier": "mid",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 1.75,
+        "cache_read_per_m": 0.08
+      },
+      "benchmarks": {
+        "intelligence_index": 33.7,
+        "coding_index": 45.3,
+        "agentic_index": 25.4
+      },
+      "strength": 0.34
+    },
+    {
+      "id": "google/gemini-3-flash-preview",
+      "provider": "google",
+      "name": "Google: Gemini 3 Flash Preview",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3-flash-preview:batch",
+      "provider": "google",
+      "name": "Google: Gemini 3 Flash Preview (batch)",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-30b-a3b",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 14.2,
+        "coding_index": 14.4,
+        "agentic_index": 2
+      },
+      "strength": 0.14
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-30b-a3b:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
+      "tier": "free",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 14.2,
+        "coding_index": 14.4,
+        "agentic_index": 2
+      },
+      "strength": 0.14
+    },
+    {
+      "id": "openai/gpt-5.2-chat",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.2 Chat",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.75,
+        "completion_per_m": 14.0,
+        "cache_read_per_m": 0.175
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.2-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.2 Pro",
+      "tier": "ultra",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 21.0,
+        "completion_per_m": 168.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.2",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.2",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.75,
+        "completion_per_m": 14.0,
+        "cache_read_per_m": 0.175
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.2:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.2 (batch)",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.875,
+        "completion_per_m": 7.0,
+        "cache_read_per_m": 0.0875
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/devstral-2512",
+      "provider": "mistralai",
+      "name": "Mistral: Devstral 2 2512",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.04
+      },
+      "benchmarks": {
+        "intelligence_index": 19.2,
+        "coding_index": 31.3,
+        "agentic_index": 10.6
+      },
+      "strength": 0.19
+    },
+    {
+      "id": "relace/relace-search",
+      "provider": "relace",
+      "name": "Relace: Relace Search",
+      "tier": "mid",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-4.6v",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.6V",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 0.9,
+        "cache_read_per_m": 0.055
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openrouter/bodybuilder",
+      "provider": "openrouter",
+      "name": "Body Builder (beta)",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": -1000000.0,
+        "completion_per_m": -1000000.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.1-codex-max",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.1-Codex-Max",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "amazon/nova-2-lite-v1",
+      "provider": "amazon",
+      "name": "Amazon: Nova 2 Lite",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text+image+file+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 18.2,
+        "coding_index": 23,
+        "agentic_index": 3.1
+      },
+      "strength": 0.18
+    },
+    {
+      "id": "mistralai/ministral-14b-2512",
+      "provider": "mistralai",
+      "name": "Mistral: Ministral 3 14B 2512",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.02
+      },
+      "benchmarks": {
+        "intelligence_index": 11.1,
+        "coding_index": 14.4,
+        "agentic_index": 2.2
+      },
+      "strength": 0.11
+    },
+    {
+      "id": "mistralai/ministral-8b-2512",
+      "provider": "mistralai",
+      "name": "Mistral: Ministral 3 8B 2512",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.15,
+        "cache_read_per_m": 0.015
+      },
+      "benchmarks": {
+        "intelligence_index": 9,
+        "coding_index": 9.7,
+        "agentic_index": 1.2
+      },
+      "strength": 0.09
+    },
+    {
+      "id": "mistralai/ministral-3b-2512",
+      "provider": "mistralai",
+      "name": "Mistral: Ministral 3 3B 2512",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.1,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 6.3,
+        "coding_index": 4.8,
+        "agentic_index": 1.6
+      },
+      "strength": 0.06
+    },
+    {
+      "id": "mistralai/mistral-large-2512",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Large 3 2512",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 15.9,
+        "coding_index": 20.1,
+        "agentic_index": 5.5
+      },
+      "strength": 0.16
+    },
+    {
+      "id": "deepseek/deepseek-v3.2",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V3.2",
+      "tier": "cheap",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.269,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.1345
+      },
+      "benchmarks": {
+        "intelligence_index": 32,
+        "coding_index": 44.2,
+        "agentic_index": 18.3
+      },
+      "strength": 0.32
+    },
+    {
+      "id": "anthropic/claude-opus-4.5",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.5",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-4.5:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.5 (batch)",
+      "tier": "frontier",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 12.5,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "allenai/olmo-3-32b-think",
+      "provider": "allenai",
+      "name": "AllenAI: Olmo 3 32B Think",
+      "tier": "cheap",
+      "context_length": 65536,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-3-pro-image-preview",
+      "provider": "google",
+      "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
+      "tier": "frontier",
+      "context_length": 65536,
+      "modality": "text+image->text+image",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 12.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepcogito/cogito-v2.1-671b",
+      "provider": "deepcogito",
+      "name": "Deep Cogito: Cogito v2.1 671B",
+      "tier": "mid",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.1",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.1",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 36.9,
+        "coding_index": 49.4,
+        "agentic_index": 21
+      },
+      "strength": 0.37
+    },
+    {
+      "id": "openai/gpt-5.1:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.1 (batch)",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.625,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.0625
+      },
+      "benchmarks": {
+        "intelligence_index": 36.9,
+        "coding_index": 49.4,
+        "agentic_index": 21
+      },
+      "strength": 0.37
+    },
+    {
+      "id": "openai/gpt-5.1-chat",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.1 Chat",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.13
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.1-codex",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.1-Codex",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.13
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5.1-codex-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5.1-Codex-Mini",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k2-thinking",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K2 Thinking",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 17.3,
+        "coding_index": 21,
+        "agentic_index": 1.8
+      },
+      "strength": 0.17
+    },
+    {
+      "id": "amazon/nova-premier-v1",
+      "provider": "amazon",
+      "name": "Amazon: Nova Premier 1.0",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 12.5,
+        "cache_read_per_m": 0.625
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "perplexity/sonar-pro-search",
+      "provider": "perplexity",
+      "name": "Perplexity: Sonar Pro Search",
+      "tier": "frontier",
+      "context_length": 200000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/voxtral-small-24b-2507",
+      "provider": "mistralai",
+      "name": "Mistral: Voxtral Small 24B 2507",
+      "tier": "cheap",
+      "context_length": 32000,
+      "modality": "text+file+audio->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.3,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-oss-safeguard-20b",
+      "provider": "openai",
+      "name": "OpenAI: gpt-oss-safeguard-20b",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.075,
+        "completion_per_m": 0.3,
+        "cache_read_per_m": 0.0375
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nvidia/nemotron-nano-12b-v2-vl:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
+      "tier": "free",
+      "context_length": 128000,
+      "modality": "text+image+video->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M2",
+      "tier": "mid",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.255,
+        "completion_per_m": 1.02,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-vl-32b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 32B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.104,
+        "completion_per_m": 0.416,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "ibm-granite/granite-4.0-h-micro",
+      "provider": "ibm-granite",
+      "name": "IBM: Granite 4.0 Micro",
+      "tier": "cheap",
+      "context_length": 131000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.017,
+        "completion_per_m": 0.112,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5-image-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Image Mini",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text+image",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Haiku 4.5",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 29.6,
+        "coding_index": 43.9,
+        "agentic_index": 16.4
+      },
+      "strength": 0.3
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Haiku 4.5 (batch)",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": 29.6,
+        "coding_index": 43.9,
+        "agentic_index": 16.4
+      },
+      "strength": 0.3
+    },
+    {
+      "id": "qwen/qwen3-vl-8b-thinking",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 8B Thinking",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.18,
+        "completion_per_m": 2.1,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-vl-8b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 8B Instruct",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.117,
+        "completion_per_m": 0.455,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5-image",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Image",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image+file->text+image",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 1.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o3-deep-research",
+      "provider": "openai",
+      "name": "OpenAI: o3 Deep Research",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 40.0,
+        "cache_read_per_m": 2.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o4-mini-deep-research",
+      "provider": "openai",
+      "name": "OpenAI: o4 Mini Deep Research",
+      "tier": "frontier",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 8.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-flash-image",
+      "provider": "google",
+      "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
+      "tier": "mid",
+      "context_length": 32768,
+      "modality": "text+image->text+image",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-vl-30b-a3b-thinking",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 30B A3B Thinking",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 2.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-vl-30b-a3b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 30B A3B Instruct",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.13,
+        "completion_per_m": 0.52,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5-pro",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Pro",
+      "tier": "ultra",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 15.0,
+        "completion_per_m": 120.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-4.6",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.6",
+      "tier": "mid",
+      "context_length": 204800,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 28.7,
+        "coding_index": 45.8,
+        "agentic_index": 17.7
+      },
+      "strength": 0.29
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.5",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Sonnet 4.5",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.3
+      },
+      "benchmarks": {
+        "intelligence_index": 36.4,
+        "coding_index": 52.1,
+        "agentic_index": 24.6
+      },
+      "strength": 0.36
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.5:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Sonnet 4.5 (batch)",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 7.5,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 36.4,
+        "coding_index": 52.1,
+        "agentic_index": 24.6
+      },
+      "strength": 0.36
+    },
+    {
+      "id": "deepseek/deepseek-v3.2-exp",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V3.2 Exp",
+      "tier": "cheap",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.27,
+        "completion_per_m": 0.41,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "thedrummer/cydonia-24b-v4.1",
+      "provider": "thedrummer",
+      "name": "TheDrummer: Cydonia 24B V4.1",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 0.5,
+        "cache_read_per_m": 0.15
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "relace/relace-apply-3",
+      "provider": "relace",
+      "name": "Relace: Relace Apply 3",
+      "tier": "mid",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.85,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-vl-235b-a22b-thinking",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 235B A22B Thinking",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 4.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-vl-235b-a22b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 VL 235B A22B Instruct",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.21,
+        "completion_per_m": 1.9,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-max",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Max",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.78,
+        "completion_per_m": 3.9,
+        "cache_read_per_m": 0.156
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-coder-plus",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Coder Plus",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.65,
+        "completion_per_m": 3.25,
+        "cache_read_per_m": 0.13
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5-codex",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Codex",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepseek/deepseek-v3.1-terminus",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V3.1 Terminus",
+      "tier": "cheap",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.27,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.135
+      },
+      "benchmarks": {
+        "intelligence_index": 30.4,
+        "coding_index": 43.5,
+        "agentic_index": 18.1
+      },
+      "strength": 0.3
+    },
+    {
+      "id": "qwen/qwen3-coder-flash",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Coder Flash",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.195,
+        "completion_per_m": 0.975,
+        "cache_read_per_m": 0.039
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-thinking",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Next 80B A3B Thinking",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 16.7,
+        "coding_index": 17.4,
+        "agentic_index": 2.1
+      },
+      "strength": 0.17
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Next 80B A3B Instruct",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 1.1,
+        "cache_read_per_m": 0.07
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen-plus-2025-07-28",
+      "provider": "qwen",
+      "name": "Qwen: Qwen Plus 0728",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.26,
+        "completion_per_m": 0.78,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen-plus-2025-07-28:thinking",
+      "provider": "qwen",
+      "name": "Qwen: Qwen Plus 0728 (thinking)",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nvidia/nemotron-nano-9b-v2:free",
+      "provider": "nvidia",
+      "name": "NVIDIA: Nemotron Nano 9B V2 (free)",
+      "tier": "free",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k2-0905",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K2 0905",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b-thinking-2507",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 30B A3B Thinking 2507",
+      "tier": "mid",
+      "context_length": 81920,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 2.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 14.4,
+        "coding_index": 12.1,
+        "agentic_index": 1.8
+      },
+      "strength": 0.14
+    },
+    {
+      "id": "nousresearch/hermes-4-70b",
+      "provider": "nousresearch",
+      "name": "Nous: Hermes 4 70B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.13,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nousresearch/hermes-4-405b",
+      "provider": "nousresearch",
+      "name": "Nous: Hermes 4 405B",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3.1",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V3.1",
+      "tier": "cheap",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 0.95,
+        "cache_read_per_m": 0.13
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-medium-3.1",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Medium 3.1",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.04
+      },
+      "benchmarks": {
+        "intelligence_index": 14.7,
+        "coding_index": 20.5,
+        "agentic_index": 6.2
+      },
+      "strength": 0.15
+    },
+    {
+      "id": "z-ai/glm-4.5v",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.5V",
+      "tier": "mid",
+      "context_length": 65536,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 1.8,
+        "cache_read_per_m": 0.11
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "ai21/jamba-large-1.7",
+      "provider": "ai21",
+      "name": "AI21: Jamba Large 1.7",
+      "tier": "frontier",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 8.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5",
+      "tier": "frontier",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 34.7,
+        "coding_index": 37.8,
+        "agentic_index": 25.7
+      },
+      "strength": 0.35
+    },
+    {
+      "id": "openai/gpt-5:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 (batch)",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.625,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.0625
+      },
+      "benchmarks": {
+        "intelligence_index": 34.7,
+        "coding_index": 37.8,
+        "agentic_index": 25.7
+      },
+      "strength": 0.35
+    },
+    {
+      "id": "openai/gpt-5-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Mini",
+      "tier": "mid",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 25.3,
+        "coding_index": 15.6,
+        "agentic_index": 19.4
+      },
+      "strength": 0.25
+    },
+    {
+      "id": "openai/gpt-5-mini:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Mini (batch)",
+      "tier": "cheap",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.125,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.0125
+      },
+      "benchmarks": {
+        "intelligence_index": 25.3,
+        "coding_index": 15.6,
+        "agentic_index": 19.4
+      },
+      "strength": 0.25
+    },
+    {
+      "id": "openai/gpt-5-nano",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Nano",
+      "tier": "cheap",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.005
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-5-nano:batch",
+      "provider": "openai",
+      "name": "OpenAI: GPT-5 Nano (batch)",
+      "tier": "cheap",
+      "context_length": 400000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.025,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.0025
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "provider": "openai",
+      "name": "OpenAI: gpt-oss-120b",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.037,
+        "completion_per_m": 0.17,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 23.8,
+        "coding_index": 30.4,
+        "agentic_index": 13.2
+      },
+      "strength": 0.24
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "provider": "openai",
+      "name": "OpenAI: gpt-oss-20b",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.03,
+        "completion_per_m": 0.13,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 14.9,
+        "coding_index": 20.7,
+        "agentic_index": 3.1
+      },
+      "strength": 0.15
+    },
+    {
+      "id": "openai/gpt-oss-20b:free",
+      "provider": "openai",
+      "name": "OpenAI: gpt-oss-20b (free)",
+      "tier": "free",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 14.9,
+        "coding_index": 20.7,
+        "agentic_index": 3.1
+      },
+      "strength": 0.15
+    },
+    {
+      "id": "anthropic/claude-opus-4.1",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.1",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 15.0,
+        "completion_per_m": 75.0,
+        "cache_read_per_m": 1.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-4.1:batch",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4.1 (batch)",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 7.5,
+        "completion_per_m": 37.5,
+        "cache_read_per_m": 0.75
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/codestral-2508",
+      "provider": "mistralai",
+      "name": "Mistral: Codestral 2508",
+      "tier": "cheap",
+      "context_length": 256000,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 0.9,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-coder-30b-a3b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.07,
+        "completion_per_m": 0.27,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0481,
+        "completion_per_m": 0.193,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-4.5",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.5",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.6,
+        "completion_per_m": 2.2,
+        "cache_read_per_m": 0.11
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "z-ai/glm-4.5-air",
+      "provider": "z-ai",
+      "name": "Z.ai: GLM 4.5 Air",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.13,
+        "completion_per_m": 0.85,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b-thinking-2507",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 235B A22B Thinking 2507",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 3.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 19.6,
+        "coding_index": 22.1,
+        "agentic_index": 3.8
+      },
+      "strength": 0.2
+    },
+    {
+      "id": "qwen/qwen3-coder",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 Coder 480B A35B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "bytedance/ui-tars-1.5-7b",
+      "provider": "bytedance",
+      "name": "ByteDance: UI-TARS 7B ",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Flash Lite",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite:batch",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Flash Lite (batch)",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b-2507",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 235B A22B Instruct 2507",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.09,
+        "completion_per_m": 0.55,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "moonshotai/kimi-k2",
+      "provider": "moonshotai",
+      "name": "MoonshotAI: Kimi K2 0711",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.57,
+        "completion_per_m": 2.3,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition",
+      "provider": "cognitivecomputations",
+      "name": "Venice: Uncensored",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 0.9,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "tencent/hunyuan-a13b-instruct",
+      "provider": "tencent",
+      "name": "Tencent: Hunyuan A13B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.14,
+        "completion_per_m": 0.57,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "morph/morph-v3-large",
+      "provider": "morph",
+      "name": "Morph: Morph V3 Large",
+      "tier": "mid",
+      "context_length": 262144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.9,
+        "completion_per_m": 1.9,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "morph/morph-v3-fast",
+      "provider": "morph",
+      "name": "Morph: Morph V3 Fast",
+      "tier": "mid",
+      "context_length": 81920,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.8,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "baidu/ernie-4.5-vl-424b-a47b",
+      "provider": "baidu",
+      "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
+      "tier": "mid",
+      "context_length": 123000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.42,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-small-3.2-24b-instruct",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Small 3.2 24B",
+      "tier": "cheap",
+      "context_length": 256000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.3,
+        "cache_read_per_m": 0.01
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "minimax/minimax-m1",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax M1",
+      "tier": "mid",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.55,
+        "completion_per_m": 2.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Flash",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-flash:batch",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Flash (batch)",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-pro",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Pro",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 25.8,
+        "coding_index": 33.3,
+        "agentic_index": 7.1
+      },
+      "strength": 0.26
+    },
+    {
+      "id": "google/gemini-2.5-pro:batch",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Pro (batch)",
+      "tier": "mid",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 0.625,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 25.8,
+        "coding_index": 33.3,
+        "agentic_index": 7.1
+      },
+      "strength": 0.26
+    },
+    {
+      "id": "openai/o3-pro",
+      "provider": "openai",
+      "name": "OpenAI: o3 Pro",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 20.0,
+        "completion_per_m": 80.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-pro-preview",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Pro Preview 06-05",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepseek/deepseek-r1-0528",
+      "provider": "deepseek",
+      "name": "DeepSeek: R1 0528",
+      "tier": "mid",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 2.15,
+        "cache_read_per_m": 0.35
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-opus-4",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Opus 4",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 15.0,
+        "completion_per_m": 75.0,
+        "cache_read_per_m": 1.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-sonnet-4",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude Sonnet 4",
+      "tier": "frontier",
+      "context_length": 1000000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.3
+      },
+      "benchmarks": {
+        "intelligence_index": 28.9,
+        "coding_index": 37.6,
+        "agentic_index": 16.6
+      },
+      "strength": 0.29
+    },
+    {
+      "id": "google/gemma-3n-e4b-it",
+      "provider": "google",
+      "name": "Google: Gemma 3n 4B",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.06,
+        "completion_per_m": 0.12,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 3.2,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-medium-3",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Medium 3",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.04
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemini-2.5-pro-preview-05-06",
+      "provider": "google",
+      "name": "Google: Gemini 2.5 Pro Preview 05-06",
+      "tier": "frontier",
+      "context_length": 1048576,
+      "modality": "text+image+file+audio+video->text",
+      "pricing": {
+        "prompt_per_m": 1.25,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.125
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "arcee-ai/virtuoso-large",
+      "provider": "arcee-ai",
+      "name": "Arcee AI: Virtuoso Large",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.75,
+        "completion_per_m": 1.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "meta-llama/llama-guard-4-12b",
+      "provider": "meta-llama",
+      "name": "Meta: Llama Guard 4 12B",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.18,
+        "completion_per_m": 0.18,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 30B A3B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.12,
+        "completion_per_m": 0.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen3-8b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 8B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.117,
+        "completion_per_m": 0.455,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 8.3,
+        "coding_index": 9,
+        "agentic_index": 1.5
+      },
+      "strength": 0.08
+    },
+    {
+      "id": "qwen/qwen3-14b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 14B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.2275,
+        "completion_per_m": 0.91,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 10.4,
+        "coding_index": 13.8,
+        "agentic_index": 1.8
+      },
+      "strength": 0.1
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 32B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.08,
+        "completion_per_m": 0.28,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 11.5,
+        "coding_index": 15.3,
+        "agentic_index": 1.8
+      },
+      "strength": 0.12
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b",
+      "provider": "qwen",
+      "name": "Qwen: Qwen3 235B A22B",
+      "tier": "mid",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.455,
+        "completion_per_m": 1.82,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o4-mini-high",
+      "provider": "openai",
+      "name": "OpenAI: o4 Mini High",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.1,
+        "completion_per_m": 4.4,
+        "cache_read_per_m": 0.275
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o3",
+      "provider": "openai",
+      "name": "OpenAI: o3",
+      "tier": "frontier",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 8.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o4-mini",
+      "provider": "openai",
+      "name": "OpenAI: o4 Mini",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 1.1,
+        "completion_per_m": 4.4,
+        "cache_read_per_m": 0.275
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4.1",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4.1",
+      "tier": "frontier",
+      "context_length": 1047576,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 8.0,
+        "cache_read_per_m": 0.5
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4.1-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4.1 Mini",
+      "tier": "mid",
+      "context_length": 1047576,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 1.6,
+        "cache_read_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": 14.8,
+        "coding_index": 20.2,
+        "agentic_index": 1.7
+      },
+      "strength": 0.15
+    },
+    {
+      "id": "openai/gpt-4.1-nano",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4.1 Nano",
+      "tier": "cheap",
+      "context_length": 1047576,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 9.6,
+        "coding_index": 11.1,
+        "agentic_index": 1.2
+      },
+      "strength": 0.1
+    },
+    {
+      "id": "meta-llama/llama-4-maverick",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 4 Maverick",
+      "tier": "cheap",
+      "context_length": 1048576,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 0.8,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 14.3,
+        "coding_index": 16.3,
+        "agentic_index": 1.3
+      },
+      "strength": 0.14
+    },
+    {
+      "id": "meta-llama/llama-4-scout",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 4 Scout",
+      "tier": "cheap",
+      "context_length": 1310720,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.3,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 10,
+        "coding_index": 8.2,
+        "agentic_index": 1.1
+      },
+      "strength": 0.1
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V3 0324",
+      "tier": "mid",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.27,
+        "completion_per_m": 1.12,
+        "cache_read_per_m": 0.135
+      },
+      "benchmarks": {
+        "intelligence_index": 15.4,
+        "coding_index": 21.2,
+        "agentic_index": 1.5
+      },
+      "strength": 0.15
+    },
+    {
+      "id": "openai/o1-pro",
+      "provider": "openai",
+      "name": "OpenAI: o1-pro",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 150.0,
+        "completion_per_m": 600.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Small 3.1 24B",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.351,
+        "completion_per_m": 0.555,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "provider": "google",
+      "name": "Google: Gemma 3 4B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.1,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 2.7,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "provider": "google",
+      "name": "Google: Gemma 3 12B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.15,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 5.5,
+        "coding_index": 5.8,
+        "agentic_index": 0.3
+      },
+      "strength": 0.06
+    },
+    {
+      "id": "cohere/command-a",
+      "provider": "cohere",
+      "name": "Cohere: Command A",
+      "tier": "frontier",
+      "context_length": 256000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 22.5,
+        "coding_index": 27.8,
+        "agentic_index": 9.2
+      },
+      "strength": 0.23
+    },
+    {
+      "id": "rekaai/reka-flash-3",
+      "provider": "rekaai",
+      "name": "Reka Flash 3",
+      "tier": "cheap",
+      "context_length": 65536,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "provider": "google",
+      "name": "Google: Gemma 3 27B",
+      "tier": "cheap",
+      "context_length": 262144,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.08,
+        "completion_per_m": 0.45,
+        "cache_read_per_m": 0.04
+      },
+      "benchmarks": {
+        "intelligence_index": 7.4,
+        "coding_index": 10.1,
+        "agentic_index": 0.3
+      },
+      "strength": 0.07
+    },
+    {
+      "id": "thedrummer/skyfall-36b-v2",
+      "provider": "thedrummer",
+      "name": "TheDrummer: Skyfall 36B V2",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.55,
+        "completion_per_m": 0.8,
+        "cache_read_per_m": 0.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "perplexity/sonar-reasoning-pro",
+      "provider": "perplexity",
+      "name": "Perplexity: Sonar Reasoning Pro",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 8.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "perplexity/sonar-pro",
+      "provider": "perplexity",
+      "name": "Perplexity: Sonar Pro",
+      "tier": "frontier",
+      "context_length": 200000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "perplexity/sonar-deep-research",
+      "provider": "perplexity",
+      "name": "Perplexity: Sonar Deep Research",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 8.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-saba",
+      "provider": "mistralai",
+      "name": "Mistral: Saba",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.02
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o3-mini-high",
+      "provider": "openai",
+      "name": "OpenAI: o3 Mini High",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 1.1,
+        "completion_per_m": 4.4,
+        "cache_read_per_m": 0.55
+      },
+      "benchmarks": {
+        "intelligence_index": 15.6,
+        "coding_index": 16.3,
+        "agentic_index": 1.7
+      },
+      "strength": 0.16
+    },
+    {
+      "id": "aion-labs/aion-rp-llama-3.1-8b",
+      "provider": "aion-labs",
+      "name": "AionLabs: Aion-RP 1.0 (8B)",
+      "tier": "mid",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.8,
+        "completion_per_m": 1.6,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen2.5-vl-72b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen2.5 VL 72B Instruct",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.8,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.4
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen-plus",
+      "provider": "qwen",
+      "name": "Qwen: Qwen-Plus",
+      "tier": "cheap",
+      "context_length": 1000000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.26,
+        "completion_per_m": 0.78,
+        "cache_read_per_m": 0.052
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o3-mini",
+      "provider": "openai",
+      "name": "OpenAI: o3 Mini",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 1.1,
+        "completion_per_m": 4.4,
+        "cache_read_per_m": 0.55
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-small-24b-instruct-2501",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Small 3",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.08,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "perplexity/sonar",
+      "provider": "perplexity",
+      "name": "Perplexity: Sonar",
+      "tier": "cheap",
+      "context_length": 127072,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepseek/deepseek-r1-distill-llama-70b",
+      "provider": "deepseek",
+      "name": "DeepSeek: R1 Distill Llama 70B",
+      "tier": "cheap",
+      "context_length": 8192,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.8,
+        "completion_per_m": 0.8,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepseek/deepseek-r1",
+      "provider": "deepseek",
+      "name": "DeepSeek: R1",
+      "tier": "mid",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.7,
+        "completion_per_m": 2.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 18.5,
+        "coding_index": 24.6,
+        "agentic_index": 3.1
+      },
+      "strength": 0.18
+    },
+    {
+      "id": "minimax/minimax-01",
+      "provider": "minimax",
+      "name": "MiniMax: MiniMax-01",
+      "tier": "mid",
+      "context_length": 1000192,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 1.1,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "microsoft/phi-4",
+      "provider": "microsoft",
+      "name": "Microsoft: Phi 4",
+      "tier": "cheap",
+      "context_length": 16384,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.07,
+        "completion_per_m": 0.14,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "deepseek/deepseek-chat",
+      "provider": "deepseek",
+      "name": "DeepSeek: DeepSeek V3",
+      "tier": "mid",
+      "context_length": 163840,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.2574,
+        "completion_per_m": 1.0287,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "sao10k/l3.3-euryale-70b",
+      "provider": "sao10k",
+      "name": "Sao10K: Llama 3.3 Euryale 70B",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.65,
+        "completion_per_m": 0.75,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/o1",
+      "provider": "openai",
+      "name": "OpenAI: o1",
+      "tier": "ultra",
+      "context_length": 200000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 15.0,
+        "completion_per_m": 60.0,
+        "cache_read_per_m": 7.5
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 39.7,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "cohere/command-r7b-12-2024",
+      "provider": "cohere",
+      "name": "Cohere: Command R7B (12-2024)",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.0375,
+        "completion_per_m": 0.15,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "meta-llama/llama-3.3-70b-instruct",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 3.3 70B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.13,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 9.4,
+        "coding_index": 11.9,
+        "agentic_index": 0.3
+      },
+      "strength": 0.09
+    },
+    {
+      "id": "amazon/nova-lite-v1",
+      "provider": "amazon",
+      "name": "Amazon: Nova Lite 1.0",
+      "tier": "cheap",
+      "context_length": 300000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.06,
+        "completion_per_m": 0.24,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "amazon/nova-micro-v1",
+      "provider": "amazon",
+      "name": "Amazon: Nova Micro 1.0",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.035,
+        "completion_per_m": 0.14,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "amazon/nova-pro-v1",
+      "provider": "amazon",
+      "name": "Amazon: Nova Pro 1.0",
+      "tier": "mid",
+      "context_length": 300000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.8,
+        "completion_per_m": 3.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4o-2024-11-20",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4o (2024-11-20)",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 1.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-large-2407",
+      "provider": "mistralai",
+      "name": "Mistral Large 2407",
+      "tier": "frontier",
+      "context_length": 131072,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen-2.5-coder-32b-instruct",
+      "provider": "qwen",
+      "name": "Qwen2.5 Coder 32B Instruct",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.66,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "thedrummer/unslopnemo-12b",
+      "provider": "thedrummer",
+      "name": "TheDrummer: UnslopNemo 12B",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthracite-org/magnum-v4-72b",
+      "provider": "anthracite-org",
+      "name": "Magnum v4 72B",
+      "tier": "mid",
+      "context_length": 16384,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 5.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen-2.5-7b-instruct",
+      "provider": "qwen",
+      "name": "Qwen: Qwen2.5 7B Instruct",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.1,
+        "completion_per_m": 0.2,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "thedrummer/rocinante-12b",
+      "provider": "thedrummer",
+      "name": "TheDrummer: Rocinante 12B",
+      "tier": "cheap",
+      "context_length": 65536,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 0.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "meta-llama/llama-3.2-1b-instruct",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 3.2 1B Instruct",
+      "tier": "cheap",
+      "context_length": 60000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.027,
+        "completion_per_m": 0.201,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "meta-llama/llama-3.2-3b-instruct",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 3.2 3B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.33,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "qwen/qwen-2.5-72b-instruct",
+      "provider": "qwen",
+      "name": "Qwen2.5 72B Instruct",
+      "tier": "cheap",
+      "context_length": 32768,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.36,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "cohere/command-r-08-2024",
+      "provider": "cohere",
+      "name": "Cohere: Command R (08-2024)",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "cohere/command-r-plus-08-2024",
+      "provider": "cohere",
+      "name": "Cohere: Command R+ (08-2024)",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "sao10k/l3.1-euryale-70b",
+      "provider": "sao10k",
+      "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.85,
+        "completion_per_m": 0.85,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-70b",
+      "provider": "nousresearch",
+      "name": "Nous: Hermes 3 70B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.7,
+        "completion_per_m": 0.7,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-405b",
+      "provider": "nousresearch",
+      "name": "Nous: Hermes 3 405B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 1.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "sao10k/l3-lunaris-8b",
+      "provider": "sao10k",
+      "name": "Sao10K: Llama 3 8B Lunaris",
+      "tier": "cheap",
+      "context_length": 8192,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.04,
+        "completion_per_m": 0.05,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4o-2024-08-06",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4o (2024-08-06)",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 1.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "meta-llama/llama-3.1-70b-instruct",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 3.1 70B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.4,
+        "completion_per_m": 0.4,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "meta-llama/llama-3.1-8b-instruct",
+      "provider": "meta-llama",
+      "name": "Meta: Llama 3.1 8B Instruct",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.08,
+        "cache_read_per_m": 0.025
+      },
+      "benchmarks": {
+        "intelligence_index": 7.6,
+        "coding_index": 5.4,
+        "agentic_index": 0.5
+      },
+      "strength": 0.08
+    },
+    {
+      "id": "mistralai/mistral-nemo",
+      "provider": "mistralai",
+      "name": "Mistral: Mistral Nemo",
+      "tier": "cheap",
+      "context_length": 131072,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.019,
+        "completion_per_m": 0.03,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4o-mini",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4o-mini",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.075
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 11.4,
+        "agentic_index": 1
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4o-mini-2024-07-18",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4o-mini (2024-07-18)",
+      "tier": "cheap",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 0.15,
+        "completion_per_m": 0.6,
+        "cache_read_per_m": 0.075
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "google/gemma-2-27b-it",
+      "provider": "google",
+      "name": "Google: Gemma 2 27B",
+      "tier": "cheap",
+      "context_length": 8192,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.65,
+        "completion_per_m": 0.65,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4o",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4o",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 2.5,
+        "completion_per_m": 10.0,
+        "cache_read_per_m": 1.25
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4o-2024-05-13",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4o (2024-05-13)",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+image+file->text",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 15.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 24.2,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mixtral-8x22b-instruct",
+      "provider": "mistralai",
+      "name": "Mistral: Mixtral 8x22B Instruct",
+      "tier": "frontier",
+      "context_length": 65536,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "microsoft/wizardlm-2-8x22b",
+      "provider": "microsoft",
+      "name": "WizardLM-2 8x22B",
+      "tier": "cheap",
+      "context_length": 65535,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.62,
+        "completion_per_m": 0.62,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4-turbo",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4 Turbo",
+      "tier": "ultra",
+      "context_length": 128000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 21.5,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "anthropic/claude-3-haiku",
+      "provider": "anthropic",
+      "name": "Anthropic: Claude 3 Haiku",
+      "tier": "mid",
+      "context_length": 200000,
+      "modality": "text+image->text",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.25,
+        "cache_read_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mistralai/mistral-large",
+      "provider": "mistralai",
+      "name": "Mistral Large",
+      "tier": "frontier",
+      "context_length": 128000,
+      "modality": "text+file->text",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 6.0,
+        "cache_read_per_m": 0.2
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-0613",
+      "provider": "openai",
+      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
+      "tier": "mid",
+      "context_length": 4095,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.0,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4-turbo-preview",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4 Turbo Preview",
+      "tier": "ultra",
+      "context_length": 128000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 30.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openrouter/auto",
+      "provider": "openrouter",
+      "name": "Auto Router",
+      "tier": "cheap",
+      "context_length": 2000000,
+      "modality": "text+image+file+audio+video->text+image",
+      "pricing": {
+        "prompt_per_m": -1000000.0,
+        "completion_per_m": -1000000.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-instruct",
+      "provider": "openai",
+      "name": "OpenAI: GPT-3.5 Turbo Instruct",
+      "tier": "mid",
+      "context_length": 4095,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 2.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-16k",
+      "provider": "openai",
+      "name": "OpenAI: GPT-3.5 Turbo 16k",
+      "tier": "mid",
+      "context_length": 16385,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 4.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "mancer/weaver",
+      "provider": "mancer",
+      "name": "Mancer: Weaver (alpha)",
+      "tier": "cheap",
+      "context_length": 8000,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 0.75,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "undi95/remm-slerp-l2-13b",
+      "provider": "undi95",
+      "name": "ReMM SLERP 13B",
+      "tier": "cheap",
+      "context_length": 6144,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.45,
+        "completion_per_m": 0.65,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "gryphe/mythomax-l2-13b",
+      "provider": "gryphe",
+      "name": "MythoMax 13B",
+      "tier": "cheap",
+      "context_length": 8192,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.06,
+        "completion_per_m": 0.06,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 0,
+        "coding_index": 0,
+        "agentic_index": 0
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-3.5-turbo",
+      "provider": "openai",
+      "name": "OpenAI: GPT-3.5 Turbo",
+      "tier": "mid",
+      "context_length": 16385,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 0.5,
+        "completion_per_m": 1.5,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 10.7,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "openai/gpt-4",
+      "provider": "openai",
+      "name": "OpenAI: GPT-4",
+      "tier": "ultra",
+      "context_length": 8191,
+      "modality": "text->text",
+      "pricing": {
+        "prompt_per_m": 30.0,
+        "completion_per_m": 60.0,
+        "cache_read_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 13.1,
+        "agentic_index": null
+      },
+      "strength": 0.0
+    },
+    {
+      "id": "ollama/llama3.2",
+      "provider": "local",
+      "name": "ollama/llama3.2",
+      "tier": "free",
+      "context_length": 8192,
+      "modality": "text",
+      "pricing": {
+        "prompt_per_m": 0,
+        "completion_per_m": 0
+      },
+      "benchmarks": {
+        "intelligence_index": 30.0,
+        "coding_index": 35.0,
+        "agentic_index": 20.0
+      },
+      "strength": 0.3
+    },
+    {
+      "id": "ds4-local",
+      "provider": "local",
+      "name": "ds4-local",
+      "tier": "free",
+      "context_length": 128000,
+      "modality": "text",
+      "pricing": {
+        "prompt_per_m": 0,
+        "completion_per_m": 0
+      },
+      "benchmarks": {
+        "intelligence_index": 38.0,
+        "coding_index": 52.0,
+        "agentic_index": 28.0
+      },
+      "strength": 0.38
+    }
+  ]
+}

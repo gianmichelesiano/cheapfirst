@@ -25,6 +25,15 @@ server = [
     "fastapi>=0.100.0",
     "uvicorn>=0.20.0",
 ]
+dev = [
+    "pytest>=8.0",
+]
 
 [project.scripts]
 cheapfirst = "cheapfirst.cli.main:main"
+
+[tool.pytest.ini_options]
+markers = [
+    "spec: comportamento obiettivo del routing, atteso rosso finche' non implementato",
+]
+
