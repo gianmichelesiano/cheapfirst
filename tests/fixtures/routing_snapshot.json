@@ -1,1202 +1,1202 @@
 {
-  "adv-001": {
-    "confidence": 0.65,
-    "difficulty": 0.574,
-    "model": "tencent/hy3-preview",
-    "task": "creative"
-  },
-  "adv-002": {
-    "confidence": 0.4,
-    "difficulty": 0.227,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-003": {
-    "confidence": 0.65,
-    "difficulty": 0.528,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-004": {
-    "confidence": 0.65,
-    "difficulty": 0.477,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-005": {
-    "confidence": 0.85,
-    "difficulty": 0.705,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "adv-006": {
-    "confidence": 0.4,
-    "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-007": {
-    "confidence": 0.55,
-    "difficulty": 0.347,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-008": {
-    "confidence": 0.8,
-    "difficulty": 0.276,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "adv-009": {
-    "confidence": 0.85,
-    "difficulty": 0.551,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "adv-010": {
-    "confidence": 0.85,
-    "difficulty": 0.223,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
-  },
-  "adv-011": {
-    "confidence": 0.85,
-    "difficulty": 0.228,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
-  },
-  "adv-012": {
-    "confidence": 0.85,
-    "difficulty": 0.229,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
-  },
-  "adv-013": {
-    "confidence": 0.4,
-    "difficulty": 0.274,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-014": {
-    "confidence": 0.4,
-    "difficulty": 0.221,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-015": {
-    "confidence": 0.4,
-    "difficulty": 0.22,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-016": {
-    "confidence": 0.4,
-    "difficulty": 0.27,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-017": {
-    "confidence": 0.9,
-    "difficulty": 0.565,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-018": {
-    "confidence": 0.4,
-    "difficulty": 0.28,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-019": {
-    "confidence": 0.9,
-    "difficulty": 0.687,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-020": {
-    "confidence": 0.4,
-    "difficulty": 0.281,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-021": {
-    "confidence": 0.4,
-    "difficulty": 0.496,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-022": {
-    "confidence": 0.9,
-    "difficulty": 0.514,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-023": {
-    "confidence": 0.8,
-    "difficulty": 0.227,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "adv-024": {
-    "confidence": 0.9,
-    "difficulty": 0.457,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-025": {
-    "confidence": 0.65,
-    "difficulty": 0.636,
-    "model": "tencent/hy3-preview",
-    "task": "creative"
-  },
-  "adv-026": {
-    "confidence": 0.4,
-    "difficulty": 0.282,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-027": {
-    "confidence": 0.9,
-    "difficulty": 0.448,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-028": {
-    "confidence": 0.9,
-    "difficulty": 0.65,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "adv-029": {
-    "confidence": 0.85,
-    "difficulty": 0.712,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "adv-030": {
-    "confidence": 0.8,
-    "difficulty": 0.283,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "adv-031": {
-    "confidence": 0.4,
-    "difficulty": 0.23,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-032": {
-    "confidence": 0.4,
-    "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-033": {
-    "confidence": 0.55,
-    "difficulty": 0.619,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-034": {
-    "confidence": 0.85,
-    "difficulty": 0.657,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "adv-035": {
-    "confidence": 0.55,
-    "difficulty": 0.349,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-036": {
-    "confidence": 0.85,
-    "difficulty": 0.45,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
-  },
-  "adv-037": {
-    "confidence": 0.85,
-    "difficulty": 0.45,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
-  },
-  "adv-038": {
-    "confidence": 0.4,
-    "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-039": {
-    "confidence": 0.4,
-    "difficulty": 0.221,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "adv-040": {
-    "confidence": 0.4,
-    "difficulty": 0.445,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "amb-001": {
-    "confidence": 0.4,
-    "difficulty": 0.326,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-002": {
-    "confidence": 0.4,
-    "difficulty": 0.273,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-003": {
-    "confidence": 0.4,
-    "difficulty": 0.222,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-004": {
-    "confidence": 0.4,
-    "difficulty": 0.223,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-005": {
-    "confidence": 0.4,
-    "difficulty": 0.271,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-006": {
-    "confidence": 0.4,
-    "difficulty": 0.225,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-007": {
-    "confidence": 0.55,
-    "difficulty": 0.341,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-008": {
-    "confidence": 0.4,
-    "difficulty": 0.271,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-009": {
-    "confidence": 0.4,
-    "difficulty": 0.272,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "amb-010": {
-    "confidence": 0.4,
-    "difficulty": 0.221,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-001": {
-    "confidence": 0.4,
-    "difficulty": 0.289,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-002": {
-    "confidence": 0.85,
-    "difficulty": 0.56,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "cap-003": {
-    "confidence": 0.65,
-    "difficulty": 0.533,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-004": {
-    "confidence": 0.4,
-    "difficulty": 0.23,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-005": {
-    "confidence": 0.4,
-    "difficulty": 0.233,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-006": {
-    "confidence": 0.8,
-    "difficulty": 0.274,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "cap-007": {
-    "confidence": 0.4,
-    "difficulty": 0.277,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-008": {
-    "confidence": 0.8,
-    "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "cap-009": {
-    "confidence": 0.4,
-    "difficulty": 0.28,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-010": {
-    "confidence": 0.8,
-    "difficulty": 0.276,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "cap-011": {
-    "confidence": 0.4,
-    "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-012": {
-    "confidence": 0.8,
-    "difficulty": 0.395,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "cap-013": {
-    "confidence": 0.4,
-    "difficulty": 0.228,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-014": {
-    "confidence": 0.4,
-    "difficulty": 0.278,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-015": {
-    "confidence": 0.55,
-    "difficulty": 0.398,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-016": {
-    "confidence": 0.8,
-    "difficulty": 0.28,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "cap-017": {
-    "confidence": 0.4,
-    "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-018": {
-    "confidence": 0.4,
-    "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-019": {
-    "confidence": 0.4,
-    "difficulty": 0.225,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-020": {
-    "confidence": 0.85,
-    "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
-  },
-  "cap-021": {
-    "confidence": 0.4,
-    "difficulty": 0.282,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-022": {
-    "confidence": 0.4,
-    "difficulty": 0.227,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-023": {
-    "confidence": 0.4,
-    "difficulty": 0.279,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-024": {
-    "confidence": 0.4,
-    "difficulty": 0.282,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "cap-025": {
-    "confidence": 0.4,
-    "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-001": {
-    "confidence": 0.8,
-    "difficulty": 0.533,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "front-002": {
-    "confidence": 0.85,
-    "difficulty": 0.715,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "front-003": {
-    "confidence": 0.75,
-    "difficulty": 0.865,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "front-004": {
-    "confidence": 0.55,
-    "difficulty": 0.628,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "front-005": {
-    "confidence": 0.4,
-    "difficulty": 0.25,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-006": {
-    "confidence": 0.8,
-    "difficulty": 0.346,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "front-007": {
-    "confidence": 0.65,
-    "difficulty": 0.662,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-008": {
-    "confidence": 0.85,
-    "difficulty": 0.971,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "front-009": {
-    "confidence": 0.85,
-    "difficulty": 0.884,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "front-010": {
-    "confidence": 0.4,
-    "difficulty": 0.296,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-011": {
-    "confidence": 0.4,
-    "difficulty": 0.243,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-012": {
-    "confidence": 0.55,
-    "difficulty": 0.528,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-013": {
-    "confidence": 0.8,
-    "difficulty": 0.292,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "front-014": {
-    "confidence": 0.55,
-    "difficulty": 0.626,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "front-015": {
-    "confidence": 0.65,
-    "difficulty": 0.692,
-    "model": "tencent/hy3-preview",
-    "task": "creative"
-  },
-  "front-016": {
-    "confidence": 0.4,
-    "difficulty": 0.241,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-017": {
-    "confidence": 0.55,
-    "difficulty": 0.411,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "front-018": {
-    "confidence": 0.75,
-    "difficulty": 0.868,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "front-019": {
-    "confidence": 0.9,
-    "difficulty": 0.993,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "front-020": {
-    "confidence": 0.4,
-    "difficulty": 0.296,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-001": {
-    "confidence": 0.85,
-    "difficulty": 1.0,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "hard-002": {
-    "confidence": 0.4,
-    "difficulty": 0.242,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-003": {
-    "confidence": 0.4,
-    "difficulty": 0.343,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-004": {
-    "confidence": 0.55,
-    "difficulty": 0.411,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-005": {
-    "confidence": 0.4,
-    "difficulty": 0.24,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-006": {
-    "confidence": 0.55,
-    "difficulty": 0.749,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-007": {
-    "confidence": 0.85,
-    "difficulty": 0.765,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "hard-008": {
-    "confidence": 0.4,
-    "difficulty": 0.229,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-009": {
-    "confidence": 0.55,
-    "difficulty": 0.364,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-010": {
-    "confidence": 0.8,
-    "difficulty": 0.639,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "hard-011": {
-    "confidence": 0.4,
-    "difficulty": 0.237,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-012": {
-    "confidence": 0.8,
-    "difficulty": 0.69,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "hard-013": {
-    "confidence": 0.9,
-    "difficulty": 0.584,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-014": {
-    "confidence": 0.4,
-    "difficulty": 0.285,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-015": {
-    "confidence": 0.4,
-    "difficulty": 0.291,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-016": {
-    "confidence": 0.9,
-    "difficulty": 0.58,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-017": {
-    "confidence": 0.4,
-    "difficulty": 0.244,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-018": {
-    "confidence": 0.8,
-    "difficulty": 0.642,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "hard-019": {
-    "confidence": 0.4,
-    "difficulty": 0.242,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-020": {
-    "confidence": 0.65,
-    "difficulty": 0.787,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-021": {
-    "confidence": 0.9,
-    "difficulty": 0.957,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-022": {
-    "confidence": 0.4,
-    "difficulty": 0.341,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-023": {
-    "confidence": 0.9,
-    "difficulty": 0.664,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-024": {
-    "confidence": 0.4,
-    "difficulty": 0.241,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-025": {
-    "confidence": 0.9,
-    "difficulty": 0.558,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-026": {
-    "confidence": 0.4,
-    "difficulty": 0.288,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-027": {
-    "confidence": 0.65,
-    "difficulty": 0.635,
-    "model": "tencent/hy3-preview",
-    "task": "creative"
-  },
-  "hard-028": {
-    "confidence": 0.4,
-    "difficulty": 0.291,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "hard-029": {
-    "confidence": 0.9,
-    "difficulty": 0.578,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "hard-030": {
-    "confidence": 0.65,
-    "difficulty": 0.759,
-    "model": "tencent/hy3-preview",
-    "task": "creative"
-  },
-  "mod-001": {
-    "confidence": 0.9,
-    "difficulty": 0.622,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-002": {
-    "confidence": 0.4,
-    "difficulty": 0.452,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-003": {
-    "confidence": 0.9,
-    "difficulty": 0.751,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-004": {
-    "confidence": 0.9,
-    "difficulty": 0.508,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-005": {
-    "confidence": 0.9,
-    "difficulty": 0.632,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-006": {
-    "confidence": 0.55,
-    "difficulty": 0.353,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-007": {
-    "confidence": 0.4,
-    "difficulty": 0.233,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-008": {
-    "confidence": 0.9,
-    "difficulty": 0.506,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-009": {
-    "confidence": 0.9,
-    "difficulty": 0.786,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-010": {
-    "confidence": 0.8,
-    "difficulty": 0.286,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "mod-011": {
-    "confidence": 0.4,
-    "difficulty": 0.281,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-012": {
-    "confidence": 0.85,
-    "difficulty": 0.68,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "mod-013": {
-    "confidence": 0.85,
-    "difficulty": 0.507,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "mod-014": {
-    "confidence": 0.8,
-    "difficulty": 0.524,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "mod-015": {
-    "confidence": 0.4,
-    "difficulty": 0.233,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-016": {
-    "confidence": 0.8,
-    "difficulty": 0.328,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "mod-017": {
-    "confidence": 0.85,
-    "difficulty": 0.561,
-    "model": "tencent/hy3-preview",
-    "task": "math"
-  },
-  "mod-018": {
-    "confidence": 0.4,
-    "difficulty": 0.232,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-019": {
-    "confidence": 0.4,
-    "difficulty": 0.235,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-020": {
-    "confidence": 0.4,
-    "difficulty": 0.23,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-021": {
-    "confidence": 0.4,
-    "difficulty": 0.232,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-022": {
-    "confidence": 0.9,
-    "difficulty": 0.571,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-023": {
-    "confidence": 0.55,
-    "difficulty": 0.742,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-024": {
-    "confidence": 0.55,
-    "difficulty": 0.4,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-025": {
-    "confidence": 0.4,
-    "difficulty": 0.232,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-026": {
-    "confidence": 0.9,
-    "difficulty": 0.458,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-027": {
-    "confidence": 0.4,
-    "difficulty": 0.234,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-028": {
-    "confidence": 0.4,
-    "difficulty": 0.235,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-029": {
-    "confidence": 0.9,
-    "difficulty": 0.678,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-030": {
-    "confidence": 0.55,
-    "difficulty": 0.349,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-031": {
-    "confidence": 0.4,
-    "difficulty": 0.232,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
-  "mod-032": {
-    "confidence": 0.9,
-    "difficulty": 0.456,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-033": {
-    "confidence": 0.8,
-    "difficulty": 0.283,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
-  },
-  "mod-034": {
-    "confidence": 0.9,
-    "difficulty": 0.654,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
-  },
-  "mod-035": {
-    "confidence": 0.4,
-    "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "general"
-  },
   "triv-001": {
-    "confidence": 0.8,
+    "task": "factual",
     "difficulty": 0.274,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
   },
   "triv-002": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.274,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-003": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-004": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.274,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-005": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.276,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-006": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-007": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-008": {
-    "confidence": 0.85,
+    "task": "translation",
     "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
   },
   "triv-009": {
-    "confidence": 0.85,
+    "task": "translation",
     "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
   },
   "triv-010": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.225,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-011": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-012": {
-    "confidence": 0.85,
+    "task": "translation",
     "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "translation"
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
   },
   "triv-013": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.224,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-014": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-015": {
-    "confidence": 0.8,
+    "task": "factual",
     "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
   },
   "triv-016": {
-    "confidence": 0.8,
+    "task": "factual",
     "difficulty": 0.324,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
   },
   "triv-017": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.275,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-018": {
-    "confidence": 0.65,
+    "task": "general",
     "difficulty": 0.429,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.65,
+    "model": "deepseek/deepseek-v4-pro"
   },
   "triv-019": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.23,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-020": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.228,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-021": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.232,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-022": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.232,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-023": {
-    "confidence": 0.55,
+    "task": "general",
     "difficulty": 0.346,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
   },
   "triv-024": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-025": {
-    "confidence": 0.55,
+    "task": "general",
     "difficulty": 0.35,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
   },
   "triv-026": {
-    "confidence": 0.55,
+    "task": "code",
     "difficulty": 0.566,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
   },
   "triv-027": {
-    "confidence": 0.4,
+    "task": "code",
     "difficulty": 0.448,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-028": {
-    "confidence": 0.9,
+    "task": "code",
     "difficulty": 0.448,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
   },
   "triv-029": {
-    "confidence": 0.4,
+    "task": "code",
     "difficulty": 0.447,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-030": {
-    "confidence": 0.4,
+    "task": "code",
     "difficulty": 0.448,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-031": {
-    "confidence": 0.4,
+    "task": "code",
     "difficulty": 0.447,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-032": {
-    "confidence": 0.9,
+    "task": "code",
     "difficulty": 0.503,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
   },
   "triv-033": {
-    "confidence": 0.9,
+    "task": "code",
     "difficulty": 0.499,
-    "model": "cohere/north-mini-code:free",
-    "task": "code"
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
   },
   "triv-034": {
-    "confidence": 0.8,
+    "task": "factual",
     "difficulty": 0.272,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
   },
   "triv-035": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.273,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-036": {
-    "confidence": 0.55,
+    "task": "general",
     "difficulty": 0.345,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
   },
   "triv-037": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.226,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-038": {
-    "confidence": 0.8,
+    "task": "factual",
     "difficulty": 0.228,
-    "model": "tencent/hy3-preview",
-    "task": "factual"
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
   },
   "triv-039": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.222,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   },
   "triv-040": {
-    "confidence": 0.4,
+    "task": "general",
     "difficulty": 0.222,
-    "model": "tencent/hy3-preview",
-    "task": "general"
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-001": {
+    "task": "code",
+    "difficulty": 0.622,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-002": {
+    "task": "code",
+    "difficulty": 0.452,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-003": {
+    "task": "code",
+    "difficulty": 0.751,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-004": {
+    "task": "code",
+    "difficulty": 0.508,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-005": {
+    "task": "code",
+    "difficulty": 0.632,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-006": {
+    "task": "general",
+    "difficulty": 0.353,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-007": {
+    "task": "general",
+    "difficulty": 0.233,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-008": {
+    "task": "code",
+    "difficulty": 0.506,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-009": {
+    "task": "code",
+    "difficulty": 0.786,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-010": {
+    "task": "factual",
+    "difficulty": 0.286,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-011": {
+    "task": "general",
+    "difficulty": 0.281,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-012": {
+    "task": "math",
+    "difficulty": 0.68,
+    "confidence": 0.85,
+    "model": "moonshotai/kimi-k3"
+  },
+  "mod-013": {
+    "task": "math",
+    "difficulty": 0.507,
+    "confidence": 0.85,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "mod-014": {
+    "task": "factual",
+    "difficulty": 0.524,
+    "confidence": 0.8,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "mod-015": {
+    "task": "general",
+    "difficulty": 0.233,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-016": {
+    "task": "factual",
+    "difficulty": 0.328,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-017": {
+    "task": "math",
+    "difficulty": 0.561,
+    "confidence": 0.85,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "mod-018": {
+    "task": "general",
+    "difficulty": 0.232,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-019": {
+    "task": "general",
+    "difficulty": 0.235,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-020": {
+    "task": "general",
+    "difficulty": 0.23,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-021": {
+    "task": "general",
+    "difficulty": 0.232,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-022": {
+    "task": "code",
+    "difficulty": 0.571,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-023": {
+    "task": "code",
+    "difficulty": 0.742,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-024": {
+    "task": "general",
+    "difficulty": 0.4,
+    "confidence": 0.55,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "mod-025": {
+    "task": "general",
+    "difficulty": 0.232,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-026": {
+    "task": "code",
+    "difficulty": 0.458,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-027": {
+    "task": "general",
+    "difficulty": 0.234,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-028": {
+    "task": "general",
+    "difficulty": 0.235,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-029": {
+    "task": "code",
+    "difficulty": 0.678,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-030": {
+    "task": "general",
+    "difficulty": 0.349,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-031": {
+    "task": "general",
+    "difficulty": 0.232,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-032": {
+    "task": "code",
+    "difficulty": 0.456,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-033": {
+    "task": "factual",
+    "difficulty": 0.283,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-034": {
+    "task": "code",
+    "difficulty": 0.654,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "mod-035": {
+    "task": "general",
+    "difficulty": 0.224,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-001": {
+    "task": "math",
+    "difficulty": 1.0,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-002": {
+    "task": "general",
+    "difficulty": 0.242,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-003": {
+    "task": "general",
+    "difficulty": 0.343,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-004": {
+    "task": "general",
+    "difficulty": 0.411,
+    "confidence": 0.55,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "hard-005": {
+    "task": "general",
+    "difficulty": 0.24,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-006": {
+    "task": "code",
+    "difficulty": 0.749,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-007": {
+    "task": "math",
+    "difficulty": 0.765,
+    "confidence": 0.85,
+    "model": "moonshotai/kimi-k3"
+  },
+  "hard-008": {
+    "task": "general",
+    "difficulty": 0.229,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-009": {
+    "task": "general",
+    "difficulty": 0.364,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-010": {
+    "task": "factual",
+    "difficulty": 0.639,
+    "confidence": 0.8,
+    "model": "moonshotai/kimi-k3"
+  },
+  "hard-011": {
+    "task": "general",
+    "difficulty": 0.237,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-012": {
+    "task": "factual",
+    "difficulty": 0.69,
+    "confidence": 0.8,
+    "model": "moonshotai/kimi-k3"
+  },
+  "hard-013": {
+    "task": "code",
+    "difficulty": 0.584,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-014": {
+    "task": "general",
+    "difficulty": 0.285,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-015": {
+    "task": "general",
+    "difficulty": 0.291,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-016": {
+    "task": "code",
+    "difficulty": 0.58,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-017": {
+    "task": "general",
+    "difficulty": 0.244,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-018": {
+    "task": "factual",
+    "difficulty": 0.642,
+    "confidence": 0.8,
+    "model": "moonshotai/kimi-k3"
+  },
+  "hard-019": {
+    "task": "general",
+    "difficulty": 0.242,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-020": {
+    "task": "general",
+    "difficulty": 0.787,
+    "confidence": 0.65,
+    "model": "moonshotai/kimi-k3"
+  },
+  "hard-021": {
+    "task": "code",
+    "difficulty": 0.957,
+    "confidence": 0.9,
+    "model": "qwen/qwen3.7-max"
+  },
+  "hard-022": {
+    "task": "general",
+    "difficulty": 0.341,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-023": {
+    "task": "code",
+    "difficulty": 0.664,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-024": {
+    "task": "general",
+    "difficulty": 0.241,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-025": {
+    "task": "code",
+    "difficulty": 0.558,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-026": {
+    "task": "general",
+    "difficulty": 0.288,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-027": {
+    "task": "creative",
+    "difficulty": 0.635,
+    "confidence": 0.65,
+    "model": "moonshotai/kimi-k3"
+  },
+  "hard-028": {
+    "task": "general",
+    "difficulty": 0.291,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-029": {
+    "task": "code",
+    "difficulty": 0.578,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "hard-030": {
+    "task": "creative",
+    "difficulty": 0.759,
+    "confidence": 0.65,
+    "model": "moonshotai/kimi-k3"
+  },
+  "front-001": {
+    "task": "factual",
+    "difficulty": 0.533,
+    "confidence": 0.8,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "front-002": {
+    "task": "math",
+    "difficulty": 0.715,
+    "confidence": 0.85,
+    "model": "moonshotai/kimi-k3"
+  },
+  "front-003": {
+    "task": "code",
+    "difficulty": 0.865,
+    "confidence": 0.75,
+    "model": "qwen/qwen3.7-max"
+  },
+  "front-004": {
+    "task": "code",
+    "difficulty": 0.628,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "front-005": {
+    "task": "general",
+    "difficulty": 0.25,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "front-006": {
+    "task": "factual",
+    "difficulty": 0.346,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "front-007": {
+    "task": "general",
+    "difficulty": 0.662,
+    "confidence": 0.65,
+    "model": "moonshotai/kimi-k3"
+  },
+  "front-008": {
+    "task": "math",
+    "difficulty": 0.971,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "front-009": {
+    "task": "math",
+    "difficulty": 0.884,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "front-010": {
+    "task": "general",
+    "difficulty": 0.296,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "front-011": {
+    "task": "general",
+    "difficulty": 0.243,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "front-012": {
+    "task": "general",
+    "difficulty": 0.528,
+    "confidence": 0.55,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "front-013": {
+    "task": "factual",
+    "difficulty": 0.292,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "front-014": {
+    "task": "code",
+    "difficulty": 0.626,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "front-015": {
+    "task": "creative",
+    "difficulty": 0.692,
+    "confidence": 0.65,
+    "model": "moonshotai/kimi-k3"
+  },
+  "front-016": {
+    "task": "general",
+    "difficulty": 0.241,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "front-017": {
+    "task": "general",
+    "difficulty": 0.411,
+    "confidence": 0.55,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "front-018": {
+    "task": "code",
+    "difficulty": 0.868,
+    "confidence": 0.75,
+    "model": "qwen/qwen3.7-max"
+  },
+  "front-019": {
+    "task": "code",
+    "difficulty": 0.993,
+    "confidence": 0.9,
+    "model": "qwen/qwen3.7-max"
+  },
+  "front-020": {
+    "task": "general",
+    "difficulty": 0.296,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-001": {
+    "task": "creative",
+    "difficulty": 0.574,
+    "confidence": 0.65,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-002": {
+    "task": "general",
+    "difficulty": 0.227,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-003": {
+    "task": "general",
+    "difficulty": 0.528,
+    "confidence": 0.65,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-004": {
+    "task": "general",
+    "difficulty": 0.477,
+    "confidence": 0.65,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-005": {
+    "task": "math",
+    "difficulty": 0.705,
+    "confidence": 0.85,
+    "model": "moonshotai/kimi-k3"
+  },
+  "adv-006": {
+    "task": "general",
+    "difficulty": 0.226,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-007": {
+    "task": "general",
+    "difficulty": 0.347,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-008": {
+    "task": "factual",
+    "difficulty": 0.276,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-009": {
+    "task": "math",
+    "difficulty": 0.551,
+    "confidence": 0.85,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-010": {
+    "task": "translation",
+    "difficulty": 0.223,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-011": {
+    "task": "translation",
+    "difficulty": 0.228,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-012": {
+    "task": "translation",
+    "difficulty": 0.229,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-013": {
+    "task": "general",
+    "difficulty": 0.274,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-014": {
+    "task": "general",
+    "difficulty": 0.221,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-015": {
+    "task": "general",
+    "difficulty": 0.22,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-016": {
+    "task": "general",
+    "difficulty": 0.27,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-017": {
+    "task": "code",
+    "difficulty": 0.565,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-018": {
+    "task": "general",
+    "difficulty": 0.28,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-019": {
+    "task": "code",
+    "difficulty": 0.687,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-020": {
+    "task": "general",
+    "difficulty": 0.281,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-021": {
+    "task": "code",
+    "difficulty": 0.496,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-022": {
+    "task": "code",
+    "difficulty": 0.514,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-023": {
+    "task": "factual",
+    "difficulty": 0.227,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-024": {
+    "task": "code",
+    "difficulty": 0.457,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-025": {
+    "task": "creative",
+    "difficulty": 0.636,
+    "confidence": 0.65,
+    "model": "moonshotai/kimi-k3"
+  },
+  "adv-026": {
+    "task": "general",
+    "difficulty": 0.282,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-027": {
+    "task": "code",
+    "difficulty": 0.448,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-028": {
+    "task": "code",
+    "difficulty": 0.65,
+    "confidence": 0.9,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-029": {
+    "task": "math",
+    "difficulty": 0.712,
+    "confidence": 0.85,
+    "model": "moonshotai/kimi-k3"
+  },
+  "adv-030": {
+    "task": "factual",
+    "difficulty": 0.283,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-031": {
+    "task": "general",
+    "difficulty": 0.23,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-032": {
+    "task": "general",
+    "difficulty": 0.226,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-033": {
+    "task": "general",
+    "difficulty": 0.619,
+    "confidence": 0.55,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-034": {
+    "task": "math",
+    "difficulty": 0.657,
+    "confidence": 0.85,
+    "model": "moonshotai/kimi-k3"
+  },
+  "adv-035": {
+    "task": "general",
+    "difficulty": 0.349,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-036": {
+    "task": "translation",
+    "difficulty": 0.45,
+    "confidence": 0.85,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-037": {
+    "task": "translation",
+    "difficulty": 0.45,
+    "confidence": 0.85,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "adv-038": {
+    "task": "general",
+    "difficulty": 0.275,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-039": {
+    "task": "general",
+    "difficulty": 0.221,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "adv-040": {
+    "task": "code",
+    "difficulty": 0.445,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-001": {
+    "task": "general",
+    "difficulty": 0.289,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-002": {
+    "task": "math",
+    "difficulty": 0.56,
+    "confidence": 0.85,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "cap-003": {
+    "task": "general",
+    "difficulty": 0.533,
+    "confidence": 0.65,
+    "model": "deepseek/deepseek-v4-pro"
+  },
+  "cap-004": {
+    "task": "general",
+    "difficulty": 0.23,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-005": {
+    "task": "general",
+    "difficulty": 0.233,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-006": {
+    "task": "factual",
+    "difficulty": 0.274,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-007": {
+    "task": "general",
+    "difficulty": 0.277,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-008": {
+    "task": "factual",
+    "difficulty": 0.275,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-009": {
+    "task": "general",
+    "difficulty": 0.28,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-010": {
+    "task": "factual",
+    "difficulty": 0.276,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-011": {
+    "task": "general",
+    "difficulty": 0.275,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-012": {
+    "task": "factual",
+    "difficulty": 0.395,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-013": {
+    "task": "general",
+    "difficulty": 0.228,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-014": {
+    "task": "general",
+    "difficulty": 0.278,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-015": {
+    "task": "general",
+    "difficulty": 0.398,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-016": {
+    "task": "factual",
+    "difficulty": 0.28,
+    "confidence": 0.8,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-017": {
+    "task": "general",
+    "difficulty": 0.226,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-018": {
+    "task": "general",
+    "difficulty": 0.226,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-019": {
+    "task": "general",
+    "difficulty": 0.225,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-020": {
+    "task": "translation",
+    "difficulty": 0.226,
+    "confidence": 0.85,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-021": {
+    "task": "general",
+    "difficulty": 0.282,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-022": {
+    "task": "general",
+    "difficulty": 0.227,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-023": {
+    "task": "general",
+    "difficulty": 0.279,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-024": {
+    "task": "general",
+    "difficulty": 0.282,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "cap-025": {
+    "task": "general",
+    "difficulty": 0.224,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-001": {
+    "task": "general",
+    "difficulty": 0.326,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-002": {
+    "task": "general",
+    "difficulty": 0.273,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-003": {
+    "task": "general",
+    "difficulty": 0.222,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-004": {
+    "task": "general",
+    "difficulty": 0.223,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-005": {
+    "task": "general",
+    "difficulty": 0.271,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-006": {
+    "task": "general",
+    "difficulty": 0.225,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-007": {
+    "task": "general",
+    "difficulty": 0.341,
+    "confidence": 0.55,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-008": {
+    "task": "general",
+    "difficulty": 0.271,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-009": {
+    "task": "general",
+    "difficulty": 0.272,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
+  },
+  "amb-010": {
+    "task": "general",
+    "difficulty": 0.221,
+    "confidence": 0.4,
+    "model": "tencent/hy3-preview"
   }
 }

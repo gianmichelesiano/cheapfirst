@@ -1,4 +1,10 @@
-"""Motore di routing: filtra, ranka, decide, esegue escalation."""
+"""Motore di routing: filtra, ranka, decide, esegue escalation.
+
+Il routing segue questi passi:
+1. `_filter_competent`: esclude modelli con tier non adatto.
+2. `_rank`: applica quality floor in base alla difficoltà, poi sceglie il più economico.
+3. `route`: seleziona il primo modello e chiama l'executor.
+"""
 
 from .classifier import TaskSignature
 from .config import CheapConfig
@@ -34,6 +40,42 @@ TIER_BENCH_DEFAULTS = {
     "ultra": 70,
 }
 
+# Punti di ancoraggio per quality_floor(difficulty): step piecewise
+# Ogni difficoltà appartiene a più bande (BAND_RANGE si sovrappone).
+# Usiamo la banda con il floor PIÙ BASSO che copre la difficoltà,
+# per non escludere troppo e lasciare che il ranking scelga il cheapest.
+# Allineato con BAND_FLOOR nei test spec.
+QUALITY_FLOOR_STEPS = [
+    (0.25, 20.0),   # diff ≤ 0.25 → trivial → floor 20
+    (0.40, 30.0),   # diff ≤ 0.40 → easy → floor 30
+    (0.62, 42.0),   # diff ≤ 0.62 → moderate → floor 42
+    (0.85, 55.0),   # diff ≤ 0.85 → hard → floor 55
+    (1.00, 65.0),   # diff > 0.85 → frontier → floor 65
+]
+
+# Stima output token per tipo task
+OUTPUT_ESTIMATES = {
+    "code": 400,
+    "math": 300,
+    "analysis": 300,
+    "creative": 200,
+    "translation": 200,
+    "factual": 100,
+    "general": 100,
+}
+
+
+def quality_floor(difficulty: float) -> float:
+    """Calcola il quality floor per una data difficoltà.
+
+    Usa step piecewise allineato con BAND_FLOOR nei test spec:
+    ogni soglia di difficoltà attiva un floor minimo.
+    """
+    for threshold, floor in QUALITY_FLOOR_STEPS:
+        if difficulty <= threshold:
+            return floor
+    return QUALITY_FLOOR_STEPS[-1][1]
+
 
 class Router:
     """Decide quale modello usare per ogni richiesta."""
@@ -49,31 +91,41 @@ class Router:
         if not pool:
             return {"error": "Nessun provider attivo con API key valida", "success": False}
 
-        # 1. Filtra per competenza
+        # 1. Filtra per competenza (tier + capabilities)
         competent = self._filter_competent(pool, sig)
         if not competent:
             competent = pool  # fallback: usa tutto il pool
 
-        # 2. Ranka per task type
-        ranked, excluded_count = self._rank(competent, sig.task)
+        # 2. Ranka per task type con quality floor + cheapest
+        ranked, excluded_count = self._rank(competent, sig.task, sig.difficulty)
+        if not ranked:
+            # Fallback 1: riprova senza tier filter
+            ranked, excluded_count = self._rank(pool, sig.task, sig.difficulty)
+
+        if not ranked:
+            # Fallback 2: nessun modello supera il floor, prendi il migliore disponibile
+            pool_full = self.registry.get_active_pool(self.config.resolve_provider_keys())
+            ranked, excluded_count = self._rank(pool_full, sig.task, 0.0)  # floor=0
+        
         if not ranked:
             return {"error": "Nessun modello disponibile dopo il ranking", "success": False}
 
         top_model, top_score, top_cost, top_bench = ranked[0]
 
         # Build reason
+        floor = quality_floor(sig.difficulty)
         reason_parts = [
             f"task={sig.task}, difficulty={sig.difficulty:.2f}, "
-            f"confidence={sig.confidence:.2f}, best cost/benchmark ratio"
+            f"confidence={sig.confidence:.2f}, floor={floor:.1f}"
         ]
         if excluded_count:
-            reason_parts.append(f"{excluded_count} modelli esclusi: benchmark non disponibile")
+            reason_parts.append(f"{excluded_count} modelli esclusi: sotto floor o senza benchmark")
 
         if dry_run:
-            alternatives = [(m.id, round(s, 4)) for m, s, _, _ in ranked[1:4]]
+            alternatives = [(m.id, round(s, 8)) for m, s, _, _ in ranked[1:4]]
             return {
                 "model": top_model.id,
-                "score": round(top_score, 6),
+                "score": round(top_score, 8),
                 "cost_est": round(top_cost, 8),
                 "benchmark": top_bench,
                 "reason": ", ".join(reason_parts),
@@ -85,17 +137,13 @@ class Router:
         return self._execute_with_verify(ranked, messages, sig)
 
     def _filter_competent(self, pool: list[ModelSpec], sig: TaskSignature) -> list[ModelSpec]:
-        """Filtra i modelli competenti per questo task."""
-        routing = self.config.routing
-        min_score = routing.min_benchmark_score
-        bench_key = BENCHMARK_MAP.get(sig.task, "intelligence_index")
+        """Filtra i modelli per tier e capabilities.
 
+        NOTA: non filtra per benchmark score — quella logica è in _rank
+        sotto forma di quality floor.
+        """
         competent = []
         for m in pool:
-            bench = m.benchmarks.get(bench_key)
-            if bench is not None and bench < min_score:
-                continue
-
             # Tier check
             tier_ok = False
             for threshold, tiers in TIER_BY_DIFFICULTY:
@@ -109,14 +157,18 @@ class Router:
 
         return competent
 
-    def _rank(self, pool: list[ModelSpec], task_type: str) -> tuple[list[tuple], int]:
-        """Ranka i modelli per costo/benchmark. Più basso = meglio.
+    def _rank(self, pool: list[ModelSpec], task_type: str, difficulty: float) -> tuple[list[tuple], int]:
+        """Filtra per quality floor, poi ordina per costo (più economico = meglio).
 
         Restituisce (lista_rankata, numero_modelli_esclusi).
+        score = costo di completion (stesso valore di cost) per compatibilità.
         """
         policy = self.config.routing.unmeasured_policy
         bench_key = BENCHMARK_MAP.get(task_type, "intelligence_index")
-        est_out = 200  # stima output token
+        floor = quality_floor(difficulty)
+
+        # Output stimato per tipo task
+        est_out = OUTPUT_ESTIMATES.get(task_type, 200)
 
         ranked = []
         excluded = 0
@@ -134,17 +186,21 @@ class Router:
                     continue
 
             if bench <= 0:
-                bench = 0.1  # evita division by zero
+                bench = 0.1  # evita zero
+
+            # Quality floor: bench deve essere >= floor
+            if bench < floor:
+                excluded += 1
+                continue
 
             completion_price = m.pricing.get("completion_per_m", 0)
-            # Stima costo per questa richiesta
             cost = (completion_price * est_out) / 1_000_000
             cost = max(cost, 0.00001)  # minimo per evitare zero
 
-            score = cost / bench
-            ranked.append((m, score, cost, bench))
+            # score = costo (più economico = meglio) per compatibilità
+            ranked.append((m, cost, cost, bench))
 
-        ranked.sort(key=lambda x: x[1])
+        ranked.sort(key=lambda x: x[1])  # cheapest first
         return ranked, excluded
 
     def _execute_with_verify(
