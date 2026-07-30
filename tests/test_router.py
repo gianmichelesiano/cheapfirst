@@ -35,7 +35,7 @@ def test_router_competent_filter_code():
         ModelSpec(
             id="deepseek/test-pro",
             provider="deepseek",
-            tier="mid",
+            tier="cheap",
             pricing={"prompt_per_m": 1.00, "completion_per_m": 4.00},
             benchmarks={"coding_index": 38, "intelligence_index": 44},
         ),
@@ -46,7 +46,8 @@ def test_router_competent_filter_code():
     sig = classify([{"role": "user", "content": "Write a Python function"}])
     competent = router._filter_competent(models, sig)
 
-    # Entrambi hanno coding_index > 25, quindi entrambi passano
+    # _filter_competent ora non filtra per benchmark (solo tier)
+    # Entrambi sono tier cheap, difficulty < 0.33 → entrambi passano
     assert len(competent) == 2
 
 
@@ -72,10 +73,10 @@ def test_router_ranking_cheaper_wins():
     registry = _make_registry_direct(config, models)
     router = Router(config, registry)
 
-    ranked, _ = router._rank(models, "general")
+    ranked, _ = router._rank(models, "general", 0.0)
     assert len(ranked) >= 2
 
-    # Flash deve vincere: (0.6*200/1M)/40 = 0.000003 vs Pro: (4.0*200/1M)/44 = 0.000018
+    # Flash deve vincere: costo più basso (0.6*200/1M vs 4.0*200/1M)
     assert ranked[0][0].id == "deepseek/flash"
 
 
@@ -133,7 +134,7 @@ def test_router_rank_handles_none_benchmarks():
     router = Router(config, registry)
 
     # _filter_competent scarta tutti (tutti None), fallback = pool (tutti None)
-    ranked, excluded = router._rank(models, "general")
+    ranked, excluded = router._rank(models, "general", 0.0)
 
     # Con exclude: nessun modello ranked, entrambi esclusi
     assert len(ranked) == 0, "tutti i modelli con benchmark=None devono essere esclusi da _rank"
@@ -240,7 +241,7 @@ def test_router_unmeasured_impute_from_tier():
     router = Router(config, registry)
 
     # Con impute_from_tier, nessuno escluso — entrambi ricevono default dal tier
-    ranked, excluded = router._rank(models, "general")
+    ranked, excluded = router._rank(models, "general", 0.0)
     assert excluded == 0, "con impute_from_tier nessun modello deve essere escluso"
 
     # cheap ha bench=30, ultra ha bench=70
