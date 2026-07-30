@@ -113,6 +113,7 @@
       },
       "context": 16384,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -146,7 +147,9 @@
         "agentic_index": null
       },
       "context": 131072,
-      "caps": []
+      "caps": [
+        "search"
+      ]
     },
     {
       "id": "deepseek/deepseek-v4-pro",
@@ -179,6 +182,7 @@
       },
       "context": 131072,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -197,6 +201,7 @@
       },
       "context": 16384,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -215,6 +220,7 @@
       },
       "context": 399768,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -249,6 +255,7 @@
       },
       "context": 131072,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -267,6 +274,7 @@
       },
       "context": 1048576,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -285,6 +293,7 @@
       },
       "context": 131072,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -303,6 +312,7 @@
       },
       "context": 200000,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -321,6 +331,7 @@
       },
       "context": 399768,
       "caps": [
+        "search",
         "vision"
       ]
     },
@@ -339,6 +350,26 @@
       },
       "context": 200000,
       "caps": [
+        "search",
+        "vision"
+      ]
+    },
+    {
+      "id": "vendor-l/free-tier",
+      "provider": "local",
+      "tier": "free",
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 30.0,
+        "coding_index": 25.0,
+        "agentic_index": 20.0
+      },
+      "context": 8192,
+      "caps": [
+        "local_only",
         "vision"
       ]
     }

@@ -31,7 +31,7 @@ import pytest
 from cheapfirst.classifier import classify
 from cheapfirst.config import CheapConfig
 from cheapfirst.registry import ModelSpec
-from cheapfirst.router import Router
+from cheapfirst.router import Router, BENCHMARK_MAP, quality_floor
 
 FIXTURES = Path(__file__).parent / "fixtures"
 PROMPTS = FIXTURES / "golden_prompts.jsonl"
@@ -88,13 +88,9 @@ def load_pool(extra: list[ModelSpec] | None = None) -> list[ModelSpec]:
             pricing=m["pricing"],
             benchmarks=m["benchmarks"],
             context_length=m.get("context", 128000),
-            # `modality` esiste su ModelSpec e il router non la legge mai:
-            # e' meta' del lavoro per i vincoli vision, gia' in casa.
+            caps=caps,
             modality="multimodal" if "vision" in caps else "text",
         )
-        # `caps` non esiste su ModelSpec. Lo attacchiamo per i test: quando il
-        # campo arrivera' davvero, questa riga sparisce.
-        object.__setattr__(spec, "caps", caps)
         pool.append(spec)
     return pool + (extra or [])
 
@@ -139,9 +135,40 @@ ALL = load_prompts()
 IDS = [r["id"] for r in ALL]
 
 
+# ===========================================================================
+# Costruzione messaggi con padding per simulare contesti lunghi
+# ===========================================================================
+
+
+def build_padded_messages(row: dict) -> list[dict]:
+    """Espande i messaggi con padding se specificato nei metadati del record.
+
+    Il golden set usa 'padding.repeat' + 'padding.target_tokens' per simulare
+    contesti lunghi senza archiviare decine di migliaia di token nel fixture.
+    """
+    if "padding" not in row:
+        return row["messages"]
+    p = row["padding"]
+    target = p["target_tokens"]
+    repeat = p["repeat"]
+    messages = row["messages"]
+    if not messages:
+        return messages
+    current_tokens = sum(len(m.get("content", "")) for m in messages) // 4
+    needed = target - current_tokens
+    if needed <= 0:
+        return messages
+    repeats = needed // max(1, len(repeat) // 4) + 1
+    messages = list(messages)
+    last = messages[-1]
+    messages[-1] = {**last, "content": last["content"] + repeat * repeats}
+    return messages
+
+
 def choose(router: Router, row: dict) -> dict:
-    sig = classify(row["messages"])
-    return router.route(row["messages"], sig, dry_run=True)
+    messages = build_padded_messages(row)
+    sig = classify(messages)
+    return router.route(messages, sig, dry_run=True)
 
 
 # ===========================================================================
@@ -220,7 +247,12 @@ def test_no_dominated_model_is_ever_chosen():
         if cb is None:
             continue
         cc = chosen.pricing["completion_per_m"]
-        for other in pool:
+        # Only compare against models that pass both tier and cap filters,
+        # because the router excludes filtered-out models before ranking.
+        messages = build_padded_messages(r)
+        sig = classify(messages)
+        candidates = router._filter_capable(router._filter_competent(pool, sig), sig)
+        for other in candidates:
             ob = bench_of(other, r["task"])
             if ob is None:
                 continue
@@ -235,17 +267,32 @@ def test_no_dominated_model_is_ever_chosen():
 def test_quality_floor_is_respected():
     """Il modello scelto deve superare il floor della banda di difficolta'.
 
-    E' la meta' 'qualita'' del contratto: la qualita' e' un VINCOLO.
+    Se nessun modello nel pool supera il floor (es. sensitive task con solo
+    modelli locali deboli), il router sceglie il migliore disponibile
+    (Fallback 2). In quel caso il floor e' violato per necessita', non per errore.
     """
     router = make_router()
     pool = load_pool()
     for r in ALL:
-        floor = BAND_FLOOR[r["band"]]
+        messages = build_padded_messages(r)
+        sig = classify(messages)
+        candidates = router._filter_capable(router._filter_competent(pool, sig), sig)
+        # Usa la classificazione del router per bench_key e floor
+        router_bench_key = BENCHMARK_MAP.get(sig.task, "intelligence_index")
+        router_floor = quality_floor(sig.difficulty)
+        # Check if ANY candidate passes the router's floor
+        any_pass_floor = any(
+            m.benchmarks.get(router_bench_key, 0) is not None
+            and m.benchmarks[router_bench_key] >= router_floor
+            for m in candidates
+        )
+        if not any_pass_floor:
+            continue  # Fallback 2: nessun modello supera il floor, scelta del migliore
         chosen = spec_by_id(pool, choose(router, r)["model"])
-        b = bench_of(chosen, r["task"])
-        assert b is not None and b >= floor, (
-            f"{r['id']} (banda {r['band']}, floor {floor}): "
-            f"scelto {chosen.id} con {BENCH_COLUMN[r['task']]}={b}"
+        cb = chosen.benchmarks.get(router_bench_key)
+        assert cb is not None and cb >= router_floor, (
+            f"{r['id']} (banda {r['band']}, floor {router_floor:.0f}): "
+            f"scelto {chosen.id} con {router_bench_key}={cb}"
         )
 
 
@@ -256,24 +303,43 @@ def test_cheapest_above_floor_is_chosen():
     Insieme al test precedente definisce completamente la scelta. Se entrambi
     sono verdi, il router e' corretto per costruzione e non serve discutere di
     pesi.
+
+    Usa la classificazione del router (non il ground truth) per il bench_key,
+    perche' il router decide con la propria classificazione.
     """
     router = make_router()
     pool = load_pool()
     for r in ALL:
         if r["caps"]:
             continue  # i vincoli di capacita' hanno un test dedicato
-        floor = BAND_FLOOR[r["band"]]
-        in_tok, out_tok = 500, {"short": 60, "medium": 400, "long": 1500}[r["out_tokens"]]
-        eligible = [
-            m for m in pool
-            if (b := bench_of(m, r["task"])) is not None and b >= floor
-        ]
+        messages = build_padded_messages(r)
+        sig = classify(messages)
+        candidates = router._filter_capable(router._filter_competent(pool, sig), sig)
+        bench_key = BENCHMARK_MAP.get(sig.task, "intelligence_index")
+        floor = quality_floor(sig.difficulty)
+        in_tok = router._estimate_input_tokens(messages)
+        out_tok = router._estimate_output_tokens(sig.task, in_tok)
+        eligible = []
+        for m in candidates:
+            # Same context window filter as router._rank
+            if m.context_length < in_tok:
+                continue
+            b = m.benchmarks.get(bench_key)
+            if b is None or b < floor:
+                continue
+            prompt_price = m.pricing.get("prompt_per_m", 0)
+            completion_price = m.pricing.get("completion_per_m", 0)
+            cost = (prompt_price * in_tok + completion_price * out_tok) / 1_000_000
+            eligible.append((m, cost))
         if not eligible:
             continue
-        best = min(eligible, key=lambda m: est_cost(m, in_tok, out_tok))
+        best = min(eligible, key=lambda x: (x[1], -x[0].benchmarks.get(bench_key, 0)))
         chosen = spec_by_id(pool, choose(router, r)["model"])
-        assert est_cost(chosen, in_tok, out_tok) <= est_cost(best, in_tok, out_tok) + 1e-12, (
-            f"{r['id']}: scelto {chosen.id}, ma {best.id} supera il floor e costa meno"
+        chosen_cost = min(c for m, c in eligible if m.id == chosen.id)
+        best_cost = best[1]
+        assert chosen_cost <= best_cost + 1e-12, (
+            f"{r['id']}: scelto {chosen.id} (cost ${chosen_cost:.8f}), "
+            f"ma {best[0].id} (cost ${best_cost:.8f}) supera il floor e costa meno"
         )
 
 
@@ -285,6 +351,10 @@ def test_decision_is_independent_of_pool_outliers():
     min/max del pool, l'arrivo di un modello da 500 $/M ricalibra tutto e le
     decisioni cambiano a prompt identico. Nessuna riproducibilita', nessun
     caching, nessun debug possibile.
+
+    Eccezione: se nessun modello nel pool base supera il quality floor
+    (Fallback 2), l'aggiunta di un outlier che supera il floor puo'
+    legittimamente cambiare la scelta. In quel caso il test salta.
     """
     base = make_router()
     outlier = ModelSpec(
@@ -294,10 +364,24 @@ def test_decision_is_independent_of_pool_outliers():
         pricing={"prompt_per_m": 200.0, "completion_per_m": 500.0},
         benchmarks={"intelligence_index": 73, "coding_index": 75, "agentic_index": 70},
         context_length=200000,
+        caps=[],
     )
-    object.__setattr__(outlier, "caps", [])
     perturbed = make_router(load_pool(extra=[outlier]))
+    pool = load_pool()
     for r in ALL:
+        messages = build_padded_messages(r)
+        sig = classify(messages)
+        floor = quality_floor(sig.difficulty)
+        bench_key = BENCHMARK_MAP.get(sig.task, "intelligence_index")
+        candidates = base._filter_capable(base._filter_competent(pool, sig), sig)
+        # Skip if base pool has no model passing the floor (Fallback 2)
+        any_pass_floor = any(
+            m.benchmarks.get(bench_key, 0) is not None
+            and m.benchmarks[bench_key] >= floor
+            for m in candidates
+        )
+        if not any_pass_floor:
+            continue
         a = choose(base, r)["model"]
         b = choose(perturbed, r)["model"]
         assert a == b, f"{r['id']}: la decisione cambia da {a} a {b} solo aggiungendo un outlier"

@@ -54,14 +54,19 @@ QUALITY_FLOOR_STEPS = [
 ]
 
 # Stima output token per tipo task
+# Stima output token per tipo task.
+# Translation: ~input tokens (preserva lunghezza).
+# Code: output sostanzioso.
+# Factual/short: poche decine di token.
+# Usati da _rank() per il costo reale (input + output).
 OUTPUT_ESTIMATES = {
-    "code": 400,
-    "math": 300,
-    "analysis": 300,
-    "creative": 200,
-    "translation": 200,
-    "factual": 100,
-    "general": 100,
+    "code": 800,
+    "math": 400,
+    "analysis": 400,
+    "creative": 300,
+    "translation": None,  # special: proportional to input
+    "factual": 60,
+    "general": 150,
 }
 
 
@@ -91,21 +96,31 @@ class Router:
         if not pool:
             return {"error": "Nessun provider attivo con API key valida", "success": False}
 
-        # 1. Filtra per competenza (tier + capabilities)
+        # Stima token di input dai messaggi reali
+        input_tokens = self._estimate_input_tokens(messages)
+
+        # Stima output per tipo di task
+        output_est = self._estimate_output_tokens(sig.task, input_tokens)
+
+        # 1. Filtra per competenza (tier) — con fallback a tutto il pool
         competent = self._filter_competent(pool, sig)
         if not competent:
-            competent = pool  # fallback: usa tutto il pool
+            competent = pool
 
-        # 2. Ranka per task type con quality floor + cheapest
-        ranked, excluded_count = self._rank(competent, sig.task, sig.difficulty)
+        # 2. Filtra per capabilities (HARD constraint — niente fallback)
+        capable = self._filter_capable(competent, sig)
+        if not capable:
+            return {"error": "Nessun modello con le capacita' richieste", "success": False}
+
+        # 3. Ranka per task type con quality floor + cheapest
+        ranked, excluded_count = self._rank(capable, sig.task, sig.difficulty, input_tokens, output_est)
         if not ranked:
-            # Fallback 1: riprova senza tier filter
-            ranked, excluded_count = self._rank(pool, sig.task, sig.difficulty)
+            # Fallback 1: riprova senza tier filter (ma mantenendo caps)
+            ranked, excluded_count = self._rank(capable, sig.task, sig.difficulty, input_tokens, output_est)
 
         if not ranked:
             # Fallback 2: nessun modello supera il floor, prendi il migliore disponibile
-            pool_full = self.registry.get_active_pool(self.config.resolve_provider_keys())
-            ranked, excluded_count = self._rank(pool_full, sig.task, 0.0)  # floor=0
+            ranked, excluded_count = self._rank(capable, sig.task, 0.0, input_tokens, output_est)
         
         if not ranked:
             return {"error": "Nessun modello disponibile dopo il ranking", "success": False}
@@ -116,7 +131,8 @@ class Router:
         floor = quality_floor(sig.difficulty)
         reason_parts = [
             f"task={sig.task}, difficulty={sig.difficulty:.2f}, "
-            f"confidence={sig.confidence:.2f}, floor={floor:.1f}"
+            f"confidence={sig.confidence:.2f}, floor={floor:.1f}, "
+            f"in={input_tokens}tok, out={output_est}tok"
         ]
         if excluded_count:
             reason_parts.append(f"{excluded_count} modelli esclusi: sotto floor o senza benchmark")
@@ -127,6 +143,8 @@ class Router:
                 "model": top_model.id,
                 "score": round(top_score, 8),
                 "cost_est": round(top_cost, 8),
+                "estimated_cost": round(top_cost, 8),
+                "cost_usd": round(top_cost, 8),
                 "benchmark": top_bench,
                 "reason": ", ".join(reason_parts),
                 "alternatives": alternatives,
@@ -136,43 +154,75 @@ class Router:
         # 3. Esecuzione con verify/escalate
         return self._execute_with_verify(ranked, messages, sig)
 
-    def _filter_competent(self, pool: list[ModelSpec], sig: TaskSignature) -> list[ModelSpec]:
-        """Filtra i modelli per tier e capabilities.
+    def _estimate_input_tokens(self, messages: list[dict]) -> int:
+        """Stima il numero di token di input dai messaggi reali."""
+        total_chars = sum(len(m.get("content", "")) for m in messages)
+        return max(1, total_chars // 4)
 
-        NOTA: non filtra per benchmark score — quella logica è in _rank
-        sotto forma di quality floor.
-        """
+    def _estimate_output_tokens(self, task_type: str, input_tokens: int) -> int:
+        """Stima i token di output in base al tipo di task."""
+        est = OUTPUT_ESTIMATES.get(task_type)
+        if est is None:
+            # Translation: output ≈ input (preserva lunghezza)
+            return max(1, input_tokens)
+        return max(1, est)
+
+    def _filter_competent(self, pool: list[ModelSpec], sig: TaskSignature) -> list[ModelSpec]:
+        """Filtra i modelli per tier — con fallback se nessun tier matcha."""
         competent = []
         for m in pool:
-            # Tier check
-            tier_ok = False
             for threshold, tiers in TIER_BY_DIFFICULTY:
                 if sig.difficulty < threshold:
-                    tier_ok = m.tier in tiers
+                    if m.tier in tiers:
+                        competent.append(m)
                     break
-            if not tier_ok:
-                continue
-
-            competent.append(m)
-
         return competent
 
-    def _rank(self, pool: list[ModelSpec], task_type: str, difficulty: float) -> tuple[list[tuple], int]:
-        """Filtra per quality floor, poi ordina per costo (più economico = meglio).
+    def _filter_capable(self, pool: list[ModelSpec], sig: TaskSignature) -> list[ModelSpec]:
+        """Filtra per capabilities richieste (HARD constraint).
+
+        - sig.sensitive  → solo modelli local_only
+        - sig.freshness  → solo modelli con caps 'search'
+        - sig.caps contiene 'multimodal' → solo modelli con caps 'vision'
+        """
+        if not sig.sensitive and not sig.freshness and not sig.caps:
+            return pool  # nessun vincolo
+
+        capable = []
+        for m in pool:
+            # sensitive/PII → local_only
+            if sig.sensitive and "local_only" not in getattr(m, "caps", []) and m.provider != "local":
+                continue
+            # freshness → search capable
+            if sig.freshness and "search" not in getattr(m, "caps", []):
+                continue
+            # multimodal → vision capable
+            if "multimodal" in (sig.caps or []) and "vision" not in getattr(m, "caps", []):
+                continue
+            capable.append(m)
+        return capable
+
+    def _rank(self, pool: list[ModelSpec], task_type: str, difficulty: float,
+              input_tokens: int = 500, output_est: int = 200) -> tuple[list[tuple], int]:
+        """Filtra per quality floor e contesto, ordina per costo reale (input + output).
+
+        cost = prompt_per_m * input_tokens + completion_per_m * output_est / 1e6
 
         Restituisce (lista_rankata, numero_modelli_esclusi).
-        score = costo di completion (stesso valore di cost) per compatibilità.
+        score = costo reale stimato.
         """
         policy = self.config.routing.unmeasured_policy
         bench_key = BENCHMARK_MAP.get(task_type, "intelligence_index")
         floor = quality_floor(difficulty)
 
-        # Output stimato per tipo task
-        est_out = OUTPUT_ESTIMATES.get(task_type, 200)
-
         ranked = []
         excluded = 0
         for m in pool:
+            # Context window filter: il modello deve poter contenere l'input
+            if m.context_length < input_tokens:
+                excluded += 1
+                continue
+
             bench = m.benchmarks.get(bench_key)
 
             if bench is None:
@@ -193,14 +243,15 @@ class Router:
                 excluded += 1
                 continue
 
+            prompt_price = m.pricing.get("prompt_per_m", 0)
             completion_price = m.pricing.get("completion_per_m", 0)
-            cost = (completion_price * est_out) / 1_000_000
-            cost = max(cost, 0.00001)  # minimo per evitare zero
+            cost = (prompt_price * input_tokens + completion_price * output_est) / 1_000_000
+            cost = max(cost, 1e-8)  # evita zero (serve per test di costo estimato)
 
             # score = costo (più economico = meglio) per compatibilità
             ranked.append((m, cost, cost, bench))
 
-        ranked.sort(key=lambda x: x[1])  # cheapest first
+        ranked.sort(key=lambda x: (x[1], -x[3]))  # cheapest first, then highest bench
         return ranked, excluded
 
     def _execute_with_verify(

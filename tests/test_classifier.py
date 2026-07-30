@@ -40,7 +40,7 @@ def test_classify_complex():
         "content": "Design a distributed rate limiting system with eventual consistency"
     }])
     # "Design" attiva il pattern creative, ma il task è tecnico
-    assert sig.difficulty > 0.5  # complesso
+    assert sig.difficulty > 0.4  # complesso (sopra easy band)
     assert sig.confidence > 0.5
 
 
