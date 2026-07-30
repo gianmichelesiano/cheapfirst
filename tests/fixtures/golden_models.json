@@ -107,7 +107,7 @@
     {
       "id": "vendor-d/mini",
       "provider": "vendor-d",
-      "tier": "medium",
+      "tier": "mid",
       "pricing": {"prompt_per_m": 0.15, "completion_per_m": 0.60},
       "benchmarks": {"intelligence_index": 44, "coding_index": 41, "agentic_index": 28},
       "context": 128000,
@@ -116,7 +116,7 @@
     {
       "id": "vendor-d/mini-legacy",
       "provider": "vendor-d",
-      "tier": "medium",
+      "tier": "mid",
       "pricing": {"prompt_per_m": 1.10, "completion_per_m": 4.50},
       "benchmarks": {"intelligence_index": 40, "coding_index": 36, "agentic_index": 21},
       "context": 16000,
@@ -126,7 +126,7 @@
     {
       "id": "vendor-e/luna",
       "provider": "vendor-e",
-      "tier": "medium",
+      "tier": "mid",
       "pricing": {"prompt_per_m": 0.80, "completion_per_m": 3.00},
       "benchmarks": {"intelligence_index": 51, "coding_index": 50, "agentic_index": 38},
       "context": 200000,
@@ -135,7 +135,7 @@
     {
       "id": "vendor-e/luna-search",
       "provider": "vendor-e",
-      "tier": "medium",
+      "tier": "mid",
       "pricing": {"prompt_per_m": 1.00, "completion_per_m": 3.50},
       "benchmarks": {"intelligence_index": 50, "coding_index": 47, "agentic_index": 40},
       "context": 200000,
@@ -145,7 +145,7 @@
     {
       "id": "vendor-f/pro",
       "provider": "vendor-f",
-      "tier": "medium",
+      "tier": "mid",
       "pricing": {"prompt_per_m": 0.30, "completion_per_m": 0.87},
       "benchmarks": {"intelligence_index": 44, "coding_index": 43, "agentic_index": 31},
       "context": 1000000,
@@ -154,7 +154,7 @@
     {
       "id": "vendor-g/sonnet-class",
       "provider": "vendor-g",
-      "tier": "premium",
+      "tier": "frontier",
       "pricing": {"prompt_per_m": 3.00, "completion_per_m": 15.00},
       "benchmarks": {"intelligence_index": 63, "coding_index": 68, "agentic_index": 58},
       "context": 200000,
@@ -163,7 +163,7 @@
     {
       "id": "vendor-h/sol",
       "provider": "vendor-h",
-      "tier": "premium",
+      "tier": "frontier",
       "pricing": {"prompt_per_m": 10.00, "completion_per_m": 30.00},
       "benchmarks": {"intelligence_index": 59, "coding_index": 57, "agentic_index": 49},
       "context": 128000,
@@ -173,7 +173,7 @@
     {
       "id": "vendor-h/sol-search",
       "provider": "vendor-h",
-      "tier": "premium",
+      "tier": "frontier",
       "pricing": {"prompt_per_m": 5.00, "completion_per_m": 20.00},
       "benchmarks": {"intelligence_index": 58, "coding_index": 55, "agentic_index": 52},
       "context": 128000,
@@ -192,7 +192,7 @@
     {
       "id": "vendor-j/vision-legacy",
       "provider": "vendor-j",
-      "tier": "medium",
+      "tier": "mid",
       "pricing": {"prompt_per_m": 2.00, "completion_per_m": 8.00},
       "benchmarks": {"intelligence_index": 33, "coding_index": 28, "agentic_index": 17},
       "context": 32000,
