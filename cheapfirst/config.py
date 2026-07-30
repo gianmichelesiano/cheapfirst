@@ -36,6 +36,7 @@ class RoutingConfig:
     cost_weight: float = 0.5
     quality_weight: float = 0.5
     verify_cost_budget: float = 0.001
+    unmeasured_policy: str = "exclude"
 
 
 @dataclass

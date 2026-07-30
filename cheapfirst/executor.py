@@ -6,38 +6,46 @@ import httpx
 from .config import PROVIDER_BASE_URLS
 
 
-def get_provider_info(model_id: str, provider_keys: dict) -> tuple[str | None, str | None]:
+def get_provider_info(
+    model_id: str,
+    provider_keys: dict,
+    provider: str | None = None,
+) -> tuple[str | None, str | None]:
     """Restituisce (base_url, api_key) per un dato model_id.
 
     Il model_id è nel formato "provider/modello" (es. "deepseek/deepseek-v4-flash").
-    Se il provider è nella mappa di default, usa quella URL.
-    Se non è nella mappa, controlla se provider_keys ha un URL come valore
-    (es. "local": "http://localhost:11434/v1") altrimenti fallback su OpenRouter.
+    Il provider risolto è:
+      - Il parametro ``provider`` (passato dal ModelSpec, fonte di verità)
+      - In assenza, model_id.split("/")[0] (fallback per chiamate dirette)
+
+    Se il provider è nella mappa PROVIDER_BASE_URLS, usa quella URL + API key.
+    Se non è nella mappa ma la provider_keys ha un URL come valore
+    (es. "local": "http://localhost:11434/v1"), usa quello (locale/proxy).
+    Altrimenti solleva ValueError.
     """
-    provider = model_id.split("/")[0]
+    # Fonte di verità: se abbiamo il provider dal ModelSpec, usiamo quello
+    resolved_provider = provider if provider else model_id.split("/")[0]
 
     # Mappa predefinita
-    if provider in PROVIDER_BASE_URLS:
-        base_url = PROVIDER_BASE_URLS[provider]
-        api_key = provider_keys.get(provider, "")
+    if resolved_provider in PROVIDER_BASE_URLS:
+        base_url = PROVIDER_BASE_URLS[resolved_provider]
+        api_key = provider_keys.get(resolved_provider, "")
         return base_url, api_key
 
     # Provider non standard: controlla se la key è un URL (locale/proxy)
-    provider_val = provider_keys.get(provider, "")
+    provider_val = provider_keys.get(resolved_provider, "")
     if provider_val and provider_val.startswith("http"):
         base_url = provider_val.rstrip("/")
         if not base_url.endswith("/v1"):
             base_url += "/v1"
         return base_url, "not-needed"
 
-    # Fallback: prova come provider diretto
-    api_key = provider_keys.get(provider, "")
-    if api_key:
-        # Provider sconosciuto ma con API key: assumi sia OpenAI-compatibile
-        return f"https://api.{provider}.com/v1", api_key
-
-    # Nessuna informazione: restituisce None
-    return None, None
+    # Nessuna informazione utile — fallisci esplicitamente
+    raise ValueError(
+        f"Provider sconosciuto: '{resolved_provider}' (da model_id='{model_id}'). "
+        f"Aggiungi '{resolved_provider}' a provider_keys nella configurazione "
+        f"o a PROVIDER_BASE_URLS nel codice."
+    )
 
 
 def calculate_cost(model_pricing: dict, input_tokens: int, output_tokens: int) -> float:
@@ -52,6 +60,7 @@ def execute(
     messages: list[dict],
     model_id: str,
     provider_keys: dict = None,
+    provider: str | None = None,
     **kwargs,
 ) -> dict:
     """Esegue una chiamata API reale a un modello OpenAI-compatibile.
@@ -60,6 +69,8 @@ def execute(
         messages: Lista di messaggi nel formato OpenAI.
         model_id: ID del modello (es. "deepseek/deepseek-v4-flash").
         provider_keys: dict con {provider: api_key}.
+        provider: Nome del provider (fonte di verità dal ModelSpec).
+                  Se None, estratto da model_id.split("/")[0].
         **kwargs: temperature, max_tokens, stream, ecc.
 
     Returns:
@@ -68,11 +79,13 @@ def execute(
     if provider_keys is None:
         provider_keys = {}
 
-    base_url, api_key = get_provider_info(model_id, provider_keys)
-    if not base_url or not api_key:
+    try:
+        base_url, api_key = get_provider_info(
+            model_id, provider_keys, provider=provider,
+        )
+    except ValueError as e:
         return {
-            "error": f"Provider non configurato per {model_id}. "
-                     f"Aggiungi API key per '{model_id.split('/')[0]}' nel config.",
+            "error": f"Provider non configurato per {model_id}. {e}",
             "success": False,
         }
 

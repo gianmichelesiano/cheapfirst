@@ -1,0 +1,43 @@
+provider_keys:
+  deepseek: ${DEEPSEEK_API_KEY}
+  local: http://localhost:11434/v1
+
+models_extra:
+  - id: "ollama/llama3.2"
+    provider: "local"
+    tier: "free"
+    context_length: 8192
+    pricing:
+      prompt_per_m: 0
+      completion_per_m: 0
+    benchmarks:
+      intelligence_index: 30.0
+      coding_index: 35.0
+      agentic_index: 20.0
+
+  - id: "ds4-local"
+    provider: "local"
+    name: "ds4 (DeepSeek V4 locale)"
+    tier: "free"
+    context_length: 128000
+    pricing:
+      prompt_per_m: 0
+      completion_per_m: 0
+    benchmarks:
+      intelligence_index: 38.0
+      coding_index: 52.0
+      agentic_index: 28.0
+
+registry:
+  auto_update: false
+  path: /tmp/cheapfirst/test_registry.json
+
+routing:
+  min_benchmark_score: 25
+  verify: true
+  max_turns: 3
+  skip_verify_confidence: 0.8
+  max_cost_per_request: 0.05
+
+metrics:
+  enabled: false

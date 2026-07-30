@@ -25,6 +25,15 @@ TIER_BY_DIFFICULTY = [
     (1.01, ["free", "cheap", "mid", "frontier", "ultra"]),
 ]
 
+# Default benchmark values per tier when imputing from tier
+TIER_BENCH_DEFAULTS = {
+    "free": 20,
+    "cheap": 30,
+    "mid": 45,
+    "frontier": 60,
+    "ultra": 70,
+}
+
 
 class Router:
     """Decide quale modello usare per ogni richiesta."""
@@ -46,11 +55,19 @@ class Router:
             competent = pool  # fallback: usa tutto il pool
 
         # 2. Ranka per task type
-        ranked = self._rank(competent, sig.task)
+        ranked, excluded_count = self._rank(competent, sig.task)
         if not ranked:
             return {"error": "Nessun modello disponibile dopo il ranking", "success": False}
 
         top_model, top_score, top_cost, top_bench = ranked[0]
+
+        # Build reason
+        reason_parts = [
+            f"task={sig.task}, difficulty={sig.difficulty:.2f}, "
+            f"confidence={sig.confidence:.2f}, best cost/benchmark ratio"
+        ]
+        if excluded_count:
+            reason_parts.append(f"{excluded_count} modelli esclusi: benchmark non disponibile")
 
         if dry_run:
             alternatives = [(m.id, round(s, 4)) for m, s, _, _ in ranked[1:4]]
@@ -59,10 +76,7 @@ class Router:
                 "score": round(top_score, 6),
                 "cost_est": round(top_cost, 8),
                 "benchmark": top_bench,
-                "reason": (
-                    f"task={sig.task}, difficulty={sig.difficulty:.2f}, "
-                    f"confidence={sig.confidence:.2f}, best cost/benchmark ratio"
-                ),
+                "reason": ", ".join(reason_parts),
                 "alternatives": alternatives,
                 "pool_size": len(competent),
             }
@@ -78,8 +92,8 @@ class Router:
 
         competent = []
         for m in pool:
-            bench = m.benchmarks.get(bench_key, 0)
-            if bench is None or bench < min_score:
+            bench = m.benchmarks.get(bench_key)
+            if bench is not None and bench < min_score:
                 continue
 
             # Tier check
@@ -95,14 +109,30 @@ class Router:
 
         return competent
 
-    def _rank(self, pool: list[ModelSpec], task_type: str) -> list[tuple]:
-        """Ranka i modelli per costo/benchmark. Più basso = meglio."""
+    def _rank(self, pool: list[ModelSpec], task_type: str) -> tuple[list[tuple], int]:
+        """Ranka i modelli per costo/benchmark. Più basso = meglio.
+
+        Restituisce (lista_rankata, numero_modelli_esclusi).
+        """
+        policy = self.config.routing.unmeasured_policy
         bench_key = BENCHMARK_MAP.get(task_type, "intelligence_index")
         est_out = 200  # stima output token
 
         ranked = []
+        excluded = 0
         for m in pool:
-            bench = m.benchmarks.get(bench_key, 0)
+            bench = m.benchmarks.get(bench_key)
+
+            if bench is None:
+                if policy == "exclude":
+                    excluded += 1
+                    continue
+                elif policy == "impute_from_tier":
+                    bench = TIER_BENCH_DEFAULTS.get(m.tier, 30)
+                else:
+                    excluded += 1
+                    continue
+
             if bench <= 0:
                 bench = 0.1  # evita division by zero
 
@@ -115,7 +145,7 @@ class Router:
             ranked.append((m, score, cost, bench))
 
         ranked.sort(key=lambda x: x[1])
-        return ranked
+        return ranked, excluded
 
     def _execute_with_verify(
         self,
@@ -136,6 +166,7 @@ class Router:
                 messages=messages,
                 model_id=model.id,
                 provider_keys=self._provider_keys,
+                provider=model.provider,
             )
 
             # Se la chiamata è fallita (errore di rete, provider, etc.)
@@ -188,6 +219,7 @@ class Router:
             messages=messages,
             model_id=best_model.id,
             provider_keys=self._provider_keys,
+            provider=best_model.provider,
         )
         result["cost_usd"] = calculate_cost(
             best_model.pricing,

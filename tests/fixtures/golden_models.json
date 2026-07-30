@@ -1,223 +1,346 @@
 {
-  "_README": [
-    "Pool CONGELATO per i test di routing. Serve a rendere le decisioni",
-    "deterministiche e indipendenti dal registry live.",
-    "",
-    "ATTENZIONE: prezzi e indici qui dentro sono PLAUSIBILI MA SINTETICI.",
-    "Non sono uno snapshot reale e non vanno citati come tali da nessuna parte.",
-    "Il primo lavoro dopo aver risolto la questione della fonte benchmark e':",
-    "",
-    "    cheapfirst registry update",
-    "    python scripts/freeze_pool.py > tests/fixtures/golden_models.json",
-    "",
-    "e poi committare lo snapshot reale, con la data. Da quel momento il file",
-    "si aggiorna solo esplicitamente, mai automaticamente: se il pool cambia",
-    "sotto i test, i test non misurano piu' nulla.",
-    "",
-    "Il pool e' costruito per contenere apposta:",
-    "  - 3 ordini di grandezza di prezzo (0.00 -> 75.00), come nella realta'",
-    "  - modelli DOMINATI (peggiori e piu' cari di un altro): mini-legacy,",
-    "    nano-old, vision-legacy. Nessun ranking sano deve scegliere questi.",
-    "  - un outlier costosissimo (opus-class) che rompe la normalizzazione min-max",
-    "  - modelli con benchmark NULL (unmeasured-new): 'non misurato' e 'zero'",
-    "    sono cose diverse e il codice deve trattarle diversamente",
-    "  - un modello locale a costo zero, per i casi caps=local_only",
-    "  - modelli senza vision, per i casi caps=vision",
-    "  - coding_index scorrelato da intelligence_index su alcuni modelli,",
-    "    altrimenti la scelta della colonna benchmark non e' testabile"
-  ],
   "frozen_at": "2026-07-30",
-  "source": "synthetic",
+  "source": "openrouter",
   "models": [
     {
-      "id": "local/qwen3-8b",
-      "provider": "local",
+      "id": "cohere/north-mini-code:free",
+      "provider": "cohere",
       "tier": "free",
-      "pricing": {"prompt_per_m": 0.0, "completion_per_m": 0.0},
-      "benchmarks": {"intelligence_index": 26, "coding_index": 24, "agentic_index": 15},
-      "context": 32768,
-      "caps": ["local_only"]
-    },
-    {
-      "id": "local/qwen3-32b",
-      "provider": "local",
-      "tier": "free",
-      "pricing": {"prompt_per_m": 0.0, "completion_per_m": 0.0},
-      "benchmarks": {"intelligence_index": 38, "coding_index": 36, "agentic_index": 24},
-      "context": 32768,
-      "caps": ["local_only"]
-    },
-    {
-      "id": "vendor-a/nano",
-      "provider": "vendor-a",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.05, "completion_per_m": 0.40},
-      "benchmarks": {"intelligence_index": 25, "coding_index": 22, "agentic_index": 12},
-      "context": 128000,
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 19.8,
+        "coding_index": 36.5,
+        "agentic_index": 3.1
+      },
+      "context": 256000,
       "caps": []
     },
     {
-      "id": "vendor-a/nano-old",
-      "provider": "vendor-a",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.10, "completion_per_m": 0.60},
-      "benchmarks": {"intelligence_index": 21, "coding_index": 18, "agentic_index": 10},
-      "context": 16000,
-      "caps": [],
-      "_note": "DOMINATO da vendor-a/nano: piu' caro e peggiore su tutto."
-    },
-    {
-      "id": "vendor-b/flash",
-      "provider": "vendor-b",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.075, "completion_per_m": 0.30},
-      "benchmarks": {"intelligence_index": 40, "coding_index": 35, "agentic_index": 22},
-      "context": 1000000,
-      "caps": ["vision"]
-    },
-    {
-      "id": "vendor-b/flash-lite",
-      "provider": "vendor-b",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.019, "completion_per_m": 0.076},
-      "benchmarks": {"intelligence_index": 31, "coding_index": 27, "agentic_index": 16},
-      "context": 1000000,
-      "caps": ["vision"]
-    },
-    {
-      "id": "vendor-c/chat",
-      "provider": "vendor-c",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.14, "completion_per_m": 0.42},
-      "benchmarks": {"intelligence_index": 45, "coding_index": 48, "agentic_index": 30},
-      "context": 64000,
-      "caps": [],
-      "_note": "coding_index > intelligence_index: serve a testare la scelta della colonna."
-    },
-    {
-      "id": "vendor-c/coder",
-      "provider": "vendor-c",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.20, "completion_per_m": 0.55},
-      "benchmarks": {"intelligence_index": 39, "coding_index": 56, "agentic_index": 33},
-      "context": 64000,
-      "caps": [],
-      "_note": "Forte solo su codice. Un router che ignora BENCHMARK_MAP non lo scegliera' mai."
-    },
-    {
-      "id": "vendor-d/mini",
-      "provider": "vendor-d",
-      "tier": "mid",
-      "pricing": {"prompt_per_m": 0.15, "completion_per_m": 0.60},
-      "benchmarks": {"intelligence_index": 44, "coding_index": 41, "agentic_index": 28},
-      "context": 128000,
-      "caps": ["vision"]
-    },
-    {
-      "id": "vendor-d/mini-legacy",
-      "provider": "vendor-d",
-      "tier": "mid",
-      "pricing": {"prompt_per_m": 1.10, "completion_per_m": 4.50},
-      "benchmarks": {"intelligence_index": 40, "coding_index": 36, "agentic_index": 21},
-      "context": 16000,
-      "caps": [],
-      "_note": "DOMINATO da vendor-b/flash: 15x il prezzo, indici peggiori."
-    },
-    {
-      "id": "vendor-e/luna",
-      "provider": "vendor-e",
-      "tier": "mid",
-      "pricing": {"prompt_per_m": 0.80, "completion_per_m": 3.00},
-      "benchmarks": {"intelligence_index": 51, "coding_index": 50, "agentic_index": 38},
-      "context": 200000,
-      "caps": ["vision"]
-    },
-    {
-      "id": "vendor-e/luna-search",
-      "provider": "vendor-e",
-      "tier": "mid",
-      "pricing": {"prompt_per_m": 1.00, "completion_per_m": 3.50},
-      "benchmarks": {"intelligence_index": 50, "coding_index": 47, "agentic_index": 40},
-      "context": 200000,
-      "caps": ["vision", "search"],
-      "_note": "Unico modello con search sotto i 5$. I casi tags=freshness devono finire qui o su sol-search."
-    },
-    {
-      "id": "vendor-f/pro",
-      "provider": "vendor-f",
-      "tier": "mid",
-      "pricing": {"prompt_per_m": 0.30, "completion_per_m": 0.87},
-      "benchmarks": {"intelligence_index": 44, "coding_index": 43, "agentic_index": 31},
-      "context": 1000000,
-      "caps": ["vision"]
-    },
-    {
-      "id": "vendor-g/sonnet-class",
-      "provider": "vendor-g",
-      "tier": "frontier",
-      "pricing": {"prompt_per_m": 3.00, "completion_per_m": 15.00},
-      "benchmarks": {"intelligence_index": 63, "coding_index": 68, "agentic_index": 58},
-      "context": 200000,
-      "caps": ["vision"]
-    },
-    {
-      "id": "vendor-h/sol",
-      "provider": "vendor-h",
-      "tier": "frontier",
-      "pricing": {"prompt_per_m": 10.00, "completion_per_m": 30.00},
-      "benchmarks": {"intelligence_index": 59, "coding_index": 57, "agentic_index": 49},
-      "context": 128000,
-      "caps": [],
-      "_note": "Caro e non il migliore: DOMINATO da sonnet-class."
-    },
-    {
-      "id": "vendor-h/sol-search",
-      "provider": "vendor-h",
-      "tier": "frontier",
-      "pricing": {"prompt_per_m": 5.00, "completion_per_m": 20.00},
-      "benchmarks": {"intelligence_index": 58, "coding_index": 55, "agentic_index": 52},
-      "context": 128000,
-      "caps": ["search", "vision"]
-    },
-    {
-      "id": "vendor-i/opus-class",
-      "provider": "vendor-i",
-      "tier": "ultra",
-      "pricing": {"prompt_per_m": 15.00, "completion_per_m": 75.00},
-      "benchmarks": {"intelligence_index": 72, "coding_index": 74, "agentic_index": 69},
-      "context": 200000,
-      "caps": ["vision"],
-      "_note": "Outlier di prezzo. Con min-max lineare schiaccia tutti gli altri su cost_norm~0."
-    },
-    {
-      "id": "vendor-j/vision-legacy",
-      "provider": "vendor-j",
-      "tier": "mid",
-      "pricing": {"prompt_per_m": 2.00, "completion_per_m": 8.00},
-      "benchmarks": {"intelligence_index": 33, "coding_index": 28, "agentic_index": 17},
-      "context": 32000,
-      "caps": ["vision"],
-      "_note": "DOMINATO da vendor-d/mini fra i modelli vision."
-    },
-    {
-      "id": "vendor-k/unmeasured-new",
-      "provider": "vendor-k",
-      "tier": "cheap",
-      "pricing": {"prompt_per_m": 0.12, "completion_per_m": 0.45},
-      "benchmarks": {"intelligence_index": null, "coding_index": null, "agentic_index": null},
-      "context": 256000,
-      "caps": ["vision"],
-      "_note": "Benchmark NON MISURATI. Con .get(key, 0) diventa spazzatura ed esce dal pool: sbagliato."
-    },
-    {
-      "id": "vendor-l/free-tier",
-      "provider": "vendor-l",
+      "id": "nvidia/nemotron-3-nano-30b-a3b:free",
+      "provider": "nvidia",
       "tier": "free",
-      "pricing": {"prompt_per_m": 0.0, "completion_per_m": 0.0},
-      "benchmarks": {"intelligence_index": 28, "coding_index": 25, "agentic_index": 14},
+      "pricing": {
+        "prompt_per_m": 0.0,
+        "completion_per_m": 0.0
+      },
+      "benchmarks": {
+        "intelligence_index": 14.2,
+        "coding_index": 14.4,
+        "agentic_index": 2
+      },
+      "context": 256000,
+      "caps": []
+    },
+    {
+      "id": "inclusionai/ling-2.6-flash",
+      "provider": "inclusionai",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.01,
+        "completion_per_m": 0.03
+      },
+      "benchmarks": {
+        "intelligence_index": 14.1,
+        "coding_index": 25.3,
+        "agentic_index": 2.3
+      },
+      "context": 262144,
+      "caps": []
+    },
+    {
+      "id": "sao10k/l3-lunaris-8b",
+      "provider": "sao10k",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.04,
+        "completion_per_m": 0.05
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": null,
+        "agentic_index": null
+      },
       "context": 8192,
-      "caps": [],
-      "_note": "Gratis ma contesto 8k: i casi long_context non ci stanno. Il filtro contesto oggi non esiste."
+      "caps": []
+    },
+    {
+      "id": "meta-llama/llama-3.1-8b-instruct",
+      "provider": "meta-llama",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.08
+      },
+      "benchmarks": {
+        "intelligence_index": 7.6,
+        "coding_index": 5.4,
+        "agentic_index": 0.5
+      },
+      "context": 131072,
+      "caps": []
+    },
+    {
+      "id": "ibm-granite/granite-4.1-8b",
+      "provider": "ibm-granite",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.05,
+        "completion_per_m": 0.1
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": 9.5,
+        "agentic_index": null
+      },
+      "context": 131072,
+      "caps": []
+    },
+    {
+      "id": "qwen/qwen3.7-flash",
+      "provider": "qwen",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.03,
+        "completion_per_m": 0.13
+      },
+      "benchmarks": {
+        "intelligence_index": null,
+        "coding_index": null,
+        "agentic_index": null
+      },
+      "context": 1000000,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "tencent/hy3-preview",
+      "provider": "tencent",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.063,
+        "completion_per_m": 0.21
+      },
+      "benchmarks": {
+        "intelligence_index": 41.2,
+        "coding_index": 58.8,
+        "agentic_index": 30.7
+      },
+      "context": 262144,
+      "caps": []
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "provider": "deepseek",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.14,
+        "completion_per_m": 0.28
+      },
+      "benchmarks": {
+        "intelligence_index": 40.3,
+        "coding_index": 56.2,
+        "agentic_index": 31.1
+      },
+      "context": 1048576,
+      "caps": []
+    },
+    {
+      "id": "deepseek/deepseek-v4-pro",
+      "provider": "deepseek",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.435,
+        "completion_per_m": 0.87
+      },
+      "benchmarks": {
+        "intelligence_index": 44.3,
+        "coding_index": 59.4,
+        "agentic_index": 36.4
+      },
+      "context": 1048576,
+      "caps": []
+    },
+    {
+      "id": "nex-agi/nex-n2-pro",
+      "provider": "nex-agi",
+      "tier": "cheap",
+      "pricing": {
+        "prompt_per_m": 0.25,
+        "completion_per_m": 1.0
+      },
+      "benchmarks": {
+        "intelligence_index": 41,
+        "coding_index": 59.1,
+        "agentic_index": 31
+      },
+      "context": 262144,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "minimax/minimax-m3",
+      "provider": "minimax",
+      "tier": "mid",
+      "pricing": {
+        "prompt_per_m": 0.3,
+        "completion_per_m": 1.2
+      },
+      "benchmarks": {
+        "intelligence_index": 44.4,
+        "coding_index": 58.6,
+        "agentic_index": 35.4
+      },
+      "context": 1048576,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "openai/gpt-5.4-nano",
+      "provider": "openai",
+      "tier": "mid",
+      "pricing": {
+        "prompt_per_m": 0.2,
+        "completion_per_m": 1.25
+      },
+      "benchmarks": {
+        "intelligence_index": 38.2,
+        "coding_index": 56.1,
+        "agentic_index": 27.5
+      },
+      "context": 400000,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "qwen/qwen3.7-max",
+      "provider": "qwen",
+      "tier": "mid",
+      "pricing": {
+        "prompt_per_m": 1.475,
+        "completion_per_m": 4.425
+      },
+      "benchmarks": {
+        "intelligence_index": 46,
+        "coding_index": 66,
+        "agentic_index": 30.6
+      },
+      "context": 1000000,
+      "caps": []
+    },
+    {
+      "id": "x-ai/grok-4.5",
+      "provider": "x-ai",
+      "tier": "frontier",
+      "pricing": {
+        "prompt_per_m": 2.0,
+        "completion_per_m": 6.0
+      },
+      "benchmarks": {
+        "intelligence_index": 53.8,
+        "coding_index": 72.4,
+        "agentic_index": 45.7
+      },
+      "context": 500000,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "google/gemini-3.6-flash",
+      "provider": "google",
+      "tier": "frontier",
+      "pricing": {
+        "prompt_per_m": 1.5,
+        "completion_per_m": 7.5
+      },
+      "benchmarks": {
+        "intelligence_index": 50.1,
+        "coding_index": 69.2,
+        "agentic_index": 38.7
+      },
+      "context": 1048576,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "moonshotai/kimi-k3",
+      "provider": "moonshotai",
+      "tier": "frontier",
+      "pricing": {
+        "prompt_per_m": 3.0,
+        "completion_per_m": 15.0
+      },
+      "benchmarks": {
+        "intelligence_index": 57.1,
+        "coding_index": 76.2,
+        "agentic_index": 50.1
+      },
+      "context": 1048576,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "anthropic/claude-opus-5",
+      "provider": "anthropic",
+      "tier": "ultra",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 25.0
+      },
+      "benchmarks": {
+        "intelligence_index": 60.7,
+        "coding_index": 78,
+        "agentic_index": 55.3
+      },
+      "context": 1000000,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "openai/gpt-5.6-sol",
+      "provider": "openai",
+      "tier": "ultra",
+      "pricing": {
+        "prompt_per_m": 5.0,
+        "completion_per_m": 30.0
+      },
+      "benchmarks": {
+        "intelligence_index": 58.9,
+        "coding_index": 77.4,
+        "agentic_index": 54
+      },
+      "context": 1050000,
+      "caps": [
+        "vision"
+      ]
+    },
+    {
+      "id": "anthropic/claude-fable-5",
+      "provider": "anthropic",
+      "tier": "ultra",
+      "pricing": {
+        "prompt_per_m": 10.0,
+        "completion_per_m": 50.0
+      },
+      "benchmarks": {
+        "intelligence_index": 59.9,
+        "coding_index": 76.5,
+        "agentic_index": 52.8
+      },
+      "context": 1000000,
+      "caps": [
+        "vision"
+      ]
     }
   ]
 }

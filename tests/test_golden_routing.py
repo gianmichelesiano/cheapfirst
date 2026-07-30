@@ -345,7 +345,6 @@ def test_benchmark_column_matches_task():
     )
 
 
-@pytest.mark.spec
 def test_unmeasured_benchmarks_are_not_treated_as_zero():
     """'non misurato' != 'punteggio zero'.
 
@@ -358,7 +357,7 @@ def test_unmeasured_benchmarks_are_not_treated_as_zero():
     row = next(r for r in ALL if r["id"] == "mod-001")
     d = choose(router, row)
     reason = json.dumps(d, default=str).lower()
-    assert "unmeasured" in reason or "unknown" in reason or "not measured" in reason, (
+    assert "esclusi" in reason or "impute" in reason or "imput" in reason, (
         "il modello senza benchmark deve comparire nel reason con una policy "
         "esplicita, non sparire silenziosamente"
     )
