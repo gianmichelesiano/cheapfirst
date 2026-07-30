@@ -33,7 +33,8 @@ class ModelSpec:
         "coding_index": 0,
         "agentic_index": 0,
     })
-    strength: float = 0.5  # forza complessiva del modello (0-1)
+    strength: float = 0.5
+    has_benchmarks: bool = False
 
 
 class ModelRegistry:
@@ -45,7 +46,6 @@ class ModelRegistry:
         self._load()
 
     def _load(self):
-        """Carica il registry: prima cercalo locale, poi fetch remoto."""
         registry_path = Path(self.config.resolve_path(self.config.registry.path))
         if registry_path.exists():
             age = time.time() - registry_path.stat().st_mtime
@@ -54,26 +54,21 @@ class ModelRegistry:
                 self._load_from_file(registry_path)
                 self._merge_custom()
                 return
-
-        # Fetch remoto
         self.update()
 
     def update(self):
-        """Scarica l'ultimo registry da OpenRouter, salva localmente."""
         data = self._fetch_openrouter()
         if data:
             self._parse_openrouter(data)
             self._merge_custom()
             self._save()
         else:
-            # Fallback: carica da file se esiste
             registry_path = Path(self.config.resolve_path(self.config.registry.path))
             if registry_path.exists():
                 self._load_from_file(registry_path)
                 self._merge_custom()
 
     def _fetch_openrouter(self) -> Optional[dict]:
-        """Chiama OpenRouter API e restituisce i dati JSON."""
         try:
             req = Request(OPENROUTER_MODELS_URL, headers={"User-Agent": USER_AGENT})
             with urlopen(req, timeout=15) as resp:
@@ -83,7 +78,6 @@ class ModelRegistry:
             return None
 
     def _parse_openrouter(self, data: dict):
-        """Converte la risposta OpenRouter in ModelSpec list."""
         self.models = []
         for m in data.get("data", []):
             mid = m.get("id", "")
@@ -94,25 +88,23 @@ class ModelRegistry:
             pricing = m.get("pricing", {})
             benchmarks = m.get("benchmarks", {})
             aa = benchmarks.get("artificial_analysis", {})
+            has_benchmarks = bool(aa)
 
-            # Prezzo per milione di token
             prompt_raw = float(pricing.get("prompt", 0))
             completion_raw = float(pricing.get("completion", 0))
-
-            # Assegna tier in base al prezzo
             completion_per_m = completion_raw * 1_000_000
-            if completion_per_m <= 1.0:
-                tier = "cheap"
-            elif completion_per_m <= 5.0:
-                tier = "mid"
-            elif completion_per_m <= 20.0:
-                tier = "frontier"
-            else:
-                tier = "ultra"
 
-            # Forza tier per modelli free
-            if completion_per_m == 0 and "free" in mid:
-                tier = "free"
+            if has_benchmarks:
+                if completion_per_m <= 1.0:
+                    tier = "cheap"
+                elif completion_per_m <= 5.0:
+                    tier = "mid"
+                elif completion_per_m <= 20.0:
+                    tier = "frontier"
+                else:
+                    tier = "ultra"
+            else:
+                tier = "free" if completion_per_m == 0 else "cheap"
 
             spec = ModelSpec(
                 id=mid,
@@ -134,28 +126,28 @@ class ModelRegistry:
                     "agentic_index": aa.get("agentic_index", 0),
                 },
                 strength=round(min(1.0, (aa.get("intelligence_index") or 0) / 100), 2),
+                has_benchmarks=has_benchmarks,
             )
             self.models.append(spec)
 
     def _merge_custom(self):
-        """Aggiunge i modelli custom dal config YAML."""
         existing_ids = {m.id for m in self.models}
         for extra in self.config.models_extra:
             if extra.id not in existing_ids:
                 spec = ModelSpec(
                     id=extra.id,
                     provider=extra.provider,
-                    name=extra.id,
+                    name=extra.name if extra.name else extra.id,
                     tier=extra.tier,
                     context_length=extra.context_length,
                     pricing=extra.pricing,
                     benchmarks=extra.benchmarks,
                     strength=min(1.0, extra.benchmarks.get("intelligence_index", 30) / 100),
+                    has_benchmarks=True,
                 )
                 self.models.append(spec)
 
     def _save(self):
-        """Salva il registry su disco."""
         path = Path(self.config.resolve_path(self.config.registry.path))
         path.parent.mkdir(parents=True, exist_ok=True)
         data = {
@@ -167,35 +159,36 @@ class ModelRegistry:
             json.dump(data, f, indent=2)
 
     def _load_from_file(self, path: Path):
-        """Carica il registry da file locale."""
         with open(path) as f:
             data = json.load(f)
+        fields = set(ModelSpec.__dataclass_fields__.keys())
         for m in data.get("models", []):
-            self.models.append(ModelSpec(**m))
+            if "has_benchmarks" not in m:
+                m["has_benchmarks"] = any(
+                    m.get("benchmarks", {}).get(k, 0) > 0
+                    for k in ["intelligence_index", "coding_index", "agentic_index"]
+                )
+            self.models.append(ModelSpec(**{k: v for k, v in m.items() if k in fields}))
 
     def get_active_pool(self, provider_keys: dict) -> list[ModelSpec]:
-        """Restituisce solo i modelli i cui provider hanno API key configurata."""
+        has_openrouter = bool(provider_keys.get("openrouter", ""))
+        if has_openrouter:
+            return [m for m in self.models if m.has_benchmarks]
         active_providers = set(provider_keys.keys())
-        return [m for m in self.models if m.provider in active_providers]
-
-    def get_models_by_tier(self, pool: list[ModelSpec], tier: str) -> list[ModelSpec]:
-        """Filtra il pool per tier."""
-        return [m for m in pool if m.tier == tier or m.tier == "free"]
+        return [m for m in self.models if m.provider in active_providers and m.has_benchmarks]
 
     def status(self) -> dict:
-        """Stato del registry con dati reali."""
         registry_path = Path(self.config.resolve_path(self.config.registry.path))
         age_days = 0
         last_update = "mai scaricato"
         if registry_path.exists():
             age = time.time() - registry_path.stat().st_mtime
             age_days = round(age / 86400, 1)
-            last_update = time.strftime(
-                "%Y-%m-%d",
-                time.localtime(registry_path.stat().st_mtime),
-            )
+            last_update = time.strftime("%Y-%m-%d", time.localtime(registry_path.stat().st_mtime))
+        with_bench = sum(1 for m in self.models if m.has_benchmarks)
         return {
             "models_count": len(self.models),
+            "with_benchmarks": with_bench,
             "last_update": last_update,
             "age_days": age_days,
         }
