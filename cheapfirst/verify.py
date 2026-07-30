@@ -12,15 +12,11 @@ class Verdict(Enum):
 
 
 def verify_response(response: dict, sig: TaskSignature) -> Verdict:
-    """Verifica se la risposta è accettabile.
-
-    Usa controlli strutturati in base al task type.
-    """
+    """Verifica se la risposta e accettabile con euristiche migliorate."""
     text = response.get("text", "")
-    if not text:
+    if not text or not text.strip():
         return Verdict.REVISE
 
-    # Controlli per tipo di task
     if sig.task == "code":
         return _verify_code(text)
     elif sig.task == "translation":
@@ -34,54 +30,72 @@ def verify_response(response: dict, sig: TaskSignature) -> Verdict:
 
 
 def _verify_code(text: str) -> Verdict:
-    """Verifica codice: controlla sintassi di base."""
-    # Deve contenere almeno codice
+    """Verifica codice: controlla presenza di codice e parentesi bilanciate."""
     has_code = bool(re.search(r"```|def |class |function |import |const |let |var ", text))
     if not has_code:
         return Verdict.REVISE
 
-    # Controllo base: parentesi bilanciate
-    opens = text.count("{")
-    closes = text.count("}")
-    if opens > 0 and opens != closes:
-        return Verdict.REVISE
-
-    opens_p = text.count("(")
-    closes_p = text.count(")")
-    if opens_p > 0 and opens_p != closes_p:
-        return Verdict.REVISE
+    code_blocks = re.findall(r"```[\s\S]*?```", text)
+    if not code_blocks:
+        if len(text) < 2000:
+            if not _balanced(text, "{", "}"):
+                return Verdict.REVISE
+            if not _balanced(text, "(", ")"):
+                return Verdict.REVISE
+    else:
+        for block in code_blocks:
+            clean = re.sub(r"```\w*\n?", "", block)
+            if not _balanced(clean, "{", "}"):
+                return Verdict.REVISE
+            if not _balanced(clean, "(", ")"):
+                return Verdict.REVISE
 
     return Verdict.ACCEPT
 
 
+def _balanced(text: str, open_c: str, close_c: str) -> bool:
+    count = 0
+    for ch in text:
+        if ch == open_c:
+            count += 1
+        elif ch == close_c:
+            count -= 1
+        if count < 0:
+            return False
+    return count == 0
+
+
 def _verify_translation(text: str) -> Verdict:
-    """Verifica traduzione: controlla che non sia la lingua originale."""
-    # Se la risposta è molto corta e sembra identica all'input, potrebbe essere un errore
-    if len(text.strip()) < 3:
+    stripped = text.strip()
+    if len(stripped) < 5:
+        return Verdict.REVISE
+    if len(stripped.split()) == 1 and len(stripped) < 20:
         return Verdict.REVISE
     return Verdict.ACCEPT
 
 
 def _verify_factual(text: str) -> Verdict:
-    """Verifica risposta fattuale."""
-    # Controlla che la risposta sia sostanziosa
-    if len(text.strip()) < 20:
+    stripped = text.strip()
+    if len(stripped) < 30:
+        return Verdict.REVISE
+    if len(stripped.split()) < 5:
         return Verdict.REVISE
     return Verdict.ACCEPT
 
 
 def _verify_math(text: str) -> Verdict:
-    """Verifica risposta matematica."""
-    # Deve contenere numeri o formule
+    stripped = text.strip()
     has_numbers = bool(re.search(r'\d+', text))
-    has_math = bool(re.search(r'=|≈|≠|≤|≥|±|√|∫|∑|∏|∞', text))
-    if not has_numbers and not has_math and len(text) < 50:
+    has_math = bool(re.search(r'[=≈≠≤≥±√∫∑∏∞]|\\frac|\\sum|\\int', text))
+    if not has_numbers and not has_math:
+        return Verdict.REVISE
+    if len(stripped) < 10:
         return Verdict.REVISE
     return Verdict.ACCEPT
 
 
 def _verify_general(text: str) -> Verdict:
-    """Verifica risposta generale."""
-    if len(text.strip()) < 10:
+    stripped = text.strip()
+    if len(stripped) < 15:
         return Verdict.REVISE
     return Verdict.ACCEPT
