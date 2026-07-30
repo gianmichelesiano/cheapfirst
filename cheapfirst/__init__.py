@@ -111,4 +111,4 @@ class CheapFirst:
 
 
 __version__ = "0.1.0"
-__all__ = ["CheapFirst", "TaskSignature", "classify", "load_config"]
+__all__ = ["CheapFirst", "TaskSignature", "classify", "load_config", "calculate_cost"]

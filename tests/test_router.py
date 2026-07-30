@@ -72,7 +72,9 @@ def test_router_ranking_cheaper_wins():
     registry = _make_registry_direct(config, models)
     router = Router(config, registry)
 
-    ranked = router._rank(models, "general")
+    # Crea un TaskSignature per "general" con difficolta media
+    sig = classify([{"role": "user", "content": "Explain quantum computing in simple terms"}])
+    ranked = router._rank(models, sig)
     assert len(ranked) >= 2
 
     # Flash deve vincere: (0.6*200/1M)/40 = 0.000003 vs Pro: (4.0*200/1M)/44 = 0.000018
